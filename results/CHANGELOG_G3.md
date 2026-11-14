@@ -24,3 +24,4 @@
 
 - G5b start: 2026-11-15 06:47:14 WIB (redesign stop 11:30 WIB; all done by 13:30 WIB; presentation only)
 - 06:54:58 G5b redesign shipped (6/6); checks passed; actions bumped; NASADEM removed from site data list.
+- 06:58:59 demo built: web/demo/demo.mp4 (29.9 s, 1280x720, H.264), captions.vtt, demo/index.html; script scripts/make_demo.py.

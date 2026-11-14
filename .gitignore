@@ -3,3 +3,4 @@ data/raw/
 data/processed/
 __pycache__/
 .pytest_cache/
+docs/video/demo_build/
