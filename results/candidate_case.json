@@ -1,0 +1,228 @@
+{
+  "qualifies": true,
+  "nature": "exploratory (G3v INCONCLUSIVE; geometric neighbours, not an engineering suitability ranking)",
+  "candidate": {
+    "id": "g00094",
+    "lat": 29.66522,
+    "lon": -9.32073,
+    "country": "Morocco (from coordinates; not checked against a boundary dataset)",
+    "ndvi_mean4": 0.1468
+  },
+  "data_sources": [
+    "Copernicus GLO-30 DEM (AWS Open Data COG), 1.92 km window, 30 m",
+    "MODIS MOD13C2 v061 2023 (Jan/Apr/Jul/Oct mean NDVI)",
+    "Moon: LOLA LDEM_80S_20M averaged to 30 m"
+  ],
+  "coverage_contribution": {
+    "method": "fingerprint A, frozen Gate 3 normalisation, T = 2.3166",
+    "set": "current gaps for USGS-29 union NASA test sites",
+    "n_gap_patches_covered": 13,
+    "n_current_gap_patches": 85,
+    "denominator": 145,
+    "covered_patch_ids": [
+      "m008",
+      "m014",
+      "m026",
+      "m066",
+      "m069",
+      "m081",
+      "m091",
+      "m094",
+      "m097",
+      "m101",
+      "m105",
+      "m126",
+      "m127"
+    ]
+  },
+  "novelty": {
+    "flag": "Unverified",
+    "nearest_known": "USGS: Ouarkziz",
+    "nearest_known_km": 187.1,
+    "nearest_region": "Atacama",
+    "nearest_region_km": 8769.8,
+    "limited_check": "2026-11-15 web search (Anti-Atlas / southern Morocco Mars analog): no study naming this exact location found; the wider region has documented Mars-analogue work: Ibn Battuta Centre analogue sites in the Atlas/Anti-Atlas (Kereszturi et al., Astrobiology 2018) and the Tindouf Basin soil-geochemistry analogue (Oberlin, Claire & Kounaves, 2018, https://research-portal.st-andrews.ac.uk/en/publications/evaluation-of-the-tindouf-basin-region-in-southern-morocco-as-an-/). Not a new discovery.",
+    "caveat": "> 50 km from a known point does not mean unstudied; Unverified is not a new discovery"
+  },
+  "comparison_targets": [
+    {
+      "patch_id": "m008",
+      "lat": -85.23672,
+      "lon": 175.17902,
+      "distance": 1.6251
+    },
+    {
+      "patch_id": "m097",
+      "lat": -86.58971,
+      "lon": 64.21945,
+      "distance": 1.6866
+    }
+  ],
+  "features": [
+    {
+      "feature": "slope_median_30m",
+      "candidate": 7.558,
+      "moon_covered_median": 8.554,
+      "relative_difference": 0.116,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_p90_30m",
+      "candidate": 15.536,
+      "moon_covered_median": 13.38,
+      "relative_difference": 0.139,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_iqr_30m",
+      "candidate": 5.917,
+      "moon_covered_median": 5.241,
+      "relative_difference": 0.114,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_median_60m",
+      "candidate": 6.886,
+      "moon_covered_median": 8.467,
+      "relative_difference": 0.187,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_p90_60m",
+      "candidate": 14.72,
+      "moon_covered_median": 12.985,
+      "relative_difference": 0.118,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_iqr_60m",
+      "candidate": 5.727,
+      "moon_covered_median": 5.214,
+      "relative_difference": 0.09,
+      "label": "similar"
+    },
+    {
+      "feature": "roughness_median_60m",
+      "candidate": 0.102,
+      "moon_covered_median": 0.12,
+      "relative_difference": 0.148,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_median_120m",
+      "candidate": 6.097,
+      "moon_covered_median": 8.427,
+      "relative_difference": 0.276,
+      "label": "different"
+    },
+    {
+      "feature": "slope_p90_120m",
+      "candidate": 12.698,
+      "moon_covered_median": 12.68,
+      "relative_difference": 0.001,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_iqr_120m",
+      "candidate": 5.596,
+      "moon_covered_median": 5.275,
+      "relative_difference": 0.057,
+      "label": "similar"
+    },
+    {
+      "feature": "roughness_median_120m",
+      "candidate": 0.74,
+      "moon_covered_median": 0.65,
+      "relative_difference": 0.122,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_median_240m",
+      "candidate": 5.105,
+      "moon_covered_median": 8.268,
+      "relative_difference": 0.383,
+      "label": "different"
+    },
+    {
+      "feature": "slope_p90_240m",
+      "candidate": 10.848,
+      "moon_covered_median": 11.907,
+      "relative_difference": 0.089,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_iqr_240m",
+      "candidate": 5.658,
+      "moon_covered_median": 4.864,
+      "relative_difference": 0.14,
+      "label": "similar"
+    },
+    {
+      "feature": "roughness_median_240m",
+      "candidate": 2.535,
+      "moon_covered_median": 1.341,
+      "relative_difference": 0.471,
+      "label": "different"
+    },
+    {
+      "feature": "slope_median_480m",
+      "candidate": 4.134,
+      "moon_covered_median": 7.667,
+      "relative_difference": 0.461,
+      "label": "different"
+    },
+    {
+      "feature": "slope_p90_480m",
+      "candidate": 7.606,
+      "moon_covered_median": 10.819,
+      "relative_difference": 0.297,
+      "label": "different"
+    },
+    {
+      "feature": "slope_iqr_480m",
+      "candidate": 3.444,
+      "moon_covered_median": 4.093,
+      "relative_difference": 0.159,
+      "label": "similar"
+    },
+    {
+      "feature": "roughness_median_480m",
+      "candidate": 6.461,
+      "moon_covered_median": 3.214,
+      "relative_difference": 0.502,
+      "label": "different"
+    }
+  ],
+  "similarities": [
+    "slope_median_30m",
+    "slope_p90_30m",
+    "slope_iqr_30m",
+    "slope_median_60m",
+    "slope_p90_60m",
+    "slope_iqr_60m",
+    "roughness_median_60m",
+    "slope_p90_120m",
+    "slope_iqr_120m",
+    "roughness_median_120m",
+    "slope_p90_240m",
+    "slope_iqr_240m",
+    "slope_iqr_480m"
+  ],
+  "differences": [
+    "slope_median_120m",
+    "slope_median_240m",
+    "roughness_median_240m",
+    "slope_median_480m",
+    "slope_p90_480m",
+    "roughness_median_480m"
+  ],
+  "untested_conditions": [
+    "gravity (1 g vs 0.17 g)",
+    "regolith/soil mechanics and particle size",
+    "rocks and roughness below 30 m",
+    "illumination, thermal and vacuum environment",
+    "COP30 is a surface model (vegetation/structures not removed)",
+    "LOLA 20 m grid smoothing between laser tracks",
+    "physical access, permits and land use"
+  ]
+}

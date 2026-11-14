@@ -123,7 +123,9 @@ def main(branch: str):
     pick = rows[:5] + rows[-5:] if method == "A" else rows[-5:] + rows[:5]
     t2["best_and_worst_covered_USGS29_union_NASA"] = [{"patch_id": m, "distance_or_fraction": round(d, 4), "nearest": labels.get(b) if b else None,
                                                        "slope_median_30m": round(float(V[m][sm]), 2)} for d, m, b in pick]
-    t2["all_usgs_sites"] = "not run: would need ~160 more OpenTopography COP30 requests; skipped to protect the G4 deadline"
+    a2f = ROOT / "results/task2_all_usgs.json"
+    t2["all_usgs_sites"] = ({k: v for k, v in json.loads(a2f.read_text()).items() if k != "skipped"} if a2f.exists()
+                            else "not run")
     (ROOT / "results/task2_robustness.json").write_text(json.dumps(t2, indent=2))
 
     # ---- Task 6: explorer data ----

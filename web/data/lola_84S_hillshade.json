@@ -1,0 +1,13 @@
+{
+  "image": "lola_84S_hillshade.png",
+  "crs": "LOLA polar stereographic (lat0 -90, lon0 0, R 1737.4 km)",
+  "bounds_m": [
+    -182100.0,
+    -182100.0,
+    182100.0,
+    182100.0
+  ],
+  "pixel_m": 200.1098901098901,
+  "source": "LDEM_80S_20M (PDS), area-averaged, height = DN*0.5 m",
+  "hillshade": "az 315, alt 30"
+}

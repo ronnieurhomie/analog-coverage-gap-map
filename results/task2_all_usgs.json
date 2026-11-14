@@ -1,14 +1,17 @@
 {
   "label": "POST-HOC robustness (not the headline)",
   "method": "fingerprint A, frozen Gate 3 normalisation, T = 2.3166",
-  "set": "all USGS Known Terrestrial Analog Sites records with valid COP30 (centre = Lat/Lon attributes)",
+  "set": "all USGS Known Terrestrial Analog Sites records with valid COP30 (centre = Lat/Lon attributes); COP30 from OpenTopography for the 30 Gate 3 sites and AWS Open Data COGs for the rest (identical product)",
   "records_total": 192,
-  "records_attempted": 9,
-  "records_used": 9,
-  "stop_reason": "HTTP 401: <?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><error>Error: API maximum rate limit reached. (50 API calls/24hrs",
-  "skipped": {},
-  "covered": 62,
+  "records_attempted": 192,
+  "records_used": 190,
+  "stop_reason": null,
+  "skipped": {
+    "109": "no Copernicus tile (ocean or not distributed)",
+    "110": "no Copernicus tile (ocean or not distributed)"
+  },
+  "covered": 85,
   "denominator": 145,
-  "gap_percent": 57.24,
+  "gap_percent": 41.38,
   "nature": "exploratory (post-hoc)"
 }
