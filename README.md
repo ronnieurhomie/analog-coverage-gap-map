@@ -27,3 +27,13 @@ Full handoff: [`docs/G3_STATUS.md`](docs/G3_STATUS.md). Change log: `results/CHA
   - Vegetation check of COP30 sites.
   - Buried-crater exclusion (no authoritative source reachable).
 - **Not published:** nothing pushed, deployed or submitted; local git only.
+
+## Status (2026-11-15, after G4 front end)
+
+- **Executed:** static front end in `web/` (P1–P7 all shipped). Display data is built by `scripts/build_web_data.py` and
+  `scripts/build_web_results.py` from existing results; no new analysis.
+- **Verified:** number check against the result JSON (no mismatches); headless Chromium at 1280 px and 390 px (0 console
+  errors, no overflow, all images with alt text); banned-word grep clean; `web/` is 3.9 MB.
+- **Not done:** hosting, repository link, screen-reader test, browsers other than Chromium.
+- **Not published:** nothing pushed, deployed or submitted (hosting is G5).
+- **Run locally:** `cd web && python3 -m http.server`, then open http://localhost:8000/.

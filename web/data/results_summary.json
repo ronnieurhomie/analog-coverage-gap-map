@@ -1,0 +1,377 @@
+{
+ "gate2": {
+  "source": "results/gate2_ranking.json",
+  "n_candidates": 64,
+  "dumont_rank_A": 51,
+  "dumont_rank_secondary": 31,
+  "dumont_rank_B": 57,
+  "threshold_rank_ceil": 7,
+  "pass": false
+ },
+ "v1": {
+  "source": "results/v1_results.json",
+  "median_A": 17.5,
+  "median_B": 21.5,
+  "threshold": 7,
+  "list_length": 68,
+  "pass_A": false
+ },
+ "g3v": {
+  "source": "results/g3v_results.json",
+  "branch": "INCONCLUSIVE",
+  "groups": [
+   {
+    "group": 0,
+    "A": 0.9843,
+    "B": 1.0,
+    "random_median": 1.0,
+    "random_p95": 1.0,
+    "A_picks": [
+     "grid_r0_c4"
+    ],
+    "B_picks": [
+     "grid_r0_c2"
+    ],
+    "A_note": null,
+    "target_bin_area_px_2m": [
+     1594534,
+     621787,
+     187625,
+     175754,
+     141795,
+     43305
+    ]
+   },
+   {
+    "group": 1,
+    "A": 0.9935,
+    "B": 1.0,
+    "random_median": 1.0,
+    "random_p95": 1.0,
+    "A_picks": [
+     "grid_r6_c2",
+     "grid_r1_c1"
+    ],
+    "B_picks": [
+     "grid_r3_c3"
+    ],
+    "A_note": null,
+    "target_bin_area_px_2m": [
+     1438504,
+     774105,
+     247782,
+     153634,
+     132746,
+     18029
+    ]
+   },
+   {
+    "group": 2,
+    "A": 1.0,
+    "B": 1.0,
+    "random_median": 1.0,
+    "random_p95": 1.0,
+    "A_picks": [
+     "grid_r2_c6",
+     "dumont"
+    ],
+    "B_picks": [
+     "grid_r3_c3"
+    ],
+    "A_note": null,
+    "target_bin_area_px_2m": [
+     641526,
+     271921,
+     198599,
+     251663,
+     667944,
+     733147
+    ]
+   },
+   {
+    "group": 3,
+    "A": 0.9476,
+    "B": 1.0,
+    "random_median": 1.0,
+    "random_p95": 1.0,
+    "A_picks": [
+     "grid_r4_c2",
+     "grid_r5_c6"
+    ],
+    "B_picks": [
+     "grid_r3_c3"
+    ],
+    "A_note": null,
+    "target_bin_area_px_2m": [
+     144946,
+     364214,
+     589308,
+     627409,
+     828873,
+     210050
+    ]
+   },
+   {
+    "group": 4,
+    "A": 0.8829,
+    "B": 1.0,
+    "random_median": 1.0,
+    "random_p95": 1.0,
+    "A_picks": [
+     "grid_r2_c7"
+    ],
+    "B_picks": [
+     "grid_r0_c2"
+    ],
+    "A_note": null,
+    "target_bin_area_px_2m": [
+     1906519,
+     534450,
+     193494,
+     80582,
+     44630,
+     5125
+    ]
+   },
+   {
+    "group": 5,
+    "A": 0.9037,
+    "B": 1.0,
+    "random_median": 1.0,
+    "random_p95": 1.0,
+    "A_picks": [
+     "grid_r1_c5"
+    ],
+    "B_picks": [
+     "grid_r0_c2"
+    ],
+    "A_note": null,
+    "target_bin_area_px_2m": [
+     2498472,
+     111143,
+     55777,
+     43527,
+     51878,
+     4003
+    ]
+   },
+   {
+    "group": 6,
+    "A": 0.9267,
+    "B": 1.0,
+    "random_median": 1.0,
+    "random_p95": 1.0,
+    "A_picks": [
+     "grid_r1_c5"
+    ],
+    "B_picks": [
+     "grid_r3_c3"
+    ],
+    "A_note": null,
+    "target_bin_area_px_2m": [
+     2562102,
+     116295,
+     33046,
+     22728,
+     22450,
+     8179
+    ]
+   },
+   {
+    "group": 7,
+    "A": 0.9789,
+    "B": 1.0,
+    "random_median": 1.0,
+    "random_p95": 1.0,
+    "A_picks": [
+     "dumont"
+    ],
+    "B_picks": [
+     "grid_r3_c3"
+    ],
+    "A_note": null,
+    "target_bin_area_px_2m": [
+     1964409,
+     424570,
+     155080,
+     70371,
+     91987,
+     58383
+    ]
+   }
+  ],
+  "step1": {
+   "fewer_than_8_groups": false,
+   "formal_ceiling": true,
+   "n_groups_random_median_ge_95": 8
+  },
+  "step2_transparency_only": {
+   "A_beats_B_groups": 0,
+   "median_paired_A_minus_B_points": -3.68,
+   "groups_A_worse_than_B_by_gt_10_points": 1,
+   "A_above_random_p95_groups": 0,
+   "B_above_random_p95_groups": 0
+  },
+  "start": "2026-11-15 01:27:59 WIB",
+  "end": "2026-11-15 01:39:04 WIB",
+  "ceiling_explanation": "33 of 62 sites provide 5 or 6 of the 6 slope bins at 2 m under the 5% rule, so random 3-site combinations reach 100% coverage",
+  "n_sites": 62,
+  "n_windows": 64
+ },
+ "sensitivity": {
+  "source": "results/task2_robustness.json",
+  "points": {
+   "50": {
+    "T": 1.0013,
+    "gap_percent": 86.9,
+    "gap_n": 126
+   },
+   "90": {
+    "T": 2.3166,
+    "gap_percent": 60.0,
+    "gap_n": 87
+   },
+   "99": {
+    "T": 3.4583,
+    "gap_percent": 46.9,
+    "gap_n": 68
+   }
+  },
+  "registered_percentile": 90
+ },
+ "global": {
+  "source": "results/global_search.json",
+  "processed": 300,
+  "drawn": 5775,
+  "skipped": {
+   "ndvi_ocean_or_missing": 4202,
+   "ndvi_ge_0.15": 1273,
+   "cop30_invalid": 0,
+   "cop30_error": 0
+  },
+  "novelty_counts": {
+   "Unverified": 294,
+   "Possibly known": 6
+  },
+  "n_covering_any_gap": 10,
+  "n_current_gap_patches": 85
+ },
+ "candidate": {
+  "source": "results/candidate_case.json",
+  "candidate": {
+   "id": "g00094",
+   "lat": 29.66522,
+   "lon": -9.32073,
+   "country": "Morocco (from coordinates; not checked against a boundary dataset)",
+   "ndvi_mean4": 0.1468
+  },
+  "coverage_contribution": {
+   "method": "fingerprint A, frozen Gate 3 normalisation, T = 2.3166",
+   "set": "current gaps for USGS-29 union NASA test sites",
+   "n_gap_patches_covered": 13,
+   "n_current_gap_patches": 85,
+   "denominator": 145,
+   "covered_patch_ids": [
+    "m008",
+    "m014",
+    "m026",
+    "m066",
+    "m069",
+    "m081",
+    "m091",
+    "m094",
+    "m097",
+    "m101",
+    "m105",
+    "m126",
+    "m127"
+   ]
+  },
+  "untested_conditions": [
+   "gravity (1 g vs 0.17 g)",
+   "regolith/soil mechanics and particle size",
+   "rocks and roughness below 30 m",
+   "illumination, thermal and vacuum environment",
+   "COP30 is a surface model (vegetation/structures not removed)",
+   "LOLA 20 m grid smoothing between laser tracks",
+   "physical access, permits and land use"
+  ],
+  "novelty": {
+   "flag": "Unverified",
+   "nearest_known": "USGS: Ouarkziz",
+   "nearest_known_km": 187.1
+  }
+ },
+ "report_card": {
+  "source": "results/report_card.json",
+  "sites": {
+   "dumont dunes": {
+    "moon_patches_covered": 4,
+    "denominator": 145,
+    "slope_bins_provided_30m": [
+     "[0,5)",
+     "[5,10)",
+     "[10,15)",
+     "[15,20)",
+     "[20,30)"
+    ]
+   },
+   "moses lake sand dunes": {
+    "moon_patches_covered": 29,
+    "denominator": 145,
+    "slope_bins_provided_30m": [
+     "[0,5)",
+     "[5,10)"
+    ]
+   },
+   "haughton crater": {
+    "moon_patches_covered": 41,
+    "denominator": 145,
+    "slope_bins_provided_30m": [
+     "[0,5)",
+     "[5,10)"
+    ]
+   }
+  },
+  "note": "Covers only the cited NASA test sites in results/nasa_test_sites_preregistration.json, not all NASA test sites, and says nothing about their overall value."
+ },
+ "nasa_sites": {
+  "source": "results/nasa_test_sites_preregistration.json",
+  "included": {
+   "dumont_dunes": {
+    "lat": 35.67863,
+    "lon": -116.23156,
+    "coord_source": "GNIS-derived TopoQuest record (NAD83), as used in Gates 1-2",
+    "activity": "MSL team mobility tests with the Scarecrow test rover, May 2012",
+    "citation": "https://www.jpl.nasa.gov/images/pia15682-test-rover-aids-preparations-in-california-for-curiosity-rover-on-mars/"
+   },
+   "moses_lake_sand_dunes": {
+    "lat": 47.063,
+    "lon": -119.318,
+    "coord_source": "LOW QUALITY: recreation listings (The Dyrt 47.0632,-119.3204; Overlandbound 47.0630,-119.3168), rounded mean; not an official gazetteer",
+    "activity": "NASA lunar robotics/spacesuit field tests (incl. JPL ATHLETE, ARC K10), June 2008",
+    "citation": "https://webarchive.library.unt.edu/eot2008/20080916094225/http://www.nasa.gov/directorates/esmd/home/moses_lake_062008.html ; https://www-robotics.jpl.nasa.gov/news/athlete-completes-field-trials/"
+   },
+   "haughton_crater": {
+    "lat": 75.383,
+    "lon": -89.667,
+    "coord_source": "published crater centre 75 23 N, 89 40 W (Wikipedia; Arctic journal 1978 gives centre 75 22 N)",
+    "activity": "NASA Ames K10 robotic survey field test, 10 Jul - 3 Aug 2007",
+    "citation": "https://webarchive.library.unt.edu/eot2008/20090117080131/http:/ti.arc.nasa.gov/projects/haughton_field/pdfs/haughton-crater-field-test.pdf"
+   }
+  },
+  "excluded": {
+   "black_point_lava_flow_AZ": "Desert RATS activity cited (NASA Earth Observatory, NTRS 20100036344) but no numeric coordinates found from a citable source within the time box",
+   "cinder_lakes_crater_field_AZ": "Apollo training cited (USGS/NPS), but no numeric coordinates found; the field is also largely an artificial (blasted) crater field",
+   "meteor_crater_AZ": "coordinates available (35.0275,-111.0222) but a NASA/JPL/peer-reviewed citation for the field test was not verified within the time box (only secondary press found)",
+   "mauna_kea_pisces": "2010 ILSO-ISRU test at Pu'u Hiwahine cited (J. Aerospace Eng., ASCE), but no numeric coordinates for the test site found"
+  }
+ },
+ "masked_slopes": {
+  "source": "results/gate2b_masked_slopes.json",
+  "bagnold_2m_median_min": 3.8,
+  "bagnold_2m_median_max": 7.4,
+  "n_bagnold_boxes": 7,
+  "dumont_2m_median": 19.7
+ }
+}

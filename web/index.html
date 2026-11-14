@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analog Coverage Gap Map</title>
+<meta name="description" content="Exploratory comparison of 145 lunar south-pole terrain patches with Earth analog and NASA test sites, fingerprint against fingerprint.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#explorer">Skip to the Moon explorer</a>
+
+<div class="banner" role="note">
+  <strong>Exploratory.</strong> Our pre-registered acceptance test was inconclusive (see <a href="#tested">What we tested</a>).
+</div>
+
+<header class="hero">
+  <p class="eyebrow">NASA Space Apps 2026 · Analog Intelligence · Kuala Lumpur</p>
+  <h1>Which lunar south-pole terrains can't we test on Earth yet?</h1>
+  <p class="lede">We compare 145 terrain patches from NASA LOLA data near the lunar south pole with Earth analog sites and
+    NASA rover/EVA test sites, terrain fingerprint against fingerprint.</p>
+  <nav class="toc" aria-label="Sections">
+    <a href="#explorer">Moon explorer</a><a href="#candidate">Candidate case</a><a href="#reportcard">NASA test sites</a>
+    <a href="#tested">What we tested</a><a href="#method">Method &amp; data</a>
+  </nav>
+</header>
+
+<main>
+<section id="explorer" aria-labelledby="explorer-h">
+  <h2 id="explorer-h">Moon explorer</h2>
+  <p class="note">Each square is a 1.92 km Moon patch on a regular grid between 84°S and the pole. Pick a patch to see its
+    Earth geometric neighbours. Patch counts are not area fractions of the lunar south pole.</p>
+
+  <fieldset class="controls">
+    <legend>Comparison set</legend>
+    <label><input type="radio" name="set" value="union" checked> USGS-29 ∪ 3 NASA test sites</label>
+    <label><input type="radio" name="set" value="nasa"> 3 NASA test sites only</label>
+    <label><input type="radio" name="set" value="allusgs"> all USGS analog sites (post-hoc)</label>
+    <label class="hist"><input type="checkbox" id="historical"> show historical (USGS-29, Gate 3a)</label>
+  </fieldset>
+  <p id="legend" class="legend" aria-live="polite"></p>
+
+  <div class="explorer-grid">
+    <div class="mapwrap">
+      <div id="map" class="map" role="group" aria-label="LOLA hillshade of the lunar south pole, 84 to 90 degrees south, with 145 patch markers">
+        <img id="mapimg" src="data/lola_84S_hillshade.png" alt="Shaded relief of the lunar south polar region from 84°S to the pole, from NASA LOLA elevation data, sun from the north-west." width="1820" height="1820">
+      </div>
+      <p class="caption">LOLA LDEM_80S_20M, polar stereographic, 364 km across; pole at centre. Sun azimuth 315°, altitude 30°.
+        <span class="key"><span class="mk covered"></span> covered (z-distance &lt; T) <span class="mk gap"></span> gap</span></p>
+    </div>
+    <aside id="panel" class="panel" aria-live="polite" tabindex="-1">
+      <p class="placeholder">Select a patch on the map.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="candidate" aria-labelledby="cand-h">
+  <h2 id="cand-h">Candidate case: g00094 <span class="badge">Unverified</span></h2>
+  <div id="cand-body"></div>
+</section>
+
+<section id="reportcard" aria-labelledby="rc-h">
+  <h2 id="rc-h">NASA test-site report card</h2>
+  <div id="rc-body"></div>
+</section>
+
+<section id="tested" aria-labelledby="t-h">
+  <h2 id="t-h">What we tested (all results, including failures)</h2>
+  <div id="tested-body"></div>
+</section>
+
+<section id="method" aria-labelledby="m-h">
+  <h2 id="m-h">Method &amp; data</h2>
+  <div id="method-body"></div>
+</section>
+</main>
+
+<footer>
+  <p>MIT licence · Code repository: <span class="placeholder-link">[repository link to be added]</span></p>
+  <p>Portions of this project were generated with AI assistance (Claude Code, Anthropic) and reviewed by the author.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
