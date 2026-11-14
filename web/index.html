@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Analog Coverage Gap Map</title>
-<meta name="description" content="Exploratory comparison of 145 lunar south-pole terrain patches with Earth analog and NASA test sites, fingerprint against fingerprint.">
+<meta name="description" content="Pick a terrain patch near the lunar south pole, see Earth candidates at the same scale, and see what matches, what differs, and what is still unknown. Exploratory.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,9 +16,11 @@
 
 <header class="hero">
   <p class="eyebrow">NASA Space Apps 2026 · Analog Intelligence · Kuala Lumpur</p>
-  <h1>Which lunar south-pole terrains can't we test on Earth yet?</h1>
-  <p class="lede">We compare 145 terrain patches from NASA LOLA data near the lunar south pole with Earth analog sites and
-    NASA rover/EVA test sites, terrain fingerprint against fingerprint.</p>
+  <h1>Which place on Earth is worth checking against this Moon terrain?</h1>
+  <p class="lede">Pick a terrain patch near the lunar south pole, see Earth candidates at the same scale, and see what matches,
+    what differs, and what is still unknown.</p>
+  <p class="note">145 Moon patches from NASA LOLA data (84–90°S) are compared with Earth analog sites and NASA rover/EVA test sites,
+    terrain fingerprint against fingerprint.</p>
   <nav class="toc" aria-label="Sections">
     <a href="#explorer">Moon explorer</a><a href="#candidate">Candidate case</a><a href="#reportcard">NASA test sites</a>
     <a href="#tested">What we tested</a><a href="#method">Method &amp; data</a>
@@ -28,8 +30,8 @@
 <main>
 <section id="explorer" aria-labelledby="explorer-h">
   <h2 id="explorer-h">Moon explorer</h2>
-  <p class="note">Each square is a 1.92 km Moon patch on a regular grid between 84°S and the pole. Pick a patch to see its
-    Earth geometric neighbours. Patch counts are not area fractions of the lunar south pole.</p>
+  <p class="note">Each marker is a 1.92 km Moon patch on a regular grid between 84°S and the pole (circle = covered, square = gap).
+    Pick a patch to see its Earth geometric neighbours. Patch counts are not area fractions of the lunar south pole.</p>
 
   <fieldset class="controls">
     <legend>Comparison set</legend>
@@ -39,6 +41,7 @@
     <label class="hist"><input type="checkbox" id="historical"> show historical (USGS-29, Gate 3a)</label>
   </fieldset>
   <p id="legend" class="legend" aria-live="polite"></p>
+  <p class="note">Gap means no match among the listed known sites, not that no Earth match exists.</p>
 
   <div class="explorer-grid">
     <div class="mapwrap">

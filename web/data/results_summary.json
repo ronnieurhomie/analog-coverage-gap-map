@@ -300,6 +300,16 @@
    "flag": "Unverified",
    "nearest_known": "USGS: Ouarkziz",
    "nearest_known_km": 187.1
+  },
+  "satellite_visual_check": "Visual check of satellite imagery (Google Maps, imagery \u00a92026 Airbus, CNES/Airbus, Maxar; viewed 2026-11-15 by the planning chat): arid hills and ravines, but the window area includes villages (Tilline, Tabourt, Ansaflou, Ait Mbarek area), the paved P1900 road and dirt tracks, a mosque, and scattered trees/shrubs. Not uninhabited bare ground; DSM effects from trees and buildings not excluded; any field use involves local land and communities.",
+  "net_contribution_beyond_K": {
+   "source": "results/g5_candidate_increment.json",
+   "N": 2,
+   "ids": [
+    "m014",
+    "m101"
+   ],
+   "nature": "exploratory, post-hoc set operation"
   }
  },
  "report_card": {

@@ -37,7 +37,7 @@ h2 { margin: 0 0 8px; font-size: 24px; } h3 { font-size: 18px; margin: 18px 0 6p
 .controls .hist { border-left: 1px solid var(--line); padding-left: 14px; }
 .legend { background: var(--bg); border-radius: 8px; padding: 8px 12px; font-size: 14px; }
 .explorer-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 18px; align-items: start; }
-.map { position: relative; width: 100%; aspect-ratio: 1; border-radius: 8px; overflow: hidden; background: #000; }
+.map { position: relative; width: calc(100% - 22px); margin: 11px; aspect-ratio: 1; overflow: visible; background: #000; }
 .map img { width: 100%; height: 100%; display: block; }
 .mk { display: inline-block; width: 12px; height: 12px; vertical-align: -1px; margin: 0 4px 0 10px; border: 2px solid #fff; }
 .mk.covered { background: var(--covered); border-radius: 50%; } .mk.gap { background: var(--gap); }
@@ -74,3 +74,4 @@ figure.wide figcaption { font-size: 13px; color: var(--muted); }
   .controls .hist { border-left: 0; padding-left: 0; }
   section { padding: 14px; }
 }
+.overall { margin: 4px 0 6px; }

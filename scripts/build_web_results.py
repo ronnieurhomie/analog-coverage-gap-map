@@ -41,7 +41,9 @@ def main():
         "candidate": {"source": "results/candidate_case.json",
                       **{k: cc[k] for k in ["candidate", "coverage_contribution", "untested_conditions"]},
                       # free-text caveat/check fields are omitted here; the page states them in its own reviewed wording
-                      "novelty": {k: cc["novelty"][k] for k in ["flag", "nearest_known", "nearest_known_km"]}},
+                      "novelty": {k: cc["novelty"][k] for k in ["flag", "nearest_known", "nearest_known_km"]},
+                      "satellite_visual_check": cc.get("satellite_visual_check", {}).get("text"),
+                      "net_contribution_beyond_K": cc.get("net_contribution_beyond_K")},
         "report_card": {"source": "results/report_card.json", "sites": {k: {kk: v[kk] for kk in ["moon_patches_covered", "denominator", "slope_bins_provided_30m"]}
                                                                      for k, v in rc["sites"].items()}, "note": rc["note"]},
         "nasa_sites": {"source": "results/nasa_test_sites_preregistration.json", "included": pre1["included"], "excluded": pre1["excluded"]},
