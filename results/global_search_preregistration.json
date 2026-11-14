@@ -1,0 +1,23 @@
+{
+  "registered_at": "2026-11-15T01:35:44 (WIB)",
+  "sampling": "Points drawn uniformly on the sphere between 56 S and 60 N (lat = degrees(arcsin(u)), u ~ U(sin(-56),sin(60)); lon ~ U(-180,180)), numpy default_rng(20261114), in draw order. A point is kept if its MODIS NDVI (below) is valid land and < 0.15. Stop at 300 kept points (cap, not a target) or when time/requests run out; report processed and skipped counts.",
+  "ndvi": {
+    "product": "MOD13C2 v061 (Terra MODIS monthly NDVI, 0.05 deg CMG) via earthaccess",
+    "fallback_declared_before_use": "A full 2023 year (12 granules, ~1.15 GB) exceeds the 1 GB ask-first limit, so the 'annual mean' is approximated by the mean of four 2023 months: Jan, Apr, Jul, Oct (MOD13C2.A2023001/091/182/274). Pixels missing in any of the four months -> point skipped.",
+    "scale": "NDVI = DN * 0.0001; fill/ocean (DN = -3000) -> skipped"
+  },
+  "dem": "COP30 1.92 km window via OpenTopography globaldem per point (bilinear to site-centred aeqd 30 m, src/gate3_common.earth_patch). Skip if valid < 95% (reason recorded). Stop early on OpenTopography rate-limit/HTTP errors and report the count.",
+  "contribution": "Under the current method (per G3v branch), contribution = number of Moon patches that are gaps for the set USGS-29 union NASA test sites and would be covered by this patch alone (denominator 145).",
+  "novelty": {
+    "Known": "<= 10 km from any record of the USGS Known Terrestrial Analog Sites layer (all 192) or a Task 1 NASA test site",
+    "Possibly known": "<= 50 km from those, or <= 150 km from a reference point of a challenge-named analog region: Atacama (24.5 S, 69.25 W), Hawaii/Mauna Kea (19.82 N, 155.47 W), Mojave (35.0 N, 116.0 W), Death Valley (36.5 N, 117.0 W); Iceland, Antarctica and Haughton lie outside 56 S-60 N. Reference points: Wikipedia article coordinates (approximate; recorded as such).",
+    "Unverified": "otherwise; any featured candidate gets a short recorded literature/web check. > 50 km does not mean unstudied; Unverified is not a new discovery."
+  },
+  "nature": "exploratory",
+  "amendment_before_computation": {
+    "at": "2026-11-15T01:42:10",
+    "what": "DEM source for the 1.92 km windows changed from OpenTopography globaldem to the identical Copernicus GLO-30 product read from the AWS Open Data COGs (https://copernicus-dem-30m.s3.amazonaws.com), merged per window by src/cop30_aws.py. Everything else unchanged.",
+    "why": "OpenTopography returned 'API maximum rate limit reached (50 API calls/24hrs)' for this key before any Task 3 sample was processed.",
+    "equivalence_check": "At Dumont Dunes the AWS and OpenTopography COP30 windows differ by max 0.0011 m, mean 0.00001 m (same product)."
+  }
+}

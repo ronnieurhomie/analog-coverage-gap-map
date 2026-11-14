@@ -1,0 +1,14 @@
+{
+  "label": "POST-HOC robustness (not the headline)",
+  "method": "fingerprint A, frozen Gate 3 normalisation, T = 2.3166",
+  "set": "all USGS Known Terrestrial Analog Sites records with valid COP30 (centre = Lat/Lon attributes)",
+  "records_total": 192,
+  "records_attempted": 9,
+  "records_used": 9,
+  "stop_reason": "HTTP 401: <?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><error>Error: API maximum rate limit reached. (50 API calls/24hrs",
+  "skipped": {},
+  "covered": 62,
+  "denominator": 145,
+  "gap_percent": 57.24,
+  "nature": "exploratory (post-hoc)"
+}

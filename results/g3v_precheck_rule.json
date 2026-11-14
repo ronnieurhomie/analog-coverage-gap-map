@@ -1,0 +1,39 @@
+{
+  "registered_at": "2026-11-15T01:28:32 (local machine clock)",
+  "purpose": "G3v ceiling pre-check on OLD data only (retrospective). Decides whether the formal test may lack discriminating power. Not the formal 8-group result.",
+  "data": "The 64 Gate 2 candidate patches: 256 m squares on a 2 m grid (data/processed/candidates/*.npy, from USGS 3DEP 1 m). Window differs from the formal design (256 m vs 1.92 km).",
+  "units": "Each old patch is one unit (pre-check only; no site grouping applied).",
+  "pseudo_groups": "numpy default_rng(20261114).permutation of the 64 patch names (sorted); first 24 form 8 pseudo-groups of 3 targets in order; remaining 40 form the site pool.",
+  "random_reference": "For each pseudo-group: 200 random 3-site combinations from the 40-site pool, drawn with default_rng(20261114 + group_index), each a sample of 3 distinct sites.",
+  "slope": "Per-pixel slope (deg) on the 2 m grid by central differences (src/fingerprint.slope_deg); valid = finite slope.",
+  "bins_deg": [
+    [
+      0,
+      5
+    ],
+    [
+      5,
+      10
+    ],
+    [
+      10,
+      15
+    ],
+    [
+      15,
+      20
+    ],
+    [
+      20,
+      30
+    ],
+    [
+      30,
+      90
+    ]
+  ],
+  "bin_rule": "half-open [lo,hi); last bin [30,90] inclusive",
+  "provides_rule": "A site provides a bin if >= 5% of its valid 2 m area falls in that bin.",
+  "coverage": "Group coverage = share of the 3 targets' pooled valid 2 m area whose bin is provided by >= 1 selected site (pooled pixel counts = weighting by target valid area).",
+  "stop_rule": "If >= 7 of 8 pseudo-groups have random-coverage median >= 95%: stop G3v and record exactly: 'Old-data pre-check indicates the test may lack discriminating power; the formal new holdout acceptance was not run; result: INCONCLUSIVE.'"
+}

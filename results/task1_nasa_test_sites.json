@@ -1,0 +1,39 @@
+{
+  "method_info": {
+    "method": "fingerprint A (19 frozen 30 m features, Gate 3 pooled mean/std)",
+    "threshold_or_definition": "covered if z-distance to nearest site in set < T = 2.3166",
+    "denominator": "145 Moon patches (results/moon_patches.json, 84-90 S grid); patch fractions are not area fractions of the lunar south pole",
+    "nature": "current (method chosen by G3v branch INCONCLUSIVE); exploratory: G3v evidence insufficient",
+    "historical_note": "historical Gate 3 result (fingerprint A, T = 2.317, USGS-29): gap 60.0% (87/145); kept separate, not spliced",
+    "generated": "2026-11-15T01:39:13"
+  },
+  "nasa_sites_used": [
+    "nasa_dumont_dunes",
+    "nasa_moses_lake_sand_dunes",
+    "nasa_haughton_crater"
+  ],
+  "nasa_sites_skipped": {},
+  "sets": {
+    "a_NASA_test_sites_alone": {
+      "n_sites": 3,
+      "covered": 45,
+      "denominator": 145,
+      "covered_percent": 31.03,
+      "gap_percent": 68.97
+    },
+    "b_USGS29_union_NASA": {
+      "n_sites": 32,
+      "covered": 60,
+      "denominator": 145,
+      "covered_percent": 41.38,
+      "gap_percent": 58.62
+    },
+    "ref_USGS29_current_method": {
+      "n_sites": 29,
+      "covered": 58,
+      "denominator": 145,
+      "covered_percent": 40.0,
+      "gap_percent": 60.0
+    }
+  }
+}

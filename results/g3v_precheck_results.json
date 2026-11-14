@@ -1,0 +1,136 @@
+{
+  "pool": [
+    "grid_r4_c4",
+    "grid_r5_c5",
+    "grid_r7_c0",
+    "grid_r3_c2",
+    "grid_r6_c1",
+    "grid_r6_c4",
+    "grid_r7_c7",
+    "grid_r2_c2",
+    "grid_r6_c7",
+    "grid_r1_c5",
+    "grid_r2_c6",
+    "grid_r0_c7",
+    "grid_r5_c4",
+    "grid_r1_c1",
+    "grid_r3_c5",
+    "grid_r0_c5",
+    "grid_r7_c3",
+    "grid_r6_c2",
+    "grid_r6_c6",
+    "grid_r1_c7",
+    "grid_r2_c5",
+    "grid_r4_c6",
+    "grid_r4_c5",
+    "grid_r7_c1",
+    "grid_r2_c3",
+    "grid_r0_c1",
+    "grid_r4_c3",
+    "grid_r1_c3",
+    "grid_r0_c6",
+    "grid_r2_c1",
+    "grid_r3_c7",
+    "grid_r1_c2",
+    "grid_r5_c3",
+    "grid_r0_c0",
+    "grid_r4_c7",
+    "grid_r0_c4",
+    "grid_r3_c0",
+    "grid_r3_c3",
+    "grid_r0_c2",
+    "grid_r5_c2"
+  ],
+  "groups": [
+    {
+      "group": 0,
+      "targets": [
+        "grid_r6_c3",
+        "grid_r2_c7",
+        "grid_r1_c0"
+      ],
+      "random_median": 0.978,
+      "random_p95": 1.0,
+      "random_min": 0.2778
+    },
+    {
+      "group": 1,
+      "targets": [
+        "grid_r3_c1",
+        "grid_r6_c0",
+        "grid_r4_c2"
+      ],
+      "random_median": 0.9954,
+      "random_p95": 1.0,
+      "random_min": 0.3548
+    },
+    {
+      "group": 2,
+      "targets": [
+        "grid_r7_c6",
+        "grid_r2_c4",
+        "dumont"
+      ],
+      "random_median": 0.9809,
+      "random_p95": 1.0,
+      "random_min": 0.3054
+    },
+    {
+      "group": 3,
+      "targets": [
+        "grid_r6_c5",
+        "grid_r5_c1",
+        "grid_r2_c0"
+      ],
+      "random_median": 0.9772,
+      "random_p95": 1.0,
+      "random_min": 0.3613
+    },
+    {
+      "group": 4,
+      "targets": [
+        "grid_r7_c2",
+        "grid_r5_c6",
+        "grid_r1_c4"
+      ],
+      "random_median": 0.9952,
+      "random_p95": 1.0,
+      "random_min": 0.3173
+    },
+    {
+      "group": 5,
+      "targets": [
+        "grid_r1_c6",
+        "grid_r3_c6",
+        "grid_r4_c0"
+      ],
+      "random_median": 0.83,
+      "random_p95": 1.0,
+      "random_min": 0.0446
+    },
+    {
+      "group": 6,
+      "targets": [
+        "grid_r4_c1",
+        "grid_r5_c7",
+        "grid_r3_c4"
+      ],
+      "random_median": 0.9475,
+      "random_p95": 1.0,
+      "random_min": 0.3373
+    },
+    {
+      "group": 7,
+      "targets": [
+        "avawatz_negctrl",
+        "grid_r0_c3",
+        "grid_r5_c0"
+      ],
+      "random_median": 0.79,
+      "random_p95": 1.0,
+      "random_min": 0.4708
+    }
+  ],
+  "n_groups_random_median_ge_95": 5,
+  "stop": false
+}

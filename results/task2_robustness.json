@@ -1,0 +1,326 @@
+{
+  "label": "POST-HOC robustness (not the headline); historical results unchanged",
+  "method_info": {
+    "method": "fingerprint A (19 frozen 30 m features, Gate 3 pooled mean/std)",
+    "threshold_or_definition": "covered if z-distance to nearest site in set < T = 2.3166",
+    "denominator": "145 Moon patches (results/moon_patches.json, 84-90 S grid); patch fractions are not area fractions of the lunar south pole",
+    "nature": "current (method chosen by G3v branch INCONCLUSIVE); exploratory: G3v evidence insufficient",
+    "historical_note": "historical Gate 3 result (fingerprint A, T = 2.317, USGS-29): gap 60.0% (87/145); kept separate, not spliced",
+    "generated": "2026-11-15T01:39:13"
+  },
+  "threshold_sensitivity_USGS29": [
+    {
+      "percentile": 50,
+      "T": 1.0013,
+      "gap_percent_USGS29": 86.9
+    },
+    {
+      "percentile": 51,
+      "T": 1.0247,
+      "gap_percent_USGS29": 86.21
+    },
+    {
+      "percentile": 52,
+      "T": 1.1381,
+      "gap_percent_USGS29": 84.83
+    },
+    {
+      "percentile": 53,
+      "T": 1.2252,
+      "gap_percent_USGS29": 83.45
+    },
+    {
+      "percentile": 54,
+      "T": 1.2944,
+      "gap_percent_USGS29": 82.76
+    },
+    {
+      "percentile": 55,
+      "T": 1.3155,
+      "gap_percent_USGS29": 82.76
+    },
+    {
+      "percentile": 56,
+      "T": 1.3273,
+      "gap_percent_USGS29": 82.76
+    },
+    {
+      "percentile": 57,
+      "T": 1.3273,
+      "gap_percent_USGS29": 82.76
+    },
+    {
+      "percentile": 58,
+      "T": 1.3349,
+      "gap_percent_USGS29": 82.76
+    },
+    {
+      "percentile": 59,
+      "T": 1.3491,
+      "gap_percent_USGS29": 82.76
+    },
+    {
+      "percentile": 60,
+      "T": 1.3776,
+      "gap_percent_USGS29": 81.38
+    },
+    {
+      "percentile": 61,
+      "T": 1.3866,
+      "gap_percent_USGS29": 81.38
+    },
+    {
+      "percentile": 62,
+      "T": 1.3882,
+      "gap_percent_USGS29": 80.69
+    },
+    {
+      "percentile": 63,
+      "T": 1.4052,
+      "gap_percent_USGS29": 80.69
+    },
+    {
+      "percentile": 64,
+      "T": 1.4167,
+      "gap_percent_USGS29": 80.69
+    },
+    {
+      "percentile": 65,
+      "T": 1.4229,
+      "gap_percent_USGS29": 80.69
+    },
+    {
+      "percentile": 66,
+      "T": 1.4507,
+      "gap_percent_USGS29": 80.69
+    },
+    {
+      "percentile": 67,
+      "T": 1.4706,
+      "gap_percent_USGS29": 80.69
+    },
+    {
+      "percentile": 68,
+      "T": 1.4706,
+      "gap_percent_USGS29": 80.69
+    },
+    {
+      "percentile": 69,
+      "T": 1.5197,
+      "gap_percent_USGS29": 80.0
+    },
+    {
+      "percentile": 70,
+      "T": 1.5762,
+      "gap_percent_USGS29": 77.93
+    },
+    {
+      "percentile": 71,
+      "T": 1.5833,
+      "gap_percent_USGS29": 76.55
+    },
+    {
+      "percentile": 72,
+      "T": 1.6217,
+      "gap_percent_USGS29": 76.55
+    },
+    {
+      "percentile": 73,
+      "T": 1.6834,
+      "gap_percent_USGS29": 75.17
+    },
+    {
+      "percentile": 74,
+      "T": 1.6943,
+      "gap_percent_USGS29": 74.48
+    },
+    {
+      "percentile": 75,
+      "T": 1.7024,
+      "gap_percent_USGS29": 73.79
+    },
+    {
+      "percentile": 76,
+      "T": 1.7077,
+      "gap_percent_USGS29": 73.79
+    },
+    {
+      "percentile": 77,
+      "T": 1.7091,
+      "gap_percent_USGS29": 73.79
+    },
+    {
+      "percentile": 78,
+      "T": 1.7219,
+      "gap_percent_USGS29": 73.79
+    },
+    {
+      "percentile": 79,
+      "T": 1.7777,
+      "gap_percent_USGS29": 73.1
+    },
+    {
+      "percentile": 80,
+      "T": 1.798,
+      "gap_percent_USGS29": 72.41
+    },
+    {
+      "percentile": 81,
+      "T": 1.7993,
+      "gap_percent_USGS29": 71.72
+    },
+    {
+      "percentile": 82,
+      "T": 1.8257,
+      "gap_percent_USGS29": 71.72
+    },
+    {
+      "percentile": 83,
+      "T": 1.9258,
+      "gap_percent_USGS29": 71.03
+    },
+    {
+      "percentile": 84,
+      "T": 2.1123,
+      "gap_percent_USGS29": 64.14
+    },
+    {
+      "percentile": 85,
+      "T": 2.1856,
+      "gap_percent_USGS29": 62.07
+    },
+    {
+      "percentile": 86,
+      "T": 2.2262,
+      "gap_percent_USGS29": 60.69
+    },
+    {
+      "percentile": 87,
+      "T": 2.2262,
+      "gap_percent_USGS29": 60.69
+    },
+    {
+      "percentile": 88,
+      "T": 2.2445,
+      "gap_percent_USGS29": 60.69
+    },
+    {
+      "percentile": 89,
+      "T": 2.2726,
+      "gap_percent_USGS29": 60.69
+    },
+    {
+      "percentile": 90,
+      "T": 2.3166,
+      "gap_percent_USGS29": 60.0
+    },
+    {
+      "percentile": 91,
+      "T": 2.3651,
+      "gap_percent_USGS29": 60.0
+    },
+    {
+      "percentile": 92,
+      "T": 2.4176,
+      "gap_percent_USGS29": 59.31
+    },
+    {
+      "percentile": 93,
+      "T": 2.4233,
+      "gap_percent_USGS29": 59.31
+    },
+    {
+      "percentile": 94,
+      "T": 2.4301,
+      "gap_percent_USGS29": 59.31
+    },
+    {
+      "percentile": 95,
+      "T": 2.4449,
+      "gap_percent_USGS29": 59.31
+    },
+    {
+      "percentile": 96,
+      "T": 2.7042,
+      "gap_percent_USGS29": 55.86
+    },
+    {
+      "percentile": 97,
+      "T": 3.0127,
+      "gap_percent_USGS29": 52.41
+    },
+    {
+      "percentile": 98,
+      "T": 3.1923,
+      "gap_percent_USGS29": 51.72
+    },
+    {
+      "percentile": 99,
+      "T": 3.4583,
+      "gap_percent_USGS29": 46.9
+    }
+  ],
+  "best_and_worst_covered_USGS29_union_NASA": [
+    {
+      "patch_id": "m017",
+      "distance_or_fraction": 0.4032,
+      "nearest": "moses lake sand dunes",
+      "slope_median_30m": 2.35
+    },
+    {
+      "patch_id": "m051",
+      "distance_or_fraction": 0.4146,
+      "nearest": "Tabun-Khara-Obo",
+      "slope_median_30m": 2.48
+    },
+    {
+      "patch_id": "m020",
+      "distance_or_fraction": 0.4436,
+      "nearest": "Tabun-Khara-Obo",
+      "slope_median_30m": 3.21
+    },
+    {
+      "patch_id": "m086",
+      "distance_or_fraction": 0.4439,
+      "nearest": "Tabun-Khara-Obo",
+      "slope_median_30m": 2.47
+    },
+    {
+      "patch_id": "m046",
+      "distance_or_fraction": 0.4445,
+      "nearest": "moses lake sand dunes",
+      "slope_median_30m": 2.07
+    },
+    {
+      "patch_id": "m010",
+      "distance_or_fraction": 7.497,
+      "nearest": "Sobolev",
+      "slope_median_30m": 21.65
+    },
+    {
+      "patch_id": "m140",
+      "distance_or_fraction": 7.9514,
+      "nearest": "Sobolev",
+      "slope_median_30m": 23.44
+    },
+    {
+      "patch_id": "m130",
+      "distance_or_fraction": 8.5747,
+      "nearest": "Sobolev",
+      "slope_median_30m": 24.01
+    },
+    {
+      "patch_id": "m067",
+      "distance_or_fraction": 8.91,
+      "nearest": "Agoudal",
+      "slope_median_30m": 25.0
+    },
+    {
+      "patch_id": "m033",
+      "distance_or_fraction": 9.2256,
+      "nearest": "Agoudal",
+      "slope_median_30m": 17.69
+    }
+  ],
+  "all_usgs_sites": "not run: would need ~160 more OpenTopography COP30 requests; skipped to protect the G4 deadline"
+}

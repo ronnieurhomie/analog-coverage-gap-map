@@ -1,0 +1,43 @@
+{
+  "registered_at": "2026-11-15T01:33:06 (WIB)",
+  "rule": "Include only Earth sites where NASA/JPL ran rover, mobility, EVA or mission-operations field tests, each with a citable NASA/JPL/peer-reviewed URL for the activity AND numeric coordinates from a stated source. Artificial yards excluded. Window: 1.92 km COP30 (OpenTopography globaldem), reprojected bilinear to site-centred aeqd 30 m (src/gate3_common.earth_patch); >= 95% valid else skipped with reason.",
+  "included": {
+    "dumont_dunes": {
+      "lat": 35.67863,
+      "lon": -116.23156,
+      "coord_source": "GNIS-derived TopoQuest record (NAD83), as used in Gates 1-2",
+      "activity": "MSL team mobility tests with the Scarecrow test rover, May 2012",
+      "citation": "https://www.jpl.nasa.gov/images/pia15682-test-rover-aids-preparations-in-california-for-curiosity-rover-on-mars/"
+    },
+    "moses_lake_sand_dunes": {
+      "lat": 47.063,
+      "lon": -119.318,
+      "coord_source": "LOW QUALITY: recreation listings (The Dyrt 47.0632,-119.3204; Overlandbound 47.0630,-119.3168), rounded mean; not an official gazetteer",
+      "activity": "NASA lunar robotics/spacesuit field tests (incl. JPL ATHLETE, ARC K10), June 2008",
+      "citation": "https://webarchive.library.unt.edu/eot2008/20080916094225/http://www.nasa.gov/directorates/esmd/home/moses_lake_062008.html ; https://www-robotics.jpl.nasa.gov/news/athlete-completes-field-trials/"
+    },
+    "haughton_crater": {
+      "lat": 75.383,
+      "lon": -89.667,
+      "coord_source": "published crater centre 75 23 N, 89 40 W (Wikipedia; Arctic journal 1978 gives centre 75 22 N)",
+      "activity": "NASA Ames K10 robotic survey field test, 10 Jul - 3 Aug 2007",
+      "citation": "https://webarchive.library.unt.edu/eot2008/20090117080131/http:/ti.arc.nasa.gov/projects/haughton_field/pdfs/haughton-crater-field-test.pdf"
+    }
+  },
+  "excluded": {
+    "black_point_lava_flow_AZ": "Desert RATS activity cited (NASA Earth Observatory, NTRS 20100036344) but no numeric coordinates found from a citable source within the time box",
+    "cinder_lakes_crater_field_AZ": "Apollo training cited (USGS/NPS), but no numeric coordinates found; the field is also largely an artificial (blasted) crater field",
+    "meteor_crater_AZ": "coordinates available (35.0275,-111.0222) but a NASA/JPL/peer-reviewed citation for the field test was not verified within the time box (only secondary press found)",
+    "mauna_kea_pisces": "2010 ILSO-ISRU test at Pu'u Hiwahine cited (J. Aerospace Eng., ASCE), but no numeric coordinates for the test site found"
+  },
+  "coverage_definitions": {
+    "if_branch_PASS_FULL_NO_SUPPORT_or_INCONCLUSIVE": "current method = fingerprint A, 19 frozen 30 m features, Gate 3 pooled mean/std (unchanged), T = 2.317; a Moon patch is covered by a set if its z-distance to the nearest site in the set < T",
+    "if_branch_BASELINE_ONLY": "current method = slope method: a site provides a 30 m slope bin ([0,5),[5,10),[10,15),[15,20),[20,30),[30,90]) if >= 5% of its valid 30 m area is in it; a Moon patch is covered if >= 95% of its valid 30 m area lies in bins provided by >= 1 site of the set",
+    "sets": {
+      "a": "NASA test sites (included above) alone",
+      "b": "USGS-29 (Gate 3 known sites with COP30) union NASA test sites"
+    },
+    "denominator": "145 Moon patches (results/moon_patches.json); patch fractions are not area fractions of the lunar south pole",
+    "nature": "current (method per G3v branch); historical Gate 3 60.0% kept separate"
+  }
+}

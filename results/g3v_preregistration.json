@@ -1,0 +1,65 @@
+{
+  "registered_at": "2026-11-15T01:29:24 (local clock, WIB)",
+  "question": "Do sites recommended using only 30 m data cover more of the targets' metre-scale slope conditions than a simple slope-only method? Coarse-screening benefit only.",
+  "window": "1.92 km square for both 30 m (recommendation) and 2 m (scoring); same physical extent, centred on the same point.",
+  "candidate_sites": {
+    "windows": "the 64 Gate 2 candidate centres (results/candidates.json), each a 1.92 km window",
+    "grouping_rule": "Windows whose centres are < 5 km apart OR whose 1.92 km windows overlap belong to one site (transitive closure, union-find). A site is one budget unit. Site ID = sorted first window name.",
+    "site_30m_distance_A": "distance from a site to a target = minimum over the site's windows",
+    "site_bins": "for B (30 m) and scoring (2 m) a multi-window site's bin fractions use the pooled valid area of all its windows",
+    "eligibility": "a window is eligible only if >= 95% valid at both 30 m (COP30) and 2 m (3DEP); a site is eligible if >= 1 of its windows is; ineligible windows are dropped from their site"
+  },
+  "targets": {
+    "design": "8 geographic groups x 3 non-overlapping 1.92 km targets = 24",
+    "group_centre_candidates": "16 points evenly spaced (27.5 km) along a square ring 15 km outside the Gate 2 80 km box (box per results/candidates.json area_utm11n), in UTM 11N, ordered clockwise starting at the NW corner",
+    "target_layout": "3 windows per group: group centre, and +/-2.5 km east (non-overlapping; 0.58 km gaps)",
+    "acceptance_order": "walk the 16 ring points in order; accept a group if: (a) all 3 targets >= 95% valid at 2 m (3DEP 1 m, any project) and at 30 m (COP30); (b) every target window >= 5 km edge-to-edge from every candidate window; (c) group centre >= 20 km from every already accepted group centre; (d) every target window >= 5 km from every patch used in earlier gates (Gate 1/2/2b/V1 incl. Dumont, Avawatz, Kelso, Mesquite, Eureka, Mojave box). Stop at 8 groups.",
+    "if_fewer_than_8": "data-insufficient -> INCONCLUSIVE. No relaxation of distances or quality."
+  },
+  "data": {
+    "recommendation_30m": "Copernicus GLO-30 (COP30, DSM, TanDEM-X) via OpenTopography: existing data/raw/earth_cop30/cop30_gate2_area.tif for candidates; new OpenTopography COP30 requests for target groups. Reprojected bilinear to site-centred aeqd 30 m grid (src/gate3_common.earth_patch).",
+    "scoring_2m": "USGS 3DEP 1 m DEM (bare-earth DTM, lidar) read from USGS S3, area-averaged to 2 m in UTM 11N (EPSG:26911).",
+    "pairing_note": "COP30 is a surface model (DSM) from TanDEM-X; 3DEP is a lidar bare-earth DTM. Different sensors are not independent validation; desert sites expected to have sparse vegetation (not verified per pixel)."
+  },
+  "methods": {
+    "A": "Full fingerprint A at 30 m: 19 frozen features (scales 30,60,120,240,480 m), z-scored with the Gate 3 pooled mean/std (recomputed deterministically from data/processed/gate3_patches_30m.npz, same as results/gap_map.json run). Target covered by a site if d < T, T = 2.317 (threshold_T in results/gap_map.json, 2.3166). Greedy per group: each pick maximises number of still-uncovered targets with d < T; any zero-gain step stops (including the first: then A recommends no site and this is reported as 'no coverage meeting the threshold'). Tie-break: lower mean distance to uncovered targets, then site ID. Max 3 sites.",
+    "B": "Slope baseline: per-pixel slope on the 30 m grid; site provides a bin if >= 5% of its valid 30 m area is in it. Greedy: each pick maximises newly covered target valid 30 m area (targets' 30 m bins); stop at zero gain (including first). Tie-break: site ID. Max 3 sites.",
+    "C": "Random reference: per group, 200 random combinations of 3 distinct eligible sites, numpy default_rng(20261114 + group_index)."
+  },
+  "scoring": {
+    "after": "recommendations frozen and written to disk before any target 2 m data is read for scoring",
+    "bins_deg": [
+      [
+        0,
+        5
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        10,
+        15
+      ],
+      [
+        15,
+        20
+      ],
+      [
+        20,
+        30
+      ],
+      [
+        30,
+        90
+      ]
+    ],
+    "provides": "site provides a bin if >= 5% of its valid 2 m area is in it",
+    "coverage": "metre-scale slope-condition coverage = share of the 3 targets' pooled valid 2 m area whose bin is provided by >= 1 selected site; 0 if no site selected",
+    "slope_2m": "per-pixel slope (deg) on the 2 m grid by central differences"
+  },
+  "classification": "Step 1 INCONCLUSIVE checks first (fewer than 8 qualifying groups; retrospective only; data/pairing not qualified; method not executed as registered; timeout/incomplete; formal ceiling >= 7/8 groups with random median >= 95%). Step 2 in order: PASS_FULL (A beats B in >= 7/8 groups; median paired A-B >= +10 points; no group A worse than B by > 10 points; A > random p95 in >= 7/8 groups) else BASELINE_ONLY (B > random p95 in >= 7/8 groups) else NO_SUPPORT. Prototype acceptance criteria, not NASA engineering standards.",
+  "known_bias": "The scoring metric is slope-condition coverage, which structurally favours B. If A loses, the only allowed statement is: 'On this slope-condition coverage task, the full fingerprint showed no benefit over the simple slope method.'",
+  "sample_nature": "new spatial holdout (targets outside the Gate 2 box), same regional climate/geology (Mojave/SE California); not external validation",
+  "precheck": "results/g3v_precheck_rule.json -> results/g3v_precheck_results.json: 5/8 pseudo-groups random median >= 95% (no stop)"
+}

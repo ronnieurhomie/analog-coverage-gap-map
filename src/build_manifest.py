@@ -137,6 +137,39 @@ def main() -> None:
                         "source": "NASA LP DAAC NASADEM_HGT v001 via earthaccess", "per_site": {k: v["nasadem"] for k, v in fj.items()},
                         "resolution_m": "1 arc-second", "crs": "EPSG:4326", "units": "metres", "access_date": ACCESS_DATE,
                         "license": "NASA data, no restrictions. doi:10.5067/MEaSUREs/NASADEM/NASADEM_HGT.001"})
+    cop_lic = "Copernicus DEM GLO-30: (c) DLR e.V. 2010-2014 and (c) Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the EU and ESA."
+    gm = ROOT / "data/processed/g3v/extract_meta.json"
+    if gm.exists():
+        g = json.loads(gm.read_text())
+        entries.append({"id": "g3v_cop30_target_groups", "files": "data/raw/earth_cop30/g3v_targets/ring??_cop30.tif",
+                        "source": "Copernicus GLO-30 via OpenTopography globaldem (demtype=COP30), one request per target group",
+                        "files_detail": {x["ring_index"]: x["cop30_file"] for x in g["groups"]}, "resolution_m": "1 arc-second", "crs": "EPSG:4326",
+                        "units": "metres", "access_date": "2026-11-15", "license": cop_lic})
+        tiles = sorted({t for d in list(g["sites"].values()) + list(g["targets"].values()) for t in d["tiles"]})
+        entries.append({"id": "g3v_3dep_windows_2m", "files": "data/processed/g3v/{sites,targets}/*_2m.npy (1.92 km, 2 m, float32, NaN nodata)",
+                        "source": "USGS 3DEP 1 m DEM read from USGS S3 (TNM Access API), area-averaged to 2 m in EPSG:26911",
+                        "product_ids": tiles, "resolution_m": 1.0, "resampled_to_m": 2.0, "crs": "EPSG:26911", "units": "metres",
+                        "access_date": "2026-11-15", "license": "Public domain (U.S. Government work)."})
+    nf = ROOT / "data/processed/meta/nasa_sites_fetch.json"
+    if nf.exists():
+        entries.append({"id": "nasa_test_sites_cop30", "files": "data/raw/earth_cop30/nasa_sites/*_cop30.tif",
+                        "source": "Copernicus GLO-30 via OpenTopography globaldem", "per_site": json.loads(nf.read_text()),
+                        "resolution_m": "1 arc-second", "crs": "EPSG:4326", "units": "metres", "access_date": "2026-11-15", "license": cop_lic})
+    mods = sorted((ROOT / "data/raw/modis").glob("MOD13C2*.hdf"))
+    if mods:
+        entries.append({"id": "modis_mod13c2_2023_4months", "files": [str(m.relative_to(ROOT)) for m in mods],
+                        "sha256": {m.name: sha256(m) for m in mods}, "bytes": {m.name: m.stat().st_size for m in mods},
+                        "source": "NASA LP DAAC MOD13C2 v061 (Terra MODIS Vegetation Indices Monthly L3 Global 0.05 deg CMG) via earthaccess",
+                        "product_ids": [m.stem for m in mods], "resolution_m": "0.05 deg (~5.6 km)", "crs": "geographic lat/lon (CMG)",
+                        "units": "NDVI = DN * 0.0001; fill -3000", "access_date": "2026-11-15",
+                        "license": "NASA data, no restrictions. Cite: Didan, K. (2021). MODIS/Terra Vegetation Indices Monthly L3 Global 0.05Deg CMG V061. doi:10.5067/MODIS/MOD13C2.061"})
+    aws = sorted((ROOT / "data/raw/earth_cop30").glob("*/*.tif"))
+    if any(p_.parent.name in ("usgs_all", "global") for p_ in aws):
+        entries.append({"id": "cop30_aws_windows", "files": "data/raw/earth_cop30/usgs_all/*.tif, data/raw/earth_cop30/global/*.tif",
+                        "source": "Copernicus GLO-30 DEM COGs, AWS Open Data registry (https://copernicus-dem-30m.s3.amazonaws.com), merged per window by src/cop30_aws.py",
+                        "why": "OpenTopography key reached 50 calls/24 h; identical product (max |diff| 0.0011 m at Dumont)",
+                        "resolution_m": "1 arc-second", "crs": "EPSG:4326", "units": "metres", "nodata": -32767.0,
+                        "access_date": "2026-11-15", "license": cop_lic})
     entries.append({"id": "ref_lola_polar_candidates", "kind": "listing only (nothing downloaded)",
                     "source": "PDS Geosciences Node, LRO-L-LOLA-4-GDR-V1.0, polar stereographic LDEMs",
                     "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/",

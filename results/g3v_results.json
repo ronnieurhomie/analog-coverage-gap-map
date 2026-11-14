@@ -1,0 +1,239 @@
+{
+  "start": "2026-11-15 01:27:59 WIB",
+  "end": "2026-11-15 01:39:04 WIB",
+  "n_groups": 8,
+  "groups": [
+    {
+      "group": 0,
+      "A": 0.9843,
+      "B": 1.0,
+      "random_median": 1.0,
+      "random_p95": 1.0,
+      "A_picks": [
+        "grid_r0_c4"
+      ],
+      "B_picks": [
+        "grid_r0_c2"
+      ],
+      "A_note": null,
+      "target_bin_area_px_2m": [
+        1594534,
+        621787,
+        187625,
+        175754,
+        141795,
+        43305
+      ]
+    },
+    {
+      "group": 1,
+      "A": 0.9935,
+      "B": 1.0,
+      "random_median": 1.0,
+      "random_p95": 1.0,
+      "A_picks": [
+        "grid_r6_c2",
+        "grid_r1_c1"
+      ],
+      "B_picks": [
+        "grid_r3_c3"
+      ],
+      "A_note": null,
+      "target_bin_area_px_2m": [
+        1438504,
+        774105,
+        247782,
+        153634,
+        132746,
+        18029
+      ]
+    },
+    {
+      "group": 2,
+      "A": 1.0,
+      "B": 1.0,
+      "random_median": 1.0,
+      "random_p95": 1.0,
+      "A_picks": [
+        "grid_r2_c6",
+        "dumont"
+      ],
+      "B_picks": [
+        "grid_r3_c3"
+      ],
+      "A_note": null,
+      "target_bin_area_px_2m": [
+        641526,
+        271921,
+        198599,
+        251663,
+        667944,
+        733147
+      ]
+    },
+    {
+      "group": 3,
+      "A": 0.9476,
+      "B": 1.0,
+      "random_median": 1.0,
+      "random_p95": 1.0,
+      "A_picks": [
+        "grid_r4_c2",
+        "grid_r5_c6"
+      ],
+      "B_picks": [
+        "grid_r3_c3"
+      ],
+      "A_note": null,
+      "target_bin_area_px_2m": [
+        144946,
+        364214,
+        589308,
+        627409,
+        828873,
+        210050
+      ]
+    },
+    {
+      "group": 4,
+      "A": 0.8829,
+      "B": 1.0,
+      "random_median": 1.0,
+      "random_p95": 1.0,
+      "A_picks": [
+        "grid_r2_c7"
+      ],
+      "B_picks": [
+        "grid_r0_c2"
+      ],
+      "A_note": null,
+      "target_bin_area_px_2m": [
+        1906519,
+        534450,
+        193494,
+        80582,
+        44630,
+        5125
+      ]
+    },
+    {
+      "group": 5,
+      "A": 0.9037,
+      "B": 1.0,
+      "random_median": 1.0,
+      "random_p95": 1.0,
+      "A_picks": [
+        "grid_r1_c5"
+      ],
+      "B_picks": [
+        "grid_r0_c2"
+      ],
+      "A_note": null,
+      "target_bin_area_px_2m": [
+        2498472,
+        111143,
+        55777,
+        43527,
+        51878,
+        4003
+      ]
+    },
+    {
+      "group": 6,
+      "A": 0.9267,
+      "B": 1.0,
+      "random_median": 1.0,
+      "random_p95": 1.0,
+      "A_picks": [
+        "grid_r1_c5"
+      ],
+      "B_picks": [
+        "grid_r3_c3"
+      ],
+      "A_note": null,
+      "target_bin_area_px_2m": [
+        2562102,
+        116295,
+        33046,
+        22728,
+        22450,
+        8179
+      ]
+    },
+    {
+      "group": 7,
+      "A": 0.9789,
+      "B": 1.0,
+      "random_median": 1.0,
+      "random_p95": 1.0,
+      "A_picks": [
+        "dumont"
+      ],
+      "B_picks": [
+        "grid_r3_c3"
+      ],
+      "A_note": null,
+      "target_bin_area_px_2m": [
+        1964409,
+        424570,
+        155080,
+        70371,
+        91987,
+        58383
+      ]
+    }
+  ],
+  "step1": {
+    "fewer_than_8_groups": false,
+    "formal_ceiling": true,
+    "n_groups_random_median_ge_95": 8
+  },
+  "step1_inconclusive": true,
+  "step2_conditions": {
+    "A_beats_B_groups": 0,
+    "median_paired_A_minus_B_points": -3.68,
+    "groups_A_worse_than_B_by_gt_10_points": 1,
+    "A_above_random_p95_groups": 0,
+    "B_above_random_p95_groups": 0
+  },
+  "branch": "INCONCLUSIVE",
+  "metric": "metre-scale slope-condition coverage (share of the 3 targets' pooled valid 2 m area whose slope bin is provided by >= 1 selected site; provides = >= 5% of site valid 2 m area)",
+  "nature": "current; new spatial holdout in the same region (not external validation); prototype acceptance criteria, not NASA engineering standards",
+  "bins_deg": [
+    [
+      0,
+      5
+    ],
+    [
+      5,
+      10
+    ],
+    [
+      10,
+      15
+    ],
+    [
+      15,
+      20
+    ],
+    [
+      20,
+      30
+    ],
+    [
+      30,
+      90
+    ]
+  ],
+  "step1_reason": "formal ceiling: 8/8 groups have random-coverage median >= 95% (all 100%). Classification stops at Step 1; Step 2 conditions are recorded for transparency only and do not determine the branch.",
+  "verification": {
+    "site_grouping": "64 windows -> 62 sites (merged: dumont+grid_r2_c3, avawatz_negctrl+grid_r4_c3); all eligible (>=95% valid at 30 m and 2 m)",
+    "rejected_ring_points": "ring 3 and ring 5: no/partial 3DEP 1 m coverage (2 m valid 0.0-0.21)",
+    "separation": "min target-candidate window edge distance 11.08 km (>= 5 km); min group-centre separation 27.5 km (>= 20 km)",
+    "values": "target 2 m elevations -82..1728 m; per-target median 2 m slope 0.56-27.71 deg",
+    "ceiling_explanation": "33 of 62 sites provide 5 or 6 of the 6 slope bins at 2 m under the 5% rule, so random 3-site combinations reach 100% coverage",
+    "pairing": "COP30 (TanDEM-X DSM, 30 m) for recommendation vs USGS 3DEP 1 m lidar bare-earth DTM (CA_FEMAR9Southeast_D24 and other projects per tile list) averaged to 2 m for scoring; same 1.92 km extent and centre; vegetation/structure effects not checked per pixel (desert setting)"
+  },
+  "sample_nature": "new spatial holdout (8 groups outside the Gate 2 box), same Mojave/SE California region; not external validation",
+  "consequence": "INCONCLUSIVE: exploratory comparison, evidence explicitly insufficient; not a failed hypothesis. Current Moon-side method stays fingerprint A with T = 2.317, labelled exploratory."
+}
