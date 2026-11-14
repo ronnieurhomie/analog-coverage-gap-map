@@ -19,3 +19,8 @@
 - 03:22 §1 results/g5_candidate_increment.json (K covered 85/gap 60; g00094 N=2: m014, m101). §3 satellite visual-check note added to results/candidate_case.json (new fields; old fields unchanged).
 - 03:26:59 G5 local work done (§1–§6). Push/hosting (§7) waiting for Ron's go.
 - 06:29:23 §7 done: emails rewritten to no-reply, repo created and pushed, Pages live (https://ronnieurhomie.github.io/analog-coverage-gap-map/), public check 0 console errors at 1280/390 px. Nothing submitted.
+
+## G5b
+
+- G5b start: 2026-11-15 06:47:14 WIB (redesign stop 11:30 WIB; all done by 13:30 WIB; presentation only)
+- 06:54:58 G5b redesign shipped (6/6); checks passed; actions bumped; NASADEM removed from site data list.

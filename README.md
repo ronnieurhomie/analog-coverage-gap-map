@@ -3,8 +3,9 @@
 **Analog Coverage Gap Map** · NASA Space Apps Challenge 2026, "Identify Earth Locations that Analog the Permanent Moon
 Base Locations and Mars" · Local event: Kuala Lumpur · Team: Analog Intelligence (solo entrant Ron).
 
-Pick a terrain patch near the lunar south pole, see Earth candidates at the same scale, and see what matches, what
-differs, and what is still unknown. We compare 145 1.92 km patches from NASA LOLA data (84–90°S) with Earth analog
+Pick a terrain patch near the lunar south pole, compare it with Earth sites at the same scale, and see what matches,
+what differs and what is still unknown. Live page: https://ronnieurhomie.github.io/analog-coverage-gap-map/ ·
+30-second demo: https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/ We compare 145 1.92 km patches from NASA LOLA data (84–90°S) with Earth analog
 sites and NASA rover/EVA test sites, using a terrain fingerprint built from slope and roughness at 30–480 m.
 **Everything shown is exploratory:** our pre-registered acceptance test was inconclusive.
 
@@ -56,7 +57,7 @@ Details: `docs/G3_STATUS.md`. Every registration and result is in `results/`.
 - MRO HiRISE DTM DTEEC_040770_1755_039280_1755_U01.
 - USGS 3DEP 1 m lidar.
 - Copernicus GLO-30 DEM (OpenTopography and AWS Open Data).
-- NASADEM, used as a cross-check (doi:10.5067/MEaSUREs/NASADEM/NASADEM_HGT.001).
+- NASADEM, used only as a cross-check of the Gate 3 site windows (doi:10.5067/MEaSUREs/NASADEM/NASADEM_HGT.001); no number on the website depends on it, so the site's data list omits it.
 - MODIS MOD13C2 (doi:10.5067/MODIS/MOD13C2.061).
 - USGS Known Terrestrial Analog Sites, Hunter (2020), doi:10.5066/P9J72921.
 

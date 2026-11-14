@@ -77,6 +77,18 @@ def main():
             d = float(np.linalg.norm(z(disp["features"][show]) - z(disp["features"][k])))
             best = min(best, (d, "NASA test site: " + k[5:].replace("_", " ")))
     assert best[0] >= T, "showcase patch should be a gap under K"
+    # G5b: showcase block for the worked example (presentation only; d values as recorded above)
+    sh = next(i for i, r in enumerate(recs) if f"USGS: {r['Name']} ({r['AnalogType']})" == best[1])
+    fsh = sel.get(sh, ROOT / f"data/raw/earth_cop30/usgs_all/rec{sh:03d}_cop30.tif")
+    ash = earth_patch(str(fsh), recs[sh]["Lat"], recs[sh]["Lon"])
+    kid = f"usgs_rec{sh:03d}"
+    disp["features"][kid] = [round(float(x), 4) for x in vec(fingerprint(ash, PIX, SCALES))]
+    disp["earth_names"][kid] = {"name": f"{recs[sh]['Name']} ({recs[sh]['AnalogType'].lower()}, USGS)", "set": "USGS"}
+    render(ash, ROOT / "web/img/earth" / f"{kid}.png")
+    disp["showcase"] = {"patch": show, "candidate": "g00094", "candidate_d": dd[show], "known_id": kid,
+                        "known_name": disp["earth_names"][kid]["name"], "known_lat": recs[sh]["Lat"], "known_lon": recs[sh]["Lon"],
+                        "known_d": round(best[0], 4), "T": T, "source": "docs/showcase_numbers.json"}
+    (ROOT / "web/data/display.json").write_text(json.dumps(disp, separators=(",", ":")))
     out = {"showcase_patch": show, "d_to_g00094": dd[show], "d_to_g00094_all_N": dd, "nearest_in_K": best[1], "d_nearest_in_K": round(best[0], 4), "T": T}
     (ROOT / "docs/showcase_numbers.json").write_text(json.dumps(out, indent=2))
     print(out)

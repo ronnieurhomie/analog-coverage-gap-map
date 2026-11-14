@@ -4,83 +4,129 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Analog Coverage Gap Map</title>
-<meta name="description" content="Pick a terrain patch near the lunar south pole, see Earth candidates at the same scale, and see what matches, what differs, and what is still unknown. Exploratory.">
+<meta name="description" content="Pick a terrain patch near the lunar south pole, compare it with Earth sites at the same scale, and see what matches, what differs and what is still unknown. Exploratory prototype.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="skip" href="#explorer">Skip to the Moon explorer</a>
+<a class="skip" href="#explore">Skip to the map</a>
 
-<div class="banner" role="note">
-  <strong>Exploratory.</strong> Our pre-registered acceptance test was inconclusive (see <a href="#tested">What we tested</a>).
-</div>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">Analog Coverage Gap Map</a>
+    <ul>
+      <li><a href="#example">Example</a></li><li><a href="#explore">Explore</a></li><li><a href="#results">Results</a></li>
+      <li><a href="#tested">How we tested</a></li><li><a href="#method">Method</a></li>
+    </ul>
+  </div>
+</nav>
 
-<header class="hero">
-  <p class="eyebrow">NASA Space Apps 2026 · Analog Intelligence · Kuala Lumpur</p>
-  <h1>Which place on Earth is worth checking against this Moon terrain?</h1>
-  <p class="lede">Pick a terrain patch near the lunar south pole, see Earth candidates at the same scale, and see what matches,
-    what differs, and what is still unknown.</p>
-  <p class="note">145 Moon patches from NASA LOLA data (84–90°S) are compared with Earth analog sites and NASA rover/EVA test sites,
-    terrain fingerprint against fingerprint.</p>
-  <nav class="toc" aria-label="Sections">
-    <a href="#explorer">Moon explorer</a><a href="#candidate">Candidate case</a><a href="#reportcard">NASA test sites</a>
-    <a href="#tested">What we tested</a><a href="#method">Method &amp; data</a>
-  </nav>
-</header>
-
-<main>
-<section id="explorer" aria-labelledby="explorer-h">
-  <h2 id="explorer-h">Moon explorer</h2>
-  <p class="note">Each marker is a 1.92 km Moon patch on a regular grid between 84°S and the pole (circle = covered, square = gap).
-    Pick a patch to see its Earth geometric neighbours. Patch counts are not area fractions of the lunar south pole.</p>
-
-  <fieldset class="controls">
-    <legend>Comparison set</legend>
-    <label><input type="radio" name="set" value="union" checked> USGS-29 ∪ 3 NASA test sites</label>
-    <label><input type="radio" name="set" value="nasa"> 3 NASA test sites only</label>
-    <label><input type="radio" name="set" value="allusgs"> all USGS analog sites (post-hoc)</label>
-    <label class="hist"><input type="checkbox" id="historical"> show historical (USGS-29, Gate 3a)</label>
-  </fieldset>
-  <p id="legend" class="legend" aria-live="polite"></p>
-  <p class="note">Gap means no match among the listed known sites, not that no Earth match exists.</p>
-
-  <div class="explorer-grid">
-    <div class="mapwrap">
-      <div id="map" class="map" role="group" aria-label="LOLA hillshade of the lunar south pole, 84 to 90 degrees south, with 145 patch markers">
-        <img id="mapimg" src="data/lola_84S_hillshade.png" alt="Shaded relief of the lunar south polar region from 84°S to the pole, from NASA LOLA elevation data, sun from the north-west." width="1820" height="1820">
+<main id="top">
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">NASA Space Apps 2026 · Analog Intelligence · Kuala Lumpur</p>
+      <h1 id="h1">Which place on Earth is worth checking against this Moon terrain?</h1>
+      <p class="lede">Pick a terrain patch near the lunar south pole, compare it with Earth sites at the same scale, and see what
+        matches, what differs and what is still unknown.</p>
+      <div class="stats" id="stats" aria-live="polite"></div>
+      <div class="btns">
+        <a class="btn primary" href="#example">See the example</a>
+        <a class="btn secondary" href="#explore">Explore the map</a>
       </div>
-      <p class="caption">LOLA LDEM_80S_20M, polar stereographic, 364 km across; pole at centre. Sun azimuth 315°, altitude 30°.
-        <span class="key"><span class="mk covered"></span> covered (z-distance &lt; T) <span class="mk gap"></span> gap</span></p>
+      <span class="badge-note" id="badge-note">Exploratory prototype · every pre-registered test published, including 2 failures and 1 inconclusive</span>
     </div>
-    <aside id="panel" class="panel" aria-live="polite" tabindex="-1">
-      <p class="placeholder">Select a patch on the map.</p>
-    </aside>
+    <figure class="thumb" id="thumb">
+      <img src="data/lola_84S_hillshade.png" alt="Shaded relief of the lunar south polar region, 84°S to the pole, from NASA LOLA elevation data; the example patch is outlined in yellow." width="1820" height="1820">
+      <span class="hl" id="thumb-hl" aria-hidden="true"></span>
+      <figcaption id="thumb-cap">Lunar south pole, 84–90°S (NASA LOLA). Yellow: the example patch.</figcaption>
+    </figure>
   </div>
 </section>
 
-<section id="candidate" aria-labelledby="cand-h">
-  <h2 id="cand-h">Candidate case: g00094 <span class="badge">Unverified</span></h2>
-  <div id="cand-body"></div>
+<section id="example" class="alt" aria-labelledby="ex-h">
+  <div class="wrap">
+    <h2 id="ex-h">One Moon terrain, three ways to look at it</h2>
+    <p class="lede" id="ex-lede"></p>
+    <div class="trio" id="trio"></div>
+    <div class="verdict" id="verdict"></div>
+    <p class="footnote" id="ex-foot"></p>
+  </div>
 </section>
 
-<section id="reportcard" aria-labelledby="rc-h">
-  <h2 id="rc-h">NASA test-site report card</h2>
-  <div id="rc-body"></div>
+<section id="explore" aria-labelledby="explore-h">
+  <div class="wrap">
+    <h2 id="explore-h">Explore</h2>
+    <p>Each marker is a 1.92 km Moon patch. Pick one to see its nearest Earth windows at the same scale.</p>
+    <div class="legend3" aria-label="Map legend">
+      <span><span class="sym c" aria-hidden="true"></span>matched by a known site</span>
+      <span><span class="sym g" aria-hidden="true"></span>no match among known sites</span>
+      <span><span class="sym d" aria-hidden="true"></span>has a sampled candidate</span>
+    </div>
+    <details class="settings">
+      <summary>Comparison settings</summary>
+      <fieldset class="opts" style="border:0;margin:0;padding:0 0 12px">
+        <legend class="small">Which known sites count as a match</legend>
+        <label><input type="radio" name="set" value="union" checked> USGS-29 ∪ 3 NASA test sites (default)</label>
+        <label><input type="radio" name="set" value="nasa"> 3 NASA test sites only</label>
+        <label><input type="radio" name="set" value="allusgs"> all usable USGS analog sites (post-hoc)</label>
+        <label><input type="checkbox" id="historical"> historical (USGS-29, Gate 3a)</label>
+      </fieldset>
+    </details>
+    <p class="setline" id="legend" aria-live="polite"></p>
+    <p class="setline">Gap means no match among the listed known sites, not that no Earth match exists.</p>
+    <div class="explore">
+      <div class="mapbox">
+        <div id="map" class="map" role="group" aria-label="Map of 145 Moon patches near the lunar south pole; each marker is a button">
+          <img src="data/lola_84S_hillshade.png" alt="Shaded relief of the lunar south polar region, 84°S to the pole (NASA LOLA)." width="1820" height="1820">
+        </div>
+      </div>
+      <aside id="panel" class="panel" aria-live="polite" tabindex="-1"><p class="muted">Loading…</p></aside>
+    </div>
+    <p class="footnote">Map: NASA LRO LOLA LDEM_80S_20M, polar stereographic, 364 km across, pole at centre; sun from azimuth 315°, altitude 30°.
+      Patch counts are not area fractions of the lunar south pole.</p>
+  </div>
+</section>
+
+<section id="results" class="alt" aria-labelledby="res-h">
+  <div class="wrap">
+    <h2 id="res-h">Results at a glance</h2>
+    <div class="bars" id="bars"></div>
+    <h3>Candidates that add matches beyond the known sites</h3>
+    <div class="cards3" id="cands"></div>
+    <details class="disc"><summary>All 10 sampled candidates with at least one match</summary><div class="inner" id="cand-table"></div></details>
+    <h3 style="margin-top:48px">NASA test-site report card</h3>
+    <div class="cards3" id="nasa"></div>
+    <details class="disc"><summary>Sites left out and why</summary><div class="inner" id="nasa-ex"></div></details>
+    <p class="footnote" id="res-foot"></p>
+  </div>
 </section>
 
 <section id="tested" aria-labelledby="t-h">
-  <h2 id="t-h">What we tested (all results, including failures)</h2>
-  <div id="tested-body"></div>
+  <div class="wrap">
+    <h2 id="t-h">How we tested</h2>
+    <p>Each test was written down before we ran it. Here is how each one came out.</p>
+    <div class="cards3" id="score"></div>
+    <p><strong>Why we publish failures:</strong> a terrain match is only useful if you also know where the method breaks.</p>
+    <details class="disc"><summary>Threshold sensitivity and data-source change</summary><div class="inner" id="sens"></div></details>
+  </div>
 </section>
 
-<section id="method" aria-labelledby="m-h">
-  <h2 id="m-h">Method &amp; data</h2>
-  <div id="method-body"></div>
+<section id="method" class="alt" aria-labelledby="m-h">
+  <div class="wrap">
+    <h2 id="m-h">Method, data &amp; credits</h2>
+    <div id="method-body"></div>
+    <h3 style="margin-top:32px">Limitations</h3>
+    <ul class="lim" id="limits"></ul>
+  </div>
 </section>
 </main>
 
 <footer>
-  <p>MIT licence · Code repository: <a href="https://github.com/ronnieurhomie/analog-coverage-gap-map">https://github.com/ronnieurhomie/analog-coverage-gap-map</a></p>
-  <p>Portions of this project were generated with AI assistance (Claude Code, Anthropic) and reviewed by the author.</p>
+  <div class="wrap">
+    <p>Built for NASA Space Apps 2026 · MIT licence · <a href="https://github.com/ronnieurhomie/analog-coverage-gap-map">github.com/ronnieurhomie/analog-coverage-gap-map</a></p>
+    <p id="foot-ai">Ron chose the challenge framing and direction. AI assistance: Claude (planning discussion and critique, drafting), Claude Code
+      (research lookups and code), OpenAI Codex (plan review). Source files carry headers; Ron reviewed the work.</p>
+  </div>
 </footer>
 <script src="app.js"></script>
 </body>
