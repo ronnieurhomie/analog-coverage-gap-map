@@ -1,0 +1,313 @@
+{
+  "registered_at": "2026-11-14T21:50:37",
+  "rule": "Pool = all 192 records of the USGS Known Terrestrial Analog Sites layer (every record is a planetary-analog site, so 'terrain/planetary-surface focus' does not narrow it). Take all 2 non-crater records (AnalogType Dunes, Volcanic Eruption), then draw 28 of the 190 Impact Crater records uniformly at random without replacement using numpy default_rng(seed=20261114). Centre = the record's Lat/Lon attribute columns. Records are used as published; known issues (mislabelled names, Amboy labelled crater) are carried as flags, not fixed.",
+  "seed": 20261114,
+  "n": 30,
+  "sites": [
+    {
+      "site_id": "ks00",
+      "record_index": 11,
+      "name": "Grand Falls",
+      "type": "Dunes",
+      "analog_body": "Mars",
+      "lat": 35.49,
+      "lon": -111.164,
+      "flags": []
+    },
+    {
+      "site_id": "ks01",
+      "record_index": 135,
+      "name": "Ritland",
+      "type": "Volcanic Eruption",
+      "analog_body": "",
+      "lat": 64.9321,
+      "lon": -16.5217,
+      "flags": [
+        "name duplicated; one record is a volcanic site in Iceland",
+        "name occurs twice in layer"
+      ]
+    },
+    {
+      "site_id": "ks02",
+      "record_index": 1,
+      "name": "Agoudal",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 31.9833,
+      "lon": -5.5,
+      "flags": []
+    },
+    {
+      "site_id": "ks03",
+      "record_index": 2,
+      "name": "Amelia Creek",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": -20.9167,
+      "lon": 134.833,
+      "flags": []
+    },
+    {
+      "site_id": "ks04",
+      "record_index": 18,
+      "name": "Boxhole",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": -22.6167,
+      "lon": 135.2,
+      "flags": []
+    },
+    {
+      "site_id": "ks05",
+      "record_index": 28,
+      "name": "Chukcha",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 75.7,
+      "lon": 97.8,
+      "flags": []
+    },
+    {
+      "site_id": "ks06",
+      "record_index": 34,
+      "name": "Couture (= Lac Couture)",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 60.1333,
+      "lon": -75.3333,
+      "flags": []
+    },
+    {
+      "site_id": "ks07",
+      "record_index": 46,
+      "name": "Elbow",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 50.9833,
+      "lon": -106.717,
+      "flags": []
+    },
+    {
+      "site_id": "ks08",
+      "record_index": 53,
+      "name": "Glover Bluff",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 43.9667,
+      "lon": -89.5333,
+      "flags": []
+    },
+    {
+      "site_id": "ks09",
+      "record_index": 57,
+      "name": "Goyder",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": -13.4667,
+      "lon": 135.033,
+      "flags": []
+    },
+    {
+      "site_id": "ks10",
+      "record_index": 64,
+      "name": "Holleford",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 44.4667,
+      "lon": -76.6333,
+      "flags": []
+    },
+    {
+      "site_id": "ks11",
+      "record_index": 67,
+      "name": "Ilumetsa",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 57.9667,
+      "lon": 27.4167,
+      "flags": []
+    },
+    {
+      "site_id": "ks12",
+      "record_index": 87,
+      "name": "La Moinerie",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 57.4333,
+      "lon": -66.6167,
+      "flags": []
+    },
+    {
+      "site_id": "ks13",
+      "record_index": 90,
+      "name": "Liverpool",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": -12.4,
+      "lon": 134.05,
+      "flags": []
+    },
+    {
+      "site_id": "ks14",
+      "record_index": 98,
+      "name": "Lockne",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 62.9167,
+      "lon": 14.55,
+      "flags": [
+        "name occurs twice in layer"
+      ]
+    },
+    {
+      "site_id": "ks15",
+      "record_index": 109,
+      "name": "Mjolnir",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 73.8,
+      "lon": 29.6667,
+      "flags": []
+    },
+    {
+      "site_id": "ks16",
+      "record_index": 124,
+      "name": "Piccaninny",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": -17.5333,
+      "lon": 128.417,
+      "flags": []
+    },
+    {
+      "site_id": "ks17",
+      "record_index": 126,
+      "name": "Popigai",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 71.65,
+      "lon": 111.183,
+      "flags": []
+    },
+    {
+      "site_id": "ks18",
+      "record_index": 127,
+      "name": "Presqu'ile",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 49.7167,
+      "lon": -74.8,
+      "flags": []
+    },
+    {
+      "site_id": "ks19",
+      "record_index": 136,
+      "name": "Rochechouart",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 45.8333,
+      "lon": 0.933333,
+      "flags": []
+    },
+    {
+      "site_id": "ks20",
+      "record_index": 154,
+      "name": "Sobolev",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 46.3,
+      "lon": 137.867,
+      "flags": []
+    },
+    {
+      "site_id": "ks21",
+      "record_index": 157,
+      "name": "Steen River",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 59.5,
+      "lon": -117.633,
+      "flags": []
+    },
+    {
+      "site_id": "ks22",
+      "record_index": 161,
+      "name": "Sudbury",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 46.6,
+      "lon": -81.1833,
+      "flags": []
+    },
+    {
+      "site_id": "ks23",
+      "record_index": 163,
+      "name": "Suvasvesi S",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 62.6,
+      "lon": 28.2167,
+      "flags": []
+    },
+    {
+      "site_id": "ks24",
+      "record_index": 164,
+      "name": "Tabun-Khara-Obo",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 44.1167,
+      "lon": 109.65,
+      "flags": []
+    },
+    {
+      "site_id": "ks25",
+      "record_index": 165,
+      "name": "Talemzane (= Maadna)",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 33.3167,
+      "lon": 4.03333,
+      "flags": []
+    },
+    {
+      "site_id": "ks26",
+      "record_index": 169,
+      "name": "Tookoonooka",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": -27.1167,
+      "lon": 142.833,
+      "flags": []
+    },
+    {
+      "site_id": "ks27",
+      "record_index": 178,
+      "name": "Vredefort",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": -27.0,
+      "lon": 27.5,
+      "flags": []
+    },
+    {
+      "site_id": "ks28",
+      "record_index": 179,
+      "name": "Wabar",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": 21.5,
+      "lon": 50.4667,
+      "flags": []
+    },
+    {
+      "site_id": "ks29",
+      "record_index": 185,
+      "name": "Wolfe Creek",
+      "type": "Impact Crater",
+      "analog_body": "",
+      "lat": -19.1667,
+      "lon": 127.8,
+      "flags": []
+    }
+  ]
+}

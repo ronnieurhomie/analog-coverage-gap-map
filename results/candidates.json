@@ -1,0 +1,843 @@
+{
+  "generated": "2026-11-14T21:12:35",
+  "rule": "Gate 2 step 1: build and pre-register the Earth candidate set (no fingerprints, no ranking here).\n\nRule: 8 x 8 regular grid, 10 km spacing, over an 80 x 80 km square in NAD83 / UTM 11N centred midway\nbetween Dumont Dunes and the Avawatz Mts. The whole grid is shifted by one random offset in\n[-5, 5) km per axis (seed below) so the grid does not depend on hand-picked origins. Each grid point\nis the centre of a 256 m patch read from USGS 3DEP 1 m and area-averaged to 2 m. Patches with < 95 %\nvalid data are skipped. Dumont (GNIS centre) and Avawatz (negative control) are added explicitly;\nnothing else is added or removed by hand.",
+  "seed": 20261114,
+  "grid_offset_m": [
+    4498.5,
+    -3337.2
+  ],
+  "area_utm11n": [
+    527201,
+    3899036,
+    607201,
+    3979036
+  ],
+  "area_lonlat": [
+    -116.70106,
+    35.22866,
+    -115.81134,
+    35.95533
+  ],
+  "patch_m": 256.0,
+  "grid_m": 2.0,
+  "min_valid": 0.95,
+  "preregistration": {
+    "success_criterion": "Dumont ranks in the top 10% of the Earth candidate set by distance to mars_sand under the primary metric (rank <= ceil(0.10 * N_candidates); for N ~ 60 that is top 6).",
+    "primary_metric": "Method A: z-score each fingerprint feature across the Earth candidate set (mean/std of candidates), apply the same transform to mars_sand, Euclidean distance.",
+    "secondary_metrics": [
+      "Method A: mean over features of |a-b|/(|a|+|b|) (Gate 1 metric)",
+      "Method B: cosine distance between DINOv2-small embeddings of hillshades"
+    ],
+    "features": "slope median/P90/IQR (deg) at scales 2,4,8,16,32,64 m + roughness median (m) at 4,8,16,32,64 m = 23 features",
+    "registered_at": "2026-11-14T21:12:35",
+    "threshold_note": "Added before any ranking, at 2026-11-14T21:13:44: N=64. ceil(0.10*N)=7; the user's wording 'top 6' corresponds to floor(0.10*N)=6. Both will be reported; PASS on the strict reading requires rank <= 6."
+  },
+  "candidates": [
+    {
+      "name": "grid_r0_c0",
+      "lat": 35.879856,
+      "lon": -116.593421,
+      "utm_x": 536699.6,
+      "utm_y": 3970699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x53y398 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r0_c0.npy"
+    },
+    {
+      "name": "grid_r0_c1",
+      "lat": 35.87943,
+      "lon": -116.482639,
+      "utm_x": 546699.6,
+      "utm_y": 3970699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x54y398 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r0_c1.npy"
+    },
+    {
+      "name": "grid_r0_c2",
+      "lat": 35.878901,
+      "lon": -116.37186,
+      "utm_x": 556699.6,
+      "utm_y": 3970699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x55y398 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r0_c2.npy"
+    },
+    {
+      "name": "grid_r0_c3",
+      "lat": 35.878271,
+      "lon": -116.261083,
+      "utm_x": 566699.6,
+      "utm_y": 3970699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x56y398 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r0_c3.npy"
+    },
+    {
+      "name": "grid_r0_c4",
+      "lat": 35.877539,
+      "lon": -116.150311,
+      "utm_x": 576699.6,
+      "utm_y": 3970699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x57y398 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r0_c4.npy"
+    },
+    {
+      "name": "grid_r0_c5",
+      "lat": 35.876704,
+      "lon": -116.039543,
+      "utm_x": 586699.6,
+      "utm_y": 3970699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x58y398 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r0_c5.npy"
+    },
+    {
+      "name": "grid_r0_c6",
+      "lat": 35.875767,
+      "lon": -115.928779,
+      "utm_x": 596699.6,
+      "utm_y": 3970699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x59y398 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r0_c6.npy"
+    },
+    {
+      "name": "grid_r0_c7",
+      "lat": 35.874728,
+      "lon": -115.818021,
+      "utm_x": 606699.6,
+      "utm_y": 3970699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x60y398 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r0_c7.npy"
+    },
+    {
+      "name": "grid_r1_c0",
+      "lat": 35.789696,
+      "lon": -116.593881,
+      "utm_x": 536699.6,
+      "utm_y": 3960699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x53y397 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r1_c0.npy"
+    },
+    {
+      "name": "grid_r1_c1",
+      "lat": 35.789271,
+      "lon": -116.483224,
+      "utm_x": 546699.6,
+      "utm_y": 3960699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x54y397 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r1_c1.npy"
+    },
+    {
+      "name": "grid_r1_c2",
+      "lat": 35.788745,
+      "lon": -116.37257,
+      "utm_x": 556699.6,
+      "utm_y": 3960699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x55y397 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r1_c2.npy"
+    },
+    {
+      "name": "grid_r1_c3",
+      "lat": 35.788117,
+      "lon": -116.261919,
+      "utm_x": 566699.6,
+      "utm_y": 3960699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x56y397 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r1_c3.npy"
+    },
+    {
+      "name": "grid_r1_c4",
+      "lat": 35.787387,
+      "lon": -116.151272,
+      "utm_x": 576699.6,
+      "utm_y": 3960699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x57y397 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r1_c4.npy"
+    },
+    {
+      "name": "grid_r1_c5",
+      "lat": 35.786555,
+      "lon": -116.040628,
+      "utm_x": 586699.6,
+      "utm_y": 3960699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x58y397 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r1_c5.npy"
+    },
+    {
+      "name": "grid_r1_c6",
+      "lat": 35.785621,
+      "lon": -115.92999,
+      "utm_x": 596699.6,
+      "utm_y": 3960699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x59y397 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r1_c6.npy"
+    },
+    {
+      "name": "grid_r1_c7",
+      "lat": 35.784586,
+      "lon": -115.819357,
+      "utm_x": 606699.6,
+      "utm_y": 3960699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x60y397 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r1_c7.npy"
+    },
+    {
+      "name": "grid_r2_c0",
+      "lat": 35.699535,
+      "lon": -116.594339,
+      "utm_x": 536699.6,
+      "utm_y": 3950699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x53y396 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r2_c0.npy"
+    },
+    {
+      "name": "grid_r2_c1",
+      "lat": 35.699112,
+      "lon": -116.483807,
+      "utm_x": 546699.6,
+      "utm_y": 3950699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x54y396 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r2_c1.npy"
+    },
+    {
+      "name": "grid_r2_c2",
+      "lat": 35.698587,
+      "lon": -116.373277,
+      "utm_x": 556699.6,
+      "utm_y": 3950699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x55y396 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r2_c2.npy"
+    },
+    {
+      "name": "grid_r2_c3",
+      "lat": 35.697961,
+      "lon": -116.262751,
+      "utm_x": 566699.6,
+      "utm_y": 3950699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x56y396 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r2_c3.npy"
+    },
+    {
+      "name": "grid_r2_c4",
+      "lat": 35.697233,
+      "lon": -116.152228,
+      "utm_x": 576699.6,
+      "utm_y": 3950699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x57y396 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r2_c4.npy"
+    },
+    {
+      "name": "grid_r2_c5",
+      "lat": 35.696404,
+      "lon": -116.041709,
+      "utm_x": 586699.6,
+      "utm_y": 3950699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x58y396 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r2_c5.npy"
+    },
+    {
+      "name": "grid_r2_c6",
+      "lat": 35.695473,
+      "lon": -115.931196,
+      "utm_x": 596699.6,
+      "utm_y": 3950699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x59y396 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r2_c6.npy"
+    },
+    {
+      "name": "grid_r2_c7",
+      "lat": 35.694441,
+      "lon": -115.820687,
+      "utm_x": 606699.6,
+      "utm_y": 3950699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x60y396 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r2_c7.npy"
+    },
+    {
+      "name": "grid_r3_c0",
+      "lat": 35.609373,
+      "lon": -116.594794,
+      "utm_x": 536699.6,
+      "utm_y": 3940699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x53y395 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r3_c0.npy"
+    },
+    {
+      "name": "grid_r3_c1",
+      "lat": 35.608951,
+      "lon": -116.484386,
+      "utm_x": 546699.6,
+      "utm_y": 3940699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x54y395 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r3_c1.npy"
+    },
+    {
+      "name": "grid_r3_c2",
+      "lat": 35.608428,
+      "lon": -116.373981,
+      "utm_x": 556699.6,
+      "utm_y": 3940699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x55y395 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r3_c2.npy"
+    },
+    {
+      "name": "grid_r3_c3",
+      "lat": 35.607804,
+      "lon": -116.263579,
+      "utm_x": 566699.6,
+      "utm_y": 3940699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x56y395 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r3_c3.npy"
+    },
+    {
+      "name": "grid_r3_c4",
+      "lat": 35.607078,
+      "lon": -116.15318,
+      "utm_x": 576699.6,
+      "utm_y": 3940699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x57y395 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r3_c4.npy"
+    },
+    {
+      "name": "grid_r3_c5",
+      "lat": 35.606252,
+      "lon": -116.042786,
+      "utm_x": 586699.6,
+      "utm_y": 3940699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x58y395 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r3_c5.npy"
+    },
+    {
+      "name": "grid_r3_c6",
+      "lat": 35.605324,
+      "lon": -115.932396,
+      "utm_x": 596699.6,
+      "utm_y": 3940699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x59y395 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r3_c6.npy"
+    },
+    {
+      "name": "grid_r3_c7",
+      "lat": 35.604296,
+      "lon": -115.822012,
+      "utm_x": 606699.6,
+      "utm_y": 3940699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x60y395 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r3_c7.npy"
+    },
+    {
+      "name": "grid_r4_c0",
+      "lat": 35.519209,
+      "lon": -116.595248,
+      "utm_x": 536699.6,
+      "utm_y": 3930699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x53y394 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r4_c0.npy"
+    },
+    {
+      "name": "grid_r4_c1",
+      "lat": 35.518788,
+      "lon": -116.484964,
+      "utm_x": 546699.6,
+      "utm_y": 3930699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x54y394 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r4_c1.npy"
+    },
+    {
+      "name": "grid_r4_c2",
+      "lat": 35.518267,
+      "lon": -116.374682,
+      "utm_x": 556699.6,
+      "utm_y": 3930699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x55y394 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r4_c2.npy"
+    },
+    {
+      "name": "grid_r4_c3",
+      "lat": 35.517645,
+      "lon": -116.264403,
+      "utm_x": 566699.6,
+      "utm_y": 3930699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x56y394 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r4_c3.npy"
+    },
+    {
+      "name": "grid_r4_c4",
+      "lat": 35.516922,
+      "lon": -116.154128,
+      "utm_x": 576699.6,
+      "utm_y": 3930699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x57y394 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r4_c4.npy"
+    },
+    {
+      "name": "grid_r4_c5",
+      "lat": 35.516098,
+      "lon": -116.043857,
+      "utm_x": 586699.6,
+      "utm_y": 3930699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x58y394 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r4_c5.npy"
+    },
+    {
+      "name": "grid_r4_c6",
+      "lat": 35.515174,
+      "lon": -115.933591,
+      "utm_x": 596699.6,
+      "utm_y": 3930699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x59y394 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r4_c6.npy"
+    },
+    {
+      "name": "grid_r4_c7",
+      "lat": 35.514149,
+      "lon": -115.82333,
+      "utm_x": 606699.6,
+      "utm_y": 3930699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x60y394 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r4_c7.npy"
+    },
+    {
+      "name": "grid_r5_c0",
+      "lat": 35.429044,
+      "lon": -116.5957,
+      "utm_x": 536699.6,
+      "utm_y": 3920699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x53y393 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r5_c0.npy"
+    },
+    {
+      "name": "grid_r5_c1",
+      "lat": 35.428625,
+      "lon": -116.485538,
+      "utm_x": 546699.6,
+      "utm_y": 3920699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x54y393 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r5_c1.npy"
+    },
+    {
+      "name": "grid_r5_c2",
+      "lat": 35.428105,
+      "lon": -116.37538,
+      "utm_x": 556699.6,
+      "utm_y": 3920699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x55y393 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r5_c2.npy"
+    },
+    {
+      "name": "grid_r5_c3",
+      "lat": 35.427485,
+      "lon": -116.265224,
+      "utm_x": 566699.6,
+      "utm_y": 3920699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x56y393 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r5_c3.npy"
+    },
+    {
+      "name": "grid_r5_c4",
+      "lat": 35.426765,
+      "lon": -116.155072,
+      "utm_x": 576699.6,
+      "utm_y": 3920699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x57y393 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r5_c4.npy"
+    },
+    {
+      "name": "grid_r5_c5",
+      "lat": 35.425944,
+      "lon": -116.044924,
+      "utm_x": 586699.6,
+      "utm_y": 3920699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x58y393 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r5_c5.npy"
+    },
+    {
+      "name": "grid_r5_c6",
+      "lat": 35.425022,
+      "lon": -115.934781,
+      "utm_x": 596699.6,
+      "utm_y": 3920699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x59y393 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r5_c6.npy"
+    },
+    {
+      "name": "grid_r5_c7",
+      "lat": 35.424,
+      "lon": -115.824643,
+      "utm_x": 606699.6,
+      "utm_y": 3920699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x60y393 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r5_c7.npy"
+    },
+    {
+      "name": "grid_r6_c0",
+      "lat": 35.338877,
+      "lon": -116.596149,
+      "utm_x": 536699.6,
+      "utm_y": 3910699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x53y392 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r6_c0.npy"
+    },
+    {
+      "name": "grid_r6_c1",
+      "lat": 35.33846,
+      "lon": -116.48611,
+      "utm_x": 546699.6,
+      "utm_y": 3910699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x54y392 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r6_c1.npy"
+    },
+    {
+      "name": "grid_r6_c2",
+      "lat": 35.337942,
+      "lon": -116.376074,
+      "utm_x": 556699.6,
+      "utm_y": 3910699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x55y392 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r6_c2.npy"
+    },
+    {
+      "name": "grid_r6_c3",
+      "lat": 35.337324,
+      "lon": -116.266041,
+      "utm_x": 566699.6,
+      "utm_y": 3910699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x56y392 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r6_c3.npy"
+    },
+    {
+      "name": "grid_r6_c4",
+      "lat": 35.336606,
+      "lon": -116.156011,
+      "utm_x": 576699.6,
+      "utm_y": 3910699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x57y392 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r6_c4.npy"
+    },
+    {
+      "name": "grid_r6_c5",
+      "lat": 35.335787,
+      "lon": -116.045986,
+      "utm_x": 586699.6,
+      "utm_y": 3910699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x58y392 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r6_c5.npy"
+    },
+    {
+      "name": "grid_r6_c6",
+      "lat": 35.334869,
+      "lon": -115.935965,
+      "utm_x": 596699.6,
+      "utm_y": 3910699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x59y392 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r6_c6.npy"
+    },
+    {
+      "name": "grid_r6_c7",
+      "lat": 35.333851,
+      "lon": -115.82595,
+      "utm_x": 606699.6,
+      "utm_y": 3910699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x60y392 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r6_c7.npy"
+    },
+    {
+      "name": "grid_r7_c0",
+      "lat": 35.24871,
+      "lon": -116.596597,
+      "utm_x": 536699.6,
+      "utm_y": 3900699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x53y391 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r7_c0.npy"
+    },
+    {
+      "name": "grid_r7_c1",
+      "lat": 35.248293,
+      "lon": -116.48668,
+      "utm_x": 546699.6,
+      "utm_y": 3900699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x54y391 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r7_c1.npy"
+    },
+    {
+      "name": "grid_r7_c2",
+      "lat": 35.247777,
+      "lon": -116.376766,
+      "utm_x": 556699.6,
+      "utm_y": 3900699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x55y391 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r7_c2.npy"
+    },
+    {
+      "name": "grid_r7_c3",
+      "lat": 35.247161,
+      "lon": -116.266854,
+      "utm_x": 566699.6,
+      "utm_y": 3900699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x56y391 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r7_c3.npy"
+    },
+    {
+      "name": "grid_r7_c6",
+      "lat": 35.244715,
+      "lon": -115.937144,
+      "utm_x": 596699.6,
+      "utm_y": 3900699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x59y391 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r7_c6.npy"
+    },
+    {
+      "name": "grid_r7_c7",
+      "lat": 35.2437,
+      "lon": -115.827251,
+      "utm_x": 606699.6,
+      "utm_y": 3900699.1,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x60y391 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/grid_r7_c7.npy"
+    },
+    {
+      "name": "dumont",
+      "lat": 35.67863,
+      "lon": -116.23156,
+      "utm_x": 569538.2,
+      "utm_y": 3948576.8,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x56y395 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/dumont.npy"
+    },
+    {
+      "name": "avawatz_negctrl",
+      "lat": 35.506919,
+      "lon": -116.284743,
+      "utm_x": 564863.9,
+      "utm_y": 3929495.9,
+      "valid_fraction": 1.0,
+      "tiles": [
+        "USGS 1 Meter 11 x56y393 CA_FEMAR9Southeast_D24"
+      ],
+      "file": "data/processed/candidates/avawatz_negctrl.npy"
+    }
+  ],
+  "skipped": [
+    {
+      "name": "grid_r7_c4",
+      "lat": 35.246445,
+      "lon": -116.156947,
+      "utm_x": 576699.6,
+      "utm_y": 3900699.1,
+      "valid_fraction": 0.0,
+      "tiles": [
+        "USGS 1 Meter 11 x57y391 CA_FEMAR9Southeast_D24"
+      ],
+      "reason": "valid 0.000 < 0.95"
+    },
+    {
+      "name": "grid_r7_c5",
+      "lat": 35.24563,
+      "lon": -116.047043,
+      "utm_x": 586699.6,
+      "utm_y": 3900699.1,
+      "valid_fraction": 0.0,
+      "tiles": [
+        "USGS 1 Meter 11 x58y391 CA_FEMAR9Southeast_D24"
+      ],
+      "reason": "valid 0.000 < 0.95"
+    }
+  ],
+  "n_candidates": 64,
+  "eye_count_before_ranking": {
+    "at": "2026-11-14T21:13:55",
+    "clearly_dune_like": [
+      "dumont"
+    ],
+    "possibly_sand_ambiguous": [
+      "grid_r2_c2",
+      "grid_r6_c4"
+    ],
+    "note": "Judged from results/gate2_candidates_contact_sheet.png (unranked). Others: alluvial fans/channels, bedrock ranges, flat playa/valley floors (e.g. grid_r1_c5, grid_r4_c4)."
+  }
+}

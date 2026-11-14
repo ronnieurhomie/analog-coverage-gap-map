@@ -1,0 +1,16 @@
+{
+  "registered_at": "2026-11-14T21:51:29",
+  "features": "Fingerprint A (src/fingerprint.py, unchanged) on 64x64 px, 30 m patches (1.92 km): slope median/P90/IQR at 30,60,120,240,480 m + roughness median at 60,120,240,480 m = 19 features",
+  "patch_sources": {
+    "moon": "LOLA LDEM_80S_20M (int16, height = DN*0.5 m) area-averaged 20 m -> 30 m in its polar-stereographic plane; grid per results/moon_patches.json",
+    "earth_known_sites": "Copernicus GLO-30 (OpenTopography COP30) reprojected (bilinear) to a site-centred azimuthal-equidistant 30 m grid; sites per results/known_sites_selection.json",
+    "mojave_reference": "the 64 Gate 2 candidate centres, same COP30 method, from data/raw/earth_cop30/cop30_gate2_area.tif"
+  },
+  "normalisation": "z-score each feature over the pooled set (all Moon patches + all known-site patches + 64 Mojave patches); Euclidean distance in z space",
+  "threshold": "T = 90th percentile (numpy linear) of nearest-neighbour distances among the 64 Mojave patches (each patch's distance to its nearest other Mojave patch)",
+  "gap_rule": "Moon patch is 'covered' if distance to its nearest known site <= T, else 'gap'. Gap fraction X% = gap / all valid Moon patches.",
+  "exclusions": "Moon patches with any nodata are skipped (rule in moon_patches.json). Known-site patches with any NaN are dropped and listed. No other exclusions; flat/water-flagged known sites are kept but flagged.",
+  "terrain_summary_rule": "Describe gap vs covered Moon patches by medians of slope_median_30m, slope_p90_120m, roughness_median_480m (plain geometric terms derived from these values only).",
+  "nasadem_check": "Where NASADEM is available, the same features from NASADEM for the same window are reported with their Spearman correlation to COP30 features; not used in the gap computation.",
+  "change_log": []
+}

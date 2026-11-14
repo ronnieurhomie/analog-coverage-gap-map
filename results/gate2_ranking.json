@@ -1,0 +1,1384 @@
+{
+  "n_candidates": 64,
+  "top10pct_rank_threshold": 7,
+  "preregistration": {
+    "success_criterion": "Dumont ranks in the top 10% of the Earth candidate set by distance to mars_sand under the primary metric (rank <= ceil(0.10 * N_candidates); for N ~ 60 that is top 6).",
+    "primary_metric": "Method A: z-score each fingerprint feature across the Earth candidate set (mean/std of candidates), apply the same transform to mars_sand, Euclidean distance.",
+    "secondary_metrics": [
+      "Method A: mean over features of |a-b|/(|a|+|b|) (Gate 1 metric)",
+      "Method B: cosine distance between DINOv2-small embeddings of hillshades"
+    ],
+    "features": "slope median/P90/IQR (deg) at scales 2,4,8,16,32,64 m + roughness median (m) at 4,8,16,32,64 m = 23 features",
+    "registered_at": "2026-11-14T21:12:35",
+    "threshold_note": "Added before any ranking, at 2026-11-14T21:13:44: N=64. ceil(0.10*N)=7; the user's wording 'top 6' corresponds to floor(0.10*N)=6. Both will be reported; PASS on the strict reading requires rank <= 6."
+  },
+  "method_notes": "Gate 2 ranking: Method A (fingerprint, z-score Euclidean + Gate 1 relative difference),\nMethod B (DINOv2-small hillshade embeddings, cosine), and the COP30 30 m vs 2 m consistency check.\n\nAll choices below were fixed before any ranking was computed:\n  * Method A features: slope median/P90/IQR at 2,4,8,16,32,64 m + roughness median at 4..64 m (23).\n    z-score uses mean/std over the Earth candidate set; same transform applied to Mars patches.\n  * Method B: hillshade (az 315, alt 30) of the 2 m patch, fixed contrast (hillshade value in [0,1]\n    mapped linearly to 0..255, no per-image stretch), 128x128 px bilinear-upsampled to 224x224,\n    grey replicated to 3 channels, ImageNet normalisation (AutoImageProcessor with resize/crop off),\n    embedding = CLS token of the last hidden state of facebook/dinov2-small; cosine distance.\n  * COP30 check: same 256 m footprints (centres); COP30 reprojected to UTM 11N at 30 m (bilinear);\n    Mars DTM area-averaged to 30 m; features = slope median/P90/IQR at 30 m and 60 m (roughness is\n    not computable with so few 30 m pixels). A second variant uses a 960 m footprint with slope at\n    30/60/120 m + roughness median at 60/120 m. Ranking = z-score Euclidean to mars_sand, as primary.\n    Spearman rho between the 30 m and 2 m (Method A primary) candidate rankings.",
+  "change_log": [],
+  "A_primary_zscore": {
+    "dumont_rank": 51,
+    "negctrl_rank": 64,
+    "ranking": [
+      {
+        "rank": 1,
+        "name": "grid_r1_c4",
+        "dist": 0.8749,
+        "lat": 35.787387,
+        "lon": -116.151272
+      },
+      {
+        "rank": 2,
+        "name": "grid_r1_c2",
+        "dist": 1.1037,
+        "lat": 35.788745,
+        "lon": -116.37257
+      },
+      {
+        "rank": 3,
+        "name": "grid_r1_c1",
+        "dist": 1.3188,
+        "lat": 35.789271,
+        "lon": -116.483224
+      },
+      {
+        "rank": 4,
+        "name": "grid_r0_c6",
+        "dist": 1.3214,
+        "lat": 35.875767,
+        "lon": -115.928779
+      },
+      {
+        "rank": 5,
+        "name": "grid_r2_c2",
+        "dist": 1.3215,
+        "lat": 35.698587,
+        "lon": -116.373277
+      },
+      {
+        "rank": 6,
+        "name": "grid_r6_c2",
+        "dist": 1.6363,
+        "lat": 35.337942,
+        "lon": -116.376074
+      },
+      {
+        "rank": 7,
+        "name": "grid_r3_c1",
+        "dist": 1.8634,
+        "lat": 35.608951,
+        "lon": -116.484386
+      },
+      {
+        "rank": 8,
+        "name": "grid_r2_c3",
+        "dist": 2.1383,
+        "lat": 35.697961,
+        "lon": -116.262751
+      },
+      {
+        "rank": 9,
+        "name": "grid_r2_c4",
+        "dist": 2.1408,
+        "lat": 35.697233,
+        "lon": -116.152228
+      },
+      {
+        "rank": 10,
+        "name": "grid_r4_c6",
+        "dist": 2.2193,
+        "lat": 35.515174,
+        "lon": -115.933591
+      },
+      {
+        "rank": 11,
+        "name": "grid_r3_c2",
+        "dist": 2.3292,
+        "lat": 35.608428,
+        "lon": -116.373981
+      },
+      {
+        "rank": 12,
+        "name": "grid_r6_c4",
+        "dist": 2.3971,
+        "lat": 35.336606,
+        "lon": -116.156011
+      },
+      {
+        "rank": 13,
+        "name": "grid_r5_c0",
+        "dist": 2.4379,
+        "lat": 35.429044,
+        "lon": -116.5957
+      },
+      {
+        "rank": 14,
+        "name": "grid_r1_c7",
+        "dist": 2.4789,
+        "lat": 35.784586,
+        "lon": -115.819357
+      },
+      {
+        "rank": 15,
+        "name": "grid_r0_c4",
+        "dist": 2.4828,
+        "lat": 35.877539,
+        "lon": -116.150311
+      },
+      {
+        "rank": 16,
+        "name": "grid_r7_c3",
+        "dist": 2.5062,
+        "lat": 35.247161,
+        "lon": -116.266854
+      },
+      {
+        "rank": 17,
+        "name": "grid_r7_c2",
+        "dist": 2.5475,
+        "lat": 35.247777,
+        "lon": -116.376766
+      },
+      {
+        "rank": 18,
+        "name": "grid_r6_c3",
+        "dist": 2.6385,
+        "lat": 35.337324,
+        "lon": -116.266041
+      },
+      {
+        "rank": 19,
+        "name": "grid_r6_c7",
+        "dist": 2.6773,
+        "lat": 35.333851,
+        "lon": -115.82595
+      },
+      {
+        "rank": 20,
+        "name": "grid_r2_c5",
+        "dist": 2.7582,
+        "lat": 35.696404,
+        "lon": -116.041709
+      },
+      {
+        "rank": 21,
+        "name": "grid_r0_c0",
+        "dist": 2.811,
+        "lat": 35.879856,
+        "lon": -116.593421
+      },
+      {
+        "rank": 22,
+        "name": "grid_r3_c7",
+        "dist": 2.8887,
+        "lat": 35.604296,
+        "lon": -115.822012
+      },
+      {
+        "rank": 23,
+        "name": "grid_r0_c7",
+        "dist": 2.9311,
+        "lat": 35.874728,
+        "lon": -115.818021
+      },
+      {
+        "rank": 24,
+        "name": "grid_r2_c7",
+        "dist": 2.9369,
+        "lat": 35.694441,
+        "lon": -115.820687
+      },
+      {
+        "rank": 25,
+        "name": "grid_r5_c2",
+        "dist": 2.9863,
+        "lat": 35.428105,
+        "lon": -116.37538
+      },
+      {
+        "rank": 26,
+        "name": "grid_r2_c1",
+        "dist": 3.0047,
+        "lat": 35.699112,
+        "lon": -116.483807
+      },
+      {
+        "rank": 27,
+        "name": "grid_r3_c4",
+        "dist": 3.1096,
+        "lat": 35.607078,
+        "lon": -116.15318
+      },
+      {
+        "rank": 28,
+        "name": "grid_r3_c5",
+        "dist": 3.1491,
+        "lat": 35.606252,
+        "lon": -116.042786
+      },
+      {
+        "rank": 29,
+        "name": "grid_r7_c0",
+        "dist": 3.1613,
+        "lat": 35.24871,
+        "lon": -116.596597
+      },
+      {
+        "rank": 30,
+        "name": "grid_r0_c3",
+        "dist": 3.1865,
+        "lat": 35.878271,
+        "lon": -116.261083
+      },
+      {
+        "rank": 31,
+        "name": "grid_r4_c0",
+        "dist": 3.2304,
+        "lat": 35.519209,
+        "lon": -116.595248
+      },
+      {
+        "rank": 32,
+        "name": "grid_r0_c5",
+        "dist": 3.378,
+        "lat": 35.876704,
+        "lon": -116.039543
+      },
+      {
+        "rank": 33,
+        "name": "grid_r6_c5",
+        "dist": 3.3859,
+        "lat": 35.335787,
+        "lon": -116.045986
+      },
+      {
+        "rank": 34,
+        "name": "grid_r5_c5",
+        "dist": 3.3891,
+        "lat": 35.425944,
+        "lon": -116.044924
+      },
+      {
+        "rank": 35,
+        "name": "grid_r6_c6",
+        "dist": 3.3914,
+        "lat": 35.334869,
+        "lon": -115.935965
+      },
+      {
+        "rank": 36,
+        "name": "grid_r1_c5",
+        "dist": 3.4911,
+        "lat": 35.786555,
+        "lon": -116.040628
+      },
+      {
+        "rank": 37,
+        "name": "grid_r5_c7",
+        "dist": 3.5136,
+        "lat": 35.424,
+        "lon": -115.824643
+      },
+      {
+        "rank": 38,
+        "name": "grid_r4_c7",
+        "dist": 3.54,
+        "lat": 35.514149,
+        "lon": -115.82333
+      },
+      {
+        "rank": 39,
+        "name": "grid_r7_c6",
+        "dist": 3.5571,
+        "lat": 35.244715,
+        "lon": -115.937144
+      },
+      {
+        "rank": 40,
+        "name": "grid_r4_c2",
+        "dist": 3.5594,
+        "lat": 35.518267,
+        "lon": -116.374682
+      },
+      {
+        "rank": 41,
+        "name": "grid_r0_c2",
+        "dist": 3.5702,
+        "lat": 35.878901,
+        "lon": -116.37186
+      },
+      {
+        "rank": 42,
+        "name": "grid_r6_c1",
+        "dist": 3.6256,
+        "lat": 35.33846,
+        "lon": -116.48611
+      },
+      {
+        "rank": 43,
+        "name": "grid_r7_c1",
+        "dist": 3.6559,
+        "lat": 35.248293,
+        "lon": -116.48668
+      },
+      {
+        "rank": 44,
+        "name": "grid_r5_c4",
+        "dist": 3.6625,
+        "lat": 35.426765,
+        "lon": -116.155072
+      },
+      {
+        "rank": 45,
+        "name": "grid_r6_c0",
+        "dist": 3.6763,
+        "lat": 35.338877,
+        "lon": -116.596149
+      },
+      {
+        "rank": 46,
+        "name": "grid_r5_c1",
+        "dist": 3.75,
+        "lat": 35.428625,
+        "lon": -116.485538
+      },
+      {
+        "rank": 47,
+        "name": "grid_r4_c4",
+        "dist": 4.2577,
+        "lat": 35.516922,
+        "lon": -116.154128
+      },
+      {
+        "rank": 48,
+        "name": "grid_r3_c0",
+        "dist": 4.7876,
+        "lat": 35.609373,
+        "lon": -116.594794
+      },
+      {
+        "rank": 49,
+        "name": "grid_r1_c3",
+        "dist": 5.3201,
+        "lat": 35.788117,
+        "lon": -116.261919
+      },
+      {
+        "rank": 50,
+        "name": "grid_r5_c6",
+        "dist": 5.4414,
+        "lat": 35.425022,
+        "lon": -115.934781
+      },
+      {
+        "rank": 51,
+        "name": "dumont",
+        "dist": 5.6506,
+        "lat": 35.67863,
+        "lon": -116.23156
+      },
+      {
+        "rank": 52,
+        "name": "grid_r3_c3",
+        "dist": 5.7935,
+        "lat": 35.607804,
+        "lon": -116.263579
+      },
+      {
+        "rank": 53,
+        "name": "grid_r2_c6",
+        "dist": 5.8273,
+        "lat": 35.695473,
+        "lon": -115.931196
+      },
+      {
+        "rank": 54,
+        "name": "grid_r0_c1",
+        "dist": 6.0037,
+        "lat": 35.87943,
+        "lon": -116.482639
+      },
+      {
+        "rank": 55,
+        "name": "grid_r2_c0",
+        "dist": 6.2558,
+        "lat": 35.699535,
+        "lon": -116.594339
+      },
+      {
+        "rank": 56,
+        "name": "grid_r1_c0",
+        "dist": 6.7734,
+        "lat": 35.789696,
+        "lon": -116.593881
+      },
+      {
+        "rank": 57,
+        "name": "grid_r7_c7",
+        "dist": 7.3641,
+        "lat": 35.2437,
+        "lon": -115.827251
+      },
+      {
+        "rank": 58,
+        "name": "grid_r4_c1",
+        "dist": 8.3143,
+        "lat": 35.518788,
+        "lon": -116.484964
+      },
+      {
+        "rank": 59,
+        "name": "grid_r3_c6",
+        "dist": 9.4027,
+        "lat": 35.605324,
+        "lon": -115.932396
+      },
+      {
+        "rank": 60,
+        "name": "grid_r4_c5",
+        "dist": 9.5034,
+        "lat": 35.516098,
+        "lon": -116.043857
+      },
+      {
+        "rank": 61,
+        "name": "grid_r5_c3",
+        "dist": 10.1735,
+        "lat": 35.427485,
+        "lon": -116.265224
+      },
+      {
+        "rank": 62,
+        "name": "grid_r1_c6",
+        "dist": 11.9714,
+        "lat": 35.785621,
+        "lon": -115.92999
+      },
+      {
+        "rank": 63,
+        "name": "grid_r4_c3",
+        "dist": 12.6765,
+        "lat": 35.517645,
+        "lon": -116.264403
+      },
+      {
+        "rank": 64,
+        "name": "avawatz_negctrl",
+        "dist": 12.6827,
+        "lat": 35.506919,
+        "lon": -116.284743
+      }
+    ]
+  },
+  "A_secondary_reldiff": {
+    "dumont_rank": 31,
+    "negctrl_rank": 51,
+    "ranking": [
+      {
+        "rank": 1,
+        "name": "grid_r1_c4",
+        "dist": 0.0815
+      },
+      {
+        "rank": 2,
+        "name": "grid_r1_c2",
+        "dist": 0.089
+      },
+      {
+        "rank": 3,
+        "name": "grid_r0_c6",
+        "dist": 0.1065
+      },
+      {
+        "rank": 4,
+        "name": "grid_r3_c1",
+        "dist": 0.1363
+      },
+      {
+        "rank": 5,
+        "name": "grid_r1_c1",
+        "dist": 0.1437
+      },
+      {
+        "rank": 6,
+        "name": "grid_r2_c2",
+        "dist": 0.1554
+      },
+      {
+        "rank": 7,
+        "name": "grid_r4_c6",
+        "dist": 0.183
+      },
+      {
+        "rank": 8,
+        "name": "grid_r1_c7",
+        "dist": 0.1901
+      },
+      {
+        "rank": 9,
+        "name": "grid_r2_c5",
+        "dist": 0.2078
+      },
+      {
+        "rank": 10,
+        "name": "grid_r6_c2",
+        "dist": 0.2177
+      },
+      {
+        "rank": 11,
+        "name": "grid_r6_c4",
+        "dist": 0.222
+      },
+      {
+        "rank": 12,
+        "name": "grid_r3_c7",
+        "dist": 0.2324
+      },
+      {
+        "rank": 13,
+        "name": "grid_r2_c3",
+        "dist": 0.2394
+      },
+      {
+        "rank": 14,
+        "name": "grid_r4_c0",
+        "dist": 0.2428
+      },
+      {
+        "rank": 15,
+        "name": "grid_r4_c2",
+        "dist": 0.2461
+      },
+      {
+        "rank": 16,
+        "name": "grid_r5_c7",
+        "dist": 0.2645
+      },
+      {
+        "rank": 17,
+        "name": "grid_r0_c2",
+        "dist": 0.2784
+      },
+      {
+        "rank": 18,
+        "name": "grid_r5_c1",
+        "dist": 0.2828
+      },
+      {
+        "rank": 19,
+        "name": "grid_r3_c2",
+        "dist": 0.3014
+      },
+      {
+        "rank": 20,
+        "name": "grid_r6_c7",
+        "dist": 0.3019
+      },
+      {
+        "rank": 21,
+        "name": "grid_r3_c0",
+        "dist": 0.3066
+      },
+      {
+        "rank": 22,
+        "name": "grid_r5_c0",
+        "dist": 0.3128
+      },
+      {
+        "rank": 23,
+        "name": "grid_r2_c4",
+        "dist": 0.3147
+      },
+      {
+        "rank": 24,
+        "name": "grid_r0_c4",
+        "dist": 0.3259
+      },
+      {
+        "rank": 25,
+        "name": "grid_r3_c3",
+        "dist": 0.3495
+      },
+      {
+        "rank": 26,
+        "name": "grid_r1_c3",
+        "dist": 0.3528
+      },
+      {
+        "rank": 27,
+        "name": "grid_r7_c2",
+        "dist": 0.3538
+      },
+      {
+        "rank": 28,
+        "name": "grid_r5_c6",
+        "dist": 0.3549
+      },
+      {
+        "rank": 29,
+        "name": "grid_r1_c0",
+        "dist": 0.358
+      },
+      {
+        "rank": 30,
+        "name": "grid_r0_c1",
+        "dist": 0.3672
+      },
+      {
+        "rank": 31,
+        "name": "dumont",
+        "dist": 0.3743
+      },
+      {
+        "rank": 32,
+        "name": "grid_r2_c6",
+        "dist": 0.3827
+      },
+      {
+        "rank": 33,
+        "name": "grid_r7_c3",
+        "dist": 0.3869
+      },
+      {
+        "rank": 34,
+        "name": "grid_r2_c0",
+        "dist": 0.3917
+      },
+      {
+        "rank": 35,
+        "name": "grid_r6_c3",
+        "dist": 0.4013
+      },
+      {
+        "rank": 36,
+        "name": "grid_r0_c0",
+        "dist": 0.4386
+      },
+      {
+        "rank": 37,
+        "name": "grid_r7_c7",
+        "dist": 0.4412
+      },
+      {
+        "rank": 38,
+        "name": "grid_r4_c1",
+        "dist": 0.4449
+      },
+      {
+        "rank": 39,
+        "name": "grid_r2_c7",
+        "dist": 0.4854
+      },
+      {
+        "rank": 40,
+        "name": "grid_r5_c2",
+        "dist": 0.4923
+      },
+      {
+        "rank": 41,
+        "name": "grid_r4_c5",
+        "dist": 0.4971
+      },
+      {
+        "rank": 42,
+        "name": "grid_r0_c7",
+        "dist": 0.5008
+      },
+      {
+        "rank": 43,
+        "name": "grid_r3_c6",
+        "dist": 0.5046
+      },
+      {
+        "rank": 44,
+        "name": "grid_r5_c3",
+        "dist": 0.5196
+      },
+      {
+        "rank": 45,
+        "name": "grid_r7_c0",
+        "dist": 0.5249
+      },
+      {
+        "rank": 46,
+        "name": "grid_r2_c1",
+        "dist": 0.5387
+      },
+      {
+        "rank": 47,
+        "name": "grid_r3_c5",
+        "dist": 0.5503
+      },
+      {
+        "rank": 48,
+        "name": "grid_r4_c3",
+        "dist": 0.5552
+      },
+      {
+        "rank": 49,
+        "name": "grid_r3_c4",
+        "dist": 0.5639
+      },
+      {
+        "rank": 50,
+        "name": "grid_r1_c6",
+        "dist": 0.5676
+      },
+      {
+        "rank": 51,
+        "name": "avawatz_negctrl",
+        "dist": 0.5777
+      },
+      {
+        "rank": 52,
+        "name": "grid_r0_c3",
+        "dist": 0.5893
+      },
+      {
+        "rank": 53,
+        "name": "grid_r5_c5",
+        "dist": 0.5964
+      },
+      {
+        "rank": 54,
+        "name": "grid_r6_c6",
+        "dist": 0.602
+      },
+      {
+        "rank": 55,
+        "name": "grid_r6_c5",
+        "dist": 0.6081
+      },
+      {
+        "rank": 56,
+        "name": "grid_r0_c5",
+        "dist": 0.6124
+      },
+      {
+        "rank": 57,
+        "name": "grid_r1_c5",
+        "dist": 0.6405
+      },
+      {
+        "rank": 58,
+        "name": "grid_r4_c7",
+        "dist": 0.6614
+      },
+      {
+        "rank": 59,
+        "name": "grid_r7_c6",
+        "dist": 0.6681
+      },
+      {
+        "rank": 60,
+        "name": "grid_r6_c1",
+        "dist": 0.685
+      },
+      {
+        "rank": 61,
+        "name": "grid_r5_c4",
+        "dist": 0.705
+      },
+      {
+        "rank": 62,
+        "name": "grid_r6_c0",
+        "dist": 0.7104
+      },
+      {
+        "rank": 63,
+        "name": "grid_r7_c1",
+        "dist": 0.713
+      },
+      {
+        "rank": 64,
+        "name": "grid_r4_c4",
+        "dist": 0.9255
+      }
+    ]
+  },
+  "pass_primary": false,
+  "mars_pairs_A_zscore": {
+    "mars_nominal": 1.8125368691360269,
+    "mars_hidden_valley_limitation": 1.8917971445949893
+  },
+  "mars_pairs_A_reldiff": {
+    "mars_nominal": 0.21820208016213852,
+    "mars_hidden_valley_limitation": 0.27917017120396626
+  },
+  "fingerprints": {
+    "dumont": {
+      "slope_median_deg": {
+        "2.0": 19.757267795453796,
+        "4.0": 19.370602094159924,
+        "8.0": 18.3829756254365,
+        "16.0": 16.737085794958016,
+        "32.0": 13.880199895700311,
+        "64.0": 8.650610619553738
+      },
+      "roughness_median_m": {
+        "2.0": null,
+        "4.0": 0.006954193115234375,
+        "8.0": 0.05870332015627693,
+        "16.0": 0.2522787777590336,
+        "32.0": 0.8835612069208783,
+        "64.0": 2.00756507652028
+      }
+    },
+    "avawatz_negctrl": {
+      "slope_median_deg": {
+        "2.0": 33.216595796253024,
+        "4.0": 32.82433128248484,
+        "8.0": 32.07886612426614,
+        "16.0": 30.507908482797667,
+        "32.0": 28.871732756354845,
+        "64.0": 27.168377723961022
+      },
+      "roughness_median_m": {
+        "2.0": null,
+        "4.0": 0.02197265625,
+        "8.0": 0.1425431201707323,
+        "16.0": 0.39205979503152305,
+        "32.0": 1.201541034143625,
+        "64.0": 2.7722688428812754
+      }
+    },
+    "mars_sand": {
+      "slope_median_deg": {
+        "2.0": 7.597318395187937,
+        "4.0": 7.353301117605504,
+        "8.0": 6.920561607476415,
+        "16.0": 6.1172858459528765,
+        "32.0": 5.059059013983232,
+        "64.0": 4.203369744142552
+      },
+      "roughness_median_m": {
+        "2.0": null,
+        "4.0": 0.006591796875,
+        "8.0": 0.05353870048853697,
+        "16.0": 0.13296005211254056,
+        "32.0": 0.30854597966553676,
+        "64.0": 0.8630293008476615
+      }
+    },
+    "mars_nominal": {
+      "slope_median_deg": {
+        "2.0": 5.961476784912637,
+        "4.0": 4.968967124764223,
+        "8.0": 3.862181434951091,
+        "16.0": 2.8492472685553034,
+        "32.0": 2.090449437616537,
+        "64.0": 1.722848253878869
+      },
+      "roughness_median_m": {
+        "2.0": null,
+        "4.0": 0.0120849609375,
+        "8.0": 0.08672911387673343,
+        "16.0": 0.2106436001637993,
+        "32.0": 0.3822616117510841,
+        "64.0": 0.6735667332947182
+      }
+    },
+    "mars_hidden_valley_limitation": {
+      "slope_median_deg": {
+        "2.0": 4.044527084232376,
+        "4.0": 3.5931676685752905,
+        "8.0": 3.121781366883069,
+        "16.0": 2.526252975161018,
+        "32.0": 1.708066021007597,
+        "64.0": 1.5827898620249834
+      },
+      "roughness_median_m": {
+        "2.0": null,
+        "4.0": 0.0072021484375,
+        "8.0": 0.05172856607761176,
+        "16.0": 0.12848779518280323,
+        "32.0": 0.28216854925891244,
+        "64.0": 0.5036041681113625
+      }
+    }
+  },
+  "B_dinov2_cosine": {
+    "dumont_rank": 57,
+    "negctrl_rank": 52,
+    "pass_same_criterion": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "name": "grid_r2_c0",
+        "dist": 0.284,
+        "lat": 35.699535,
+        "lon": -116.594339
+      },
+      {
+        "rank": 2,
+        "name": "grid_r5_c1",
+        "dist": 0.2844,
+        "lat": 35.428625,
+        "lon": -116.485538
+      },
+      {
+        "rank": 3,
+        "name": "grid_r4_c1",
+        "dist": 0.2948,
+        "lat": 35.518788,
+        "lon": -116.484964
+      },
+      {
+        "rank": 4,
+        "name": "grid_r2_c1",
+        "dist": 0.3029,
+        "lat": 35.699112,
+        "lon": -116.483807
+      },
+      {
+        "rank": 5,
+        "name": "grid_r5_c7",
+        "dist": 0.314,
+        "lat": 35.424,
+        "lon": -115.824643
+      },
+      {
+        "rank": 6,
+        "name": "grid_r0_c4",
+        "dist": 0.3207,
+        "lat": 35.877539,
+        "lon": -116.150311
+      },
+      {
+        "rank": 7,
+        "name": "grid_r1_c3",
+        "dist": 0.3323,
+        "lat": 35.788117,
+        "lon": -116.261919
+      },
+      {
+        "rank": 8,
+        "name": "grid_r6_c2",
+        "dist": 0.3335,
+        "lat": 35.337942,
+        "lon": -116.376074
+      },
+      {
+        "rank": 9,
+        "name": "grid_r1_c7",
+        "dist": 0.3494,
+        "lat": 35.784586,
+        "lon": -115.819357
+      },
+      {
+        "rank": 10,
+        "name": "grid_r3_c2",
+        "dist": 0.351,
+        "lat": 35.608428,
+        "lon": -116.373981
+      },
+      {
+        "rank": 11,
+        "name": "grid_r3_c1",
+        "dist": 0.3523,
+        "lat": 35.608951,
+        "lon": -116.484386
+      },
+      {
+        "rank": 12,
+        "name": "grid_r0_c6",
+        "dist": 0.3568,
+        "lat": 35.875767,
+        "lon": -115.928779
+      },
+      {
+        "rank": 13,
+        "name": "grid_r2_c2",
+        "dist": 0.3763,
+        "lat": 35.698587,
+        "lon": -116.373277
+      },
+      {
+        "rank": 14,
+        "name": "grid_r1_c2",
+        "dist": 0.3811,
+        "lat": 35.788745,
+        "lon": -116.37257
+      },
+      {
+        "rank": 15,
+        "name": "grid_r0_c0",
+        "dist": 0.3849,
+        "lat": 35.879856,
+        "lon": -116.593421
+      },
+      {
+        "rank": 16,
+        "name": "grid_r0_c7",
+        "dist": 0.3877,
+        "lat": 35.874728,
+        "lon": -115.818021
+      },
+      {
+        "rank": 17,
+        "name": "grid_r1_c6",
+        "dist": 0.3936,
+        "lat": 35.785621,
+        "lon": -115.92999
+      },
+      {
+        "rank": 18,
+        "name": "grid_r4_c3",
+        "dist": 0.3954,
+        "lat": 35.517645,
+        "lon": -116.264403
+      },
+      {
+        "rank": 19,
+        "name": "grid_r0_c2",
+        "dist": 0.3966,
+        "lat": 35.878901,
+        "lon": -116.37186
+      },
+      {
+        "rank": 20,
+        "name": "grid_r5_c4",
+        "dist": 0.4041,
+        "lat": 35.426765,
+        "lon": -116.155072
+      },
+      {
+        "rank": 21,
+        "name": "grid_r4_c7",
+        "dist": 0.4069,
+        "lat": 35.514149,
+        "lon": -115.82333
+      },
+      {
+        "rank": 22,
+        "name": "grid_r2_c4",
+        "dist": 0.4081,
+        "lat": 35.697233,
+        "lon": -116.152228
+      },
+      {
+        "rank": 23,
+        "name": "grid_r6_c3",
+        "dist": 0.417,
+        "lat": 35.337324,
+        "lon": -116.266041
+      },
+      {
+        "rank": 24,
+        "name": "grid_r4_c4",
+        "dist": 0.4232,
+        "lat": 35.516922,
+        "lon": -116.154128
+      },
+      {
+        "rank": 25,
+        "name": "grid_r7_c3",
+        "dist": 0.4233,
+        "lat": 35.247161,
+        "lon": -116.266854
+      },
+      {
+        "rank": 26,
+        "name": "grid_r4_c2",
+        "dist": 0.4265,
+        "lat": 35.518267,
+        "lon": -116.374682
+      },
+      {
+        "rank": 27,
+        "name": "grid_r2_c7",
+        "dist": 0.4275,
+        "lat": 35.694441,
+        "lon": -115.820687
+      },
+      {
+        "rank": 28,
+        "name": "grid_r3_c4",
+        "dist": 0.43,
+        "lat": 35.607078,
+        "lon": -116.15318
+      },
+      {
+        "rank": 29,
+        "name": "grid_r4_c6",
+        "dist": 0.431,
+        "lat": 35.515174,
+        "lon": -115.933591
+      },
+      {
+        "rank": 30,
+        "name": "grid_r5_c2",
+        "dist": 0.4391,
+        "lat": 35.428105,
+        "lon": -116.37538
+      },
+      {
+        "rank": 31,
+        "name": "grid_r4_c0",
+        "dist": 0.4439,
+        "lat": 35.519209,
+        "lon": -116.595248
+      },
+      {
+        "rank": 32,
+        "name": "grid_r6_c0",
+        "dist": 0.4454,
+        "lat": 35.338877,
+        "lon": -116.596149
+      },
+      {
+        "rank": 33,
+        "name": "grid_r7_c0",
+        "dist": 0.4455,
+        "lat": 35.24871,
+        "lon": -116.596597
+      },
+      {
+        "rank": 34,
+        "name": "grid_r0_c3",
+        "dist": 0.4465,
+        "lat": 35.878271,
+        "lon": -116.261083
+      },
+      {
+        "rank": 35,
+        "name": "grid_r1_c4",
+        "dist": 0.4505,
+        "lat": 35.787387,
+        "lon": -116.151272
+      },
+      {
+        "rank": 36,
+        "name": "grid_r0_c5",
+        "dist": 0.4525,
+        "lat": 35.876704,
+        "lon": -116.039543
+      },
+      {
+        "rank": 37,
+        "name": "grid_r7_c1",
+        "dist": 0.4551,
+        "lat": 35.248293,
+        "lon": -116.48668
+      },
+      {
+        "rank": 38,
+        "name": "grid_r2_c3",
+        "dist": 0.4607,
+        "lat": 35.697961,
+        "lon": -116.262751
+      },
+      {
+        "rank": 39,
+        "name": "grid_r6_c6",
+        "dist": 0.4625,
+        "lat": 35.334869,
+        "lon": -115.935965
+      },
+      {
+        "rank": 40,
+        "name": "grid_r7_c6",
+        "dist": 0.4689,
+        "lat": 35.244715,
+        "lon": -115.937144
+      },
+      {
+        "rank": 41,
+        "name": "grid_r3_c3",
+        "dist": 0.4708,
+        "lat": 35.607804,
+        "lon": -116.263579
+      },
+      {
+        "rank": 42,
+        "name": "grid_r1_c1",
+        "dist": 0.485,
+        "lat": 35.789271,
+        "lon": -116.483224
+      },
+      {
+        "rank": 43,
+        "name": "grid_r3_c5",
+        "dist": 0.4914,
+        "lat": 35.606252,
+        "lon": -116.042786
+      },
+      {
+        "rank": 44,
+        "name": "grid_r4_c5",
+        "dist": 0.5159,
+        "lat": 35.516098,
+        "lon": -116.043857
+      },
+      {
+        "rank": 45,
+        "name": "grid_r5_c0",
+        "dist": 0.5191,
+        "lat": 35.429044,
+        "lon": -116.5957
+      },
+      {
+        "rank": 46,
+        "name": "grid_r3_c6",
+        "dist": 0.5214,
+        "lat": 35.605324,
+        "lon": -115.932396
+      },
+      {
+        "rank": 47,
+        "name": "grid_r3_c0",
+        "dist": 0.5222,
+        "lat": 35.609373,
+        "lon": -116.594794
+      },
+      {
+        "rank": 48,
+        "name": "grid_r6_c7",
+        "dist": 0.5234,
+        "lat": 35.333851,
+        "lon": -115.82595
+      },
+      {
+        "rank": 49,
+        "name": "grid_r2_c5",
+        "dist": 0.5329,
+        "lat": 35.696404,
+        "lon": -116.041709
+      },
+      {
+        "rank": 50,
+        "name": "grid_r6_c5",
+        "dist": 0.5332,
+        "lat": 35.335787,
+        "lon": -116.045986
+      },
+      {
+        "rank": 51,
+        "name": "grid_r5_c5",
+        "dist": 0.5402,
+        "lat": 35.425944,
+        "lon": -116.044924
+      },
+      {
+        "rank": 52,
+        "name": "avawatz_negctrl",
+        "dist": 0.543,
+        "lat": 35.506919,
+        "lon": -116.284743
+      },
+      {
+        "rank": 53,
+        "name": "grid_r5_c3",
+        "dist": 0.5499,
+        "lat": 35.427485,
+        "lon": -116.265224
+      },
+      {
+        "rank": 54,
+        "name": "grid_r1_c0",
+        "dist": 0.5814,
+        "lat": 35.789696,
+        "lon": -116.593881
+      },
+      {
+        "rank": 55,
+        "name": "grid_r6_c1",
+        "dist": 0.586,
+        "lat": 35.33846,
+        "lon": -116.48611
+      },
+      {
+        "rank": 56,
+        "name": "grid_r7_c7",
+        "dist": 0.5928,
+        "lat": 35.2437,
+        "lon": -115.827251
+      },
+      {
+        "rank": 57,
+        "name": "dumont",
+        "dist": 0.607,
+        "lat": 35.67863,
+        "lon": -116.23156
+      },
+      {
+        "rank": 58,
+        "name": "grid_r2_c6",
+        "dist": 0.6215,
+        "lat": 35.695473,
+        "lon": -115.931196
+      },
+      {
+        "rank": 59,
+        "name": "grid_r3_c7",
+        "dist": 0.6314,
+        "lat": 35.604296,
+        "lon": -115.822012
+      },
+      {
+        "rank": 60,
+        "name": "grid_r5_c6",
+        "dist": 0.6321,
+        "lat": 35.425022,
+        "lon": -115.934781
+      },
+      {
+        "rank": 61,
+        "name": "grid_r7_c2",
+        "dist": 0.6484,
+        "lat": 35.247777,
+        "lon": -116.376766
+      },
+      {
+        "rank": 62,
+        "name": "grid_r1_c5",
+        "dist": 0.6851,
+        "lat": 35.786555,
+        "lon": -116.040628
+      },
+      {
+        "rank": 63,
+        "name": "grid_r0_c1",
+        "dist": 0.6907,
+        "lat": 35.87943,
+        "lon": -116.482639
+      },
+      {
+        "rank": 64,
+        "name": "grid_r6_c4",
+        "dist": 0.7151,
+        "lat": 35.336606,
+        "lon": -116.156011
+      }
+    ]
+  },
+  "mars_pairs_B": {
+    "mars_nominal": 0.3747478127479553,
+    "mars_hidden_valley_limitation": 0.28013408184051514
+  },
+  "spearman_A_vs_B": 0.22985347985347987,
+  "cop30_256m_footprint": {
+    "features_per_patch": 7,
+    "spearman_vs_2m_A": 0.8934523809523809,
+    "p_value": 3.162022626381092e-23,
+    "dumont_rank_30m": 57,
+    "top5_30m": [
+      "grid_r1_c7",
+      "grid_r1_c4",
+      "grid_r2_c2",
+      "grid_r1_c2",
+      "grid_r3_c1"
+    ]
+  },
+  "cop30_960m_footprint": {
+    "features_per_patch": 11,
+    "spearman_vs_2m_A": 0.7090201465201464,
+    "p_value": 5.5178355947766444e-11,
+    "dumont_rank_30m": 51,
+    "top5_30m": [
+      "grid_r0_c4",
+      "grid_r0_c6",
+      "grid_r6_c2",
+      "grid_r1_c1",
+      "grid_r1_c2"
+    ]
+  }
+}

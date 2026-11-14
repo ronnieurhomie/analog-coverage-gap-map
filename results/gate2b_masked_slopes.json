@@ -1,0 +1,186 @@
+{
+  "rule": "Gate 2b item 2: slope stats on Bagnold boxes using only sand, non-facet pixels; Dumont for comparison.\n\nMasks (1 m DTM grid, same rules as src/mars_patch_quality.py):\n  sand  = ortho DN < 30th percentile (whole ortho) AND 5 px local DN std < median (whole ortho)\n  facet = 5x5 plane-fit RMS < 5 mm\n  usable = sand AND NOT facet AND valid DTM\nProcedure per box (256 m): DTM and usable-mask are area-averaged to the 2 m grid. A 2 m cell is used\nif >= 75 % of it is usable. Slope at 2 m = central differences on the 2 m grid (a cell is used only if it\nand its 4 neighbours are used). Slope at 16 m = 8x8 block mean of the 2 m grid (block used if >= 75 %\nof its 2 m cells are used), central differences on that grid, same neighbour rule.\nDumont: every valid pixel used (lidar; no facet/sand masking applied), same slope procedure.",
+  "boxes": {
+    "mars_sand": {
+      "lat": -4.682895,
+      "lon": 137.366378,
+      "origin": "Gate 2 mars_sand (Namib Dune area)",
+      "sand_frac_1m": 0.747,
+      "facet_frac_1m": 0.122,
+      "usable_frac_1m": 0.625,
+      "usable_frac_2m_cells": 0.571,
+      "slopes": {
+        "2m": {
+          "n_cells_used": 6255,
+          "cells_total": 16384,
+          "median_deg": 7.422656870518156,
+          "p90_deg": 12.653594031818027
+        },
+        "16m": {
+          "n_cells_used": 8,
+          "cells_total": 256,
+          "median_deg": 5.75472836726412,
+          "p90_deg": 7.1653425693017265
+        }
+      }
+    },
+    "allsand_1": {
+      "lat": -4.675094,
+      "lon": 137.408008,
+      "origin": "Gate 2 all-sand search #1",
+      "sand_frac_1m": 1.0,
+      "facet_frac_1m": 0.286,
+      "usable_frac_1m": 0.714,
+      "usable_frac_2m_cells": 0.664,
+      "slopes": {
+        "2m": {
+          "n_cells_used": 7741,
+          "cells_total": 16384,
+          "median_deg": 6.783398662236659,
+          "p90_deg": 10.766080417197784
+        },
+        "16m": {
+          "n_cells_used": 50,
+          "cells_total": 256,
+          "median_deg": 6.527442138510363,
+          "p90_deg": 9.196149511964313
+        }
+      }
+    },
+    "allsand_2": {
+      "lat": -4.704709,
+      "lon": 137.372299,
+      "origin": "Gate 2 all-sand search #2",
+      "sand_frac_1m": 1.0,
+      "facet_frac_1m": 0.372,
+      "usable_frac_1m": 0.628,
+      "usable_frac_2m_cells": 0.582,
+      "slopes": {
+        "2m": {
+          "n_cells_used": 7138,
+          "cells_total": 16384,
+          "median_deg": 5.954112134812617,
+          "p90_deg": 9.665049005491422
+        },
+        "16m": {
+          "n_cells_used": 51,
+          "cells_total": 256,
+          "median_deg": 5.881535934523764,
+          "p90_deg": 6.440671199488105
+        }
+      }
+    },
+    "allsand_3": {
+      "lat": -4.693939,
+      "lon": 137.392612,
+      "origin": "Gate 2 all-sand search #3",
+      "sand_frac_1m": 1.0,
+      "facet_frac_1m": 0.277,
+      "usable_frac_1m": 0.723,
+      "usable_frac_2m_cells": 0.691,
+      "slopes": {
+        "2m": {
+          "n_cells_used": 8943,
+          "cells_total": 16384,
+          "median_deg": 3.8323672948201692,
+          "p90_deg": 13.574437915137326
+        },
+        "16m": {
+          "n_cells_used": 74,
+          "cells_total": 256,
+          "median_deg": 3.7452981816580726,
+          "p90_deg": 15.178379296543758
+        }
+      }
+    },
+    "allsand_4": {
+      "lat": -4.655038,
+      "lon": 137.423046,
+      "origin": "Gate 2 all-sand search #4",
+      "sand_frac_1m": 1.0,
+      "facet_frac_1m": 0.153,
+      "usable_frac_1m": 0.847,
+      "usable_frac_2m_cells": 0.815,
+      "slopes": {
+        "2m": {
+          "n_cells_used": 10883,
+          "cells_total": 16384,
+          "median_deg": 4.524189302888208,
+          "p90_deg": 9.941577508917215
+        },
+        "16m": {
+          "n_cells_used": 105,
+          "cells_total": 256,
+          "median_deg": 3.1633006203868916,
+          "p90_deg": 7.038733734080187
+        }
+      }
+    },
+    "allsand_5": {
+      "lat": -4.663675,
+      "lon": 137.41941,
+      "origin": "Gate 2 all-sand search #5",
+      "sand_frac_1m": 0.993,
+      "facet_frac_1m": 0.231,
+      "usable_frac_1m": 0.762,
+      "usable_frac_2m_cells": 0.727,
+      "slopes": {
+        "2m": {
+          "n_cells_used": 9626,
+          "cells_total": 16384,
+          "median_deg": 5.650762424599643,
+          "p90_deg": 10.184537437788059
+        },
+        "16m": {
+          "n_cells_used": 66,
+          "cells_total": 256,
+          "median_deg": 4.915503521567612,
+          "p90_deg": 7.049764320896982
+        }
+      }
+    },
+    "allsand_6": {
+      "lat": -4.679259,
+      "lon": 137.396537,
+      "origin": "Gate 2 all-sand search #6",
+      "sand_frac_1m": 0.979,
+      "facet_frac_1m": 0.093,
+      "usable_frac_1m": 0.886,
+      "usable_frac_2m_cells": 0.865,
+      "slopes": {
+        "2m": {
+          "n_cells_used": 12353,
+          "cells_total": 16384,
+          "median_deg": 5.252307137106746,
+          "p90_deg": 10.836940691119358
+        },
+        "16m": {
+          "n_cells_used": 111,
+          "cells_total": 256,
+          "median_deg": 4.237994334543725,
+          "p90_deg": 7.729842261420879
+        }
+      }
+    },
+    "earth_dumont": {
+      "lat": 35.67863,
+      "lon": -116.23156,
+      "origin": "Gate 2 Dumont candidate (GNIS centre)",
+      "usable_frac_2m_cells": 1.0,
+      "slopes": {
+        "2m": {
+          "n_cells_used": 15876,
+          "cells_total": 16384,
+          "median_deg": 19.745474461961066,
+          "p90_deg": 28.548428262698216
+        },
+        "16m": {
+          "n_cells_used": 196,
+          "cells_total": 256,
+          "median_deg": 15.972080555223439,
+          "p90_deg": 22.958061657174195
+        }
+      }
+    }
+  }
+}

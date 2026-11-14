@@ -1,0 +1,39 @@
+{
+  "registered_at": "2026-11-14T21:32:48",
+  "positives": {
+    "dumont_2": {
+      "lat": 35.680852,
+      "lon": -116.226566,
+      "source": "Offset (+0.45 km E, +0.25 km N) from GNIS Dumont Dunes centre; on dune per 3DEP hillshade and USGS imagery (results/v1_dumont_extra_check.png)"
+    },
+    "dumont_3": {
+      "lat": 35.676675,
+      "lon": -116.235999,
+      "source": "Offset (-0.40 km E, -0.22 km N) from GNIS Dumont Dunes centre; moved from (-0.10,-0.45) before any computation because that box hung off the dune margin; on dune per hillshade"
+    },
+    "kelso": {
+      "lat": 34.9035,
+      "lon": -115.71805,
+      "source": "Kelso Dunes, TopoQuest GNIS-derived summit record (NAD83) https://topoquest.com/place-detail.php?id=1660830 ; Wikipedia 34 54 13 N 115 43 05 W agrees"
+    },
+    "mesquite": {
+      "lat": 36.612,
+      "lon": -117.11517,
+      "source": "Mesquite Flat Sand Dunes, TopoZone https://www.topozone.com/california/inyo-ca/flat/mesquite-flat-4/ ; Hikespeak trailhead 36.6062,-117.115 within 1 km"
+    },
+    "eureka": {
+      "lat": 37.09579,
+      "lon": -117.67534,
+      "source": "Eureka Dunes, TopoQuest summit record (NAD83) https://topoquest.com/place-detail.php?id=1667196"
+    }
+  },
+  "dropped": [],
+  "coverage": "All five centres have USGS 3DEP 1 m (project CA_FEMAR9Southeast_D24) per TNM Access API",
+  "visual_check": "results/v1_site_hillshade_check.png, results/v1_site_imagery_check.png, results/v1_dumont_extra_check.png: all centres on dune morphology",
+  "candidate_list": "64 Gate 2 candidates (results/candidates.json) + the 5 positives = 69 patches",
+  "procedure": "Each positive is the query in turn; rank all other 68 patches by distance; record ranks of the other 4 positives (20 ranks total).",
+  "features_and_metric": "Method A exactly as Gate 2 (23 features, z-score Euclidean); z-score mean/std computed over all 69 patches. Method B = Gate 2 DINOv2 cosine, reported too.",
+  "criterion": "PASS if the median of the 20 'other positive' ranks under Method A <= top 10% of the 68-item ranked list: ceil(0.10*68)=7 (also reported against floor = 6).",
+  "secondary_variant": "Same, also counting the GNIS Dumont candidate as a positive target (reported, not the criterion).",
+  "note": "Two of the five positives (dumont_2, dumont_3) share a dune field with each other and with the GNIS Dumont candidate; per-pair ranks are reported so within-field and cross-field retrieval can be told apart."
+}

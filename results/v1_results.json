@@ -1,0 +1,344 @@
+{
+  "n_patches": 69,
+  "ranked_list_length": 68,
+  "thr_ceil": 7,
+  "thr_floor": 6,
+  "methods": {
+    "A_zscore": {
+      "table": [
+        {
+          "query": "dumont_2",
+          "ranks_of_other_positives": {
+            "dumont_3": 7,
+            "kelso": 1,
+            "mesquite": 25,
+            "eureka": 4
+          },
+          "rank_of_gnis_dumont": 6,
+          "top5": [
+            [
+              "kelso",
+              1.478
+            ],
+            [
+              "grid_r3_c3",
+              2.403
+            ],
+            [
+              "grid_r2_c6",
+              2.815
+            ],
+            [
+              "eureka",
+              2.916
+            ],
+            [
+              "grid_r5_c6",
+              3.101
+            ]
+          ]
+        },
+        {
+          "query": "dumont_3",
+          "ranks_of_other_positives": {
+            "dumont_2": 17,
+            "kelso": 18,
+            "mesquite": 24,
+            "eureka": 34
+          },
+          "rank_of_gnis_dumont": 14,
+          "top5": [
+            [
+              "grid_r4_c0",
+              1.48
+            ],
+            [
+              "grid_r5_c1",
+              1.485
+            ],
+            [
+              "grid_r4_c2",
+              1.494
+            ],
+            [
+              "grid_r3_c7",
+              2.158
+            ],
+            [
+              "grid_r5_c7",
+              2.187
+            ]
+          ]
+        },
+        {
+          "query": "kelso",
+          "ranks_of_other_positives": {
+            "dumont_2": 1,
+            "dumont_3": 8,
+            "mesquite": 29,
+            "eureka": 5
+          },
+          "rank_of_gnis_dumont": 7,
+          "top5": [
+            [
+              "dumont_2",
+              1.478
+            ],
+            [
+              "grid_r3_c3",
+              2.091
+            ],
+            [
+              "grid_r2_c6",
+              2.354
+            ],
+            [
+              "grid_r5_c6",
+              2.427
+            ],
+            [
+              "eureka",
+              2.443
+            ]
+          ]
+        },
+        {
+          "query": "mesquite",
+          "ranks_of_other_positives": {
+            "dumont_2": 58,
+            "dumont_3": 18,
+            "kelso": 60,
+            "eureka": 64
+          },
+          "rank_of_gnis_dumont": 26,
+          "top5": [
+            [
+              "grid_r1_c7",
+              1.949
+            ],
+            [
+              "grid_r1_c2",
+              2.303
+            ],
+            [
+              "grid_r3_c1",
+              2.808
+            ],
+            [
+              "grid_r3_c7",
+              2.859
+            ],
+            [
+              "grid_r0_c2",
+              2.931
+            ]
+          ]
+        },
+        {
+          "query": "eureka",
+          "ranks_of_other_positives": {
+            "dumont_2": 2,
+            "dumont_3": 11,
+            "kelso": 1,
+            "mesquite": 34
+          },
+          "rank_of_gnis_dumont": 8,
+          "top5": [
+            [
+              "kelso",
+              2.443
+            ],
+            [
+              "dumont_2",
+              2.916
+            ],
+            [
+              "grid_r5_c6",
+              4.0
+            ],
+            [
+              "grid_r2_c6",
+              4.067
+            ],
+            [
+              "grid_r3_c3",
+              4.191
+            ]
+          ]
+        }
+      ],
+      "median_rank_other_positives": 17.5,
+      "pass_ceil": false,
+      "pass_floor": false,
+      "median_incl_gnis_dumont": 14.0
+    },
+    "B_dinov2": {
+      "table": [
+        {
+          "query": "dumont_2",
+          "ranks_of_other_positives": {
+            "dumont_3": 12,
+            "kelso": 3,
+            "mesquite": 56,
+            "eureka": 2
+          },
+          "rank_of_gnis_dumont": 1,
+          "top5": [
+            [
+              "dumont",
+              0.478
+            ],
+            [
+              "eureka",
+              0.505
+            ],
+            [
+              "kelso",
+              0.525
+            ],
+            [
+              "grid_r4_c6",
+              0.579
+            ],
+            [
+              "grid_r1_c4",
+              0.585
+            ]
+          ]
+        },
+        {
+          "query": "dumont_3",
+          "ranks_of_other_positives": {
+            "dumont_2": 60,
+            "kelso": 5,
+            "mesquite": 17,
+            "eureka": 41
+          },
+          "rank_of_gnis_dumont": 1,
+          "top5": [
+            [
+              "dumont",
+              0.197
+            ],
+            [
+              "grid_r4_c6",
+              0.319
+            ],
+            [
+              "grid_r3_c3",
+              0.32
+            ],
+            [
+              "grid_r0_c6",
+              0.32
+            ],
+            [
+              "kelso",
+              0.324
+            ]
+          ]
+        },
+        {
+          "query": "kelso",
+          "ranks_of_other_positives": {
+            "dumont_2": 37,
+            "dumont_3": 2,
+            "mesquite": 21,
+            "eureka": 25
+          },
+          "rank_of_gnis_dumont": 1,
+          "top5": [
+            [
+              "dumont",
+              0.242
+            ],
+            [
+              "dumont_3",
+              0.324
+            ],
+            [
+              "grid_r4_c6",
+              0.331
+            ],
+            [
+              "grid_r2_c4",
+              0.357
+            ],
+            [
+              "grid_r5_c7",
+              0.361
+            ]
+          ]
+        },
+        {
+          "query": "mesquite",
+          "ranks_of_other_positives": {
+            "dumont_2": 68,
+            "dumont_3": 24,
+            "kelso": 33,
+            "eureka": 61
+          },
+          "rank_of_gnis_dumont": 34,
+          "top5": [
+            [
+              "grid_r2_c2",
+              0.16
+            ],
+            [
+              "grid_r0_c3",
+              0.233
+            ],
+            [
+              "grid_r2_c1",
+              0.283
+            ],
+            [
+              "grid_r0_c4",
+              0.31
+            ],
+            [
+              "grid_r1_c1",
+              0.325
+            ]
+          ]
+        },
+        {
+          "query": "eureka",
+          "ranks_of_other_positives": {
+            "dumont_2": 2,
+            "dumont_3": 3,
+            "kelso": 1,
+            "mesquite": 22
+          },
+          "rank_of_gnis_dumont": 5,
+          "top5": [
+            [
+              "kelso",
+              0.482
+            ],
+            [
+              "dumont_2",
+              0.505
+            ],
+            [
+              "dumont_3",
+              0.508
+            ],
+            [
+              "grid_r2_c2",
+              0.516
+            ],
+            [
+              "dumont",
+              0.52
+            ]
+          ]
+        }
+      ],
+      "median_rank_other_positives": 21.5,
+      "pass_ceil": false,
+      "pass_floor": false,
+      "median_incl_gnis_dumont": 17.0
+    }
+  }
+}

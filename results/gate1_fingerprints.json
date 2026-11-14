@@ -1,0 +1,447 @@
+{
+  "grid_m": 2.0,
+  "patch_m": 256.0,
+  "scales_m": [
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0
+  ],
+  "patches": {
+    "mars_sand": {
+      "info": {
+        "file": "data/raw/mars/DTEEC_040770_1755_039280_1755_U01.IMG",
+        "center_lat": -4.66,
+        "center_lon": 137.3827,
+        "native_res_m": 1.0117630165416,
+        "grid_m": 2.0,
+        "size_m": 256.0,
+        "shape": [
+          128,
+          128
+        ],
+        "valid_fraction": 1.0,
+        "why": "Mean of Curiosity end-of-drive positions sols 705-713 (Aug 2014), the Hidden Valley sand episode; positions from NASA MSL MMGIS waypoint layer (MSL_waypoints.json). JPL news Aug 2014 reports the rover backed out because of poor traction on sand."
+      },
+      "fingerprint": {
+        "pixel_m": 2.0,
+        "valid_fraction": 1.0,
+        "scales": {
+          "2.0": {
+            "effective_scale_m": 2.0,
+            "slope_deg": {
+              "median": 4.044527084232376,
+              "p90": 8.355100598153205,
+              "iqr": 3.4877662419809665,
+              "n": 16384
+            },
+            "roughness_m": {
+              "median": null,
+              "p90": null,
+              "n": 0
+            }
+          },
+          "4.0": {
+            "effective_scale_m": 4.0,
+            "slope_deg": {
+              "median": 3.5931676685752905,
+              "p90": 7.4009895768987874,
+              "iqr": 3.0677392398180348,
+              "n": 4096
+            },
+            "roughness_m": {
+              "median": 0.0072021484375,
+              "p90": 0.0198974609375,
+              "n": 4096
+            }
+          },
+          "8.0": {
+            "effective_scale_m": 8.0,
+            "slope_deg": {
+              "median": 3.121781366883069,
+              "p90": 6.202120727164551,
+              "iqr": 2.428298118490491,
+              "n": 1024
+            },
+            "roughness_m": {
+              "median": 0.05172856607761176,
+              "p90": 0.09402158187492164,
+              "n": 1024
+            }
+          },
+          "16.0": {
+            "effective_scale_m": 16.0,
+            "slope_deg": {
+              "median": 2.526252975161018,
+              "p90": 4.834898549557854,
+              "iqr": 1.9533666934452305,
+              "n": 256
+            },
+            "roughness_m": {
+              "median": 0.12848779518280323,
+              "p90": 0.22672028132385558,
+              "n": 256
+            }
+          },
+          "32.0": {
+            "effective_scale_m": 32.0,
+            "slope_deg": {
+              "median": 1.708066021007597,
+              "p90": 3.669539767599131,
+              "iqr": 1.6265658972919224,
+              "n": 64
+            },
+            "roughness_m": {
+              "median": 0.28216854925891244,
+              "p90": 0.486110361140607,
+              "n": 64
+            }
+          },
+          "64.0": {
+            "effective_scale_m": 64.0,
+            "slope_deg": {
+              "median": 1.5827898620249834,
+              "p90": 2.2946029379947754,
+              "iqr": 0.9744895470684248,
+              "n": 16
+            },
+            "roughness_m": {
+              "median": 0.5036041681113625,
+              "p90": 0.7546880819110451,
+              "n": 16
+            }
+          }
+        }
+      }
+    },
+    "mars_nominal": {
+      "info": {
+        "file": "data/raw/mars/DTEEC_040770_1755_039280_1755_U01.IMG",
+        "center_lat": -4.64773714,
+        "center_lon": 137.3848289,
+        "native_res_m": 1.0117630165416,
+        "grid_m": 2.0,
+        "size_m": 256.0,
+        "shape": [
+          128,
+          128
+        ],
+        "valid_fraction": 1.0,
+        "why": "End of sol 665 drive (142.5 m), the longest single-sol drive ending inside this DTM; 738 m from Hidden Valley. Long drive taken as evidence of nominal mobility."
+      },
+      "fingerprint": {
+        "pixel_m": 2.0,
+        "valid_fraction": 1.0,
+        "scales": {
+          "2.0": {
+            "effective_scale_m": 2.0,
+            "slope_deg": {
+              "median": 5.961476784912637,
+              "p90": 11.976954992343996,
+              "iqr": 5.124324522160249,
+              "n": 16384
+            },
+            "roughness_m": {
+              "median": null,
+              "p90": null,
+              "n": 0
+            }
+          },
+          "4.0": {
+            "effective_scale_m": 4.0,
+            "slope_deg": {
+              "median": 4.968967124764223,
+              "p90": 9.717382317760157,
+              "iqr": 4.2101390329543005,
+              "n": 4096
+            },
+            "roughness_m": {
+              "median": 0.0120849609375,
+              "p90": 0.03753662109375,
+              "n": 4096
+            }
+          },
+          "8.0": {
+            "effective_scale_m": 8.0,
+            "slope_deg": {
+              "median": 3.862181434951091,
+              "p90": 7.793977530074409,
+              "iqr": 3.4707177894841696,
+              "n": 1024
+            },
+            "roughness_m": {
+              "median": 0.08672911387673343,
+              "p90": 0.16626013602331557,
+              "n": 1024
+            }
+          },
+          "16.0": {
+            "effective_scale_m": 16.0,
+            "slope_deg": {
+              "median": 2.8492472685553034,
+              "p90": 7.026168907135961,
+              "iqr": 2.7944958065526904,
+              "n": 256
+            },
+            "roughness_m": {
+              "median": 0.2106436001637993,
+              "p90": 0.3282740190035067,
+              "n": 256
+            }
+          },
+          "32.0": {
+            "effective_scale_m": 32.0,
+            "slope_deg": {
+              "median": 2.090449437616537,
+              "p90": 4.946101233013505,
+              "iqr": 1.656428883161448,
+              "n": 64
+            },
+            "roughness_m": {
+              "median": 0.3822616117510841,
+              "p90": 0.5258283896101811,
+              "n": 64
+            }
+          },
+          "64.0": {
+            "effective_scale_m": 64.0,
+            "slope_deg": {
+              "median": 1.722848253878869,
+              "p90": 2.982395073042055,
+              "iqr": 0.8151479247174267,
+              "n": 16
+            },
+            "roughness_m": {
+              "median": 0.6735667332947182,
+              "p90": 0.8543784447347675,
+              "n": 16
+            }
+          }
+        }
+      }
+    },
+    "earth_dumont": {
+      "info": {
+        "file": "data/raw/earth/mojave_dumont_box_3dep1m.tif",
+        "center_lat": 35.67863,
+        "center_lon": -116.23156,
+        "native_res_m": 1.0,
+        "grid_m": 2.0,
+        "size_m": 256.0,
+        "shape": [
+          128,
+          128
+        ],
+        "valid_fraction": 1.0,
+        "why": "GNIS-derived position of 'Dumont Dunes' (summit feature) via TopoQuest, NAD83. JPL ran Scarecrow mobility tests on Dumont Dunes in May 2012."
+      },
+      "fingerprint": {
+        "pixel_m": 2.0,
+        "valid_fraction": 1.0,
+        "scales": {
+          "2.0": {
+            "effective_scale_m": 2.0,
+            "slope_deg": {
+              "median": 19.757267795453796,
+              "p90": 28.57710449891636,
+              "iqr": 9.834843580772834,
+              "n": 16384
+            },
+            "roughness_m": {
+              "median": null,
+              "p90": null,
+              "n": 0
+            }
+          },
+          "4.0": {
+            "effective_scale_m": 4.0,
+            "slope_deg": {
+              "median": 19.370602094159924,
+              "p90": 27.944063206873025,
+              "iqr": 9.597540145278789,
+              "n": 4096
+            },
+            "roughness_m": {
+              "median": 0.006954193115234375,
+              "p90": 0.023197174072265625,
+              "n": 4096
+            }
+          },
+          "8.0": {
+            "effective_scale_m": 8.0,
+            "slope_deg": {
+              "median": 18.3829756254365,
+              "p90": 26.440851147443336,
+              "iqr": 9.281009204796456,
+              "n": 1024
+            },
+            "roughness_m": {
+              "median": 0.05870332015627693,
+              "p90": 0.15056490797491529,
+              "n": 1024
+            }
+          },
+          "16.0": {
+            "effective_scale_m": 16.0,
+            "slope_deg": {
+              "median": 16.737085794958016,
+              "p90": 23.06560434979764,
+              "iqr": 9.549708728832433,
+              "n": 256
+            },
+            "roughness_m": {
+              "median": 0.2522787777590336,
+              "p90": 0.5264778203779921,
+              "n": 256
+            }
+          },
+          "32.0": {
+            "effective_scale_m": 32.0,
+            "slope_deg": {
+              "median": 13.880199895700311,
+              "p90": 19.849592865481196,
+              "iqr": 7.502987850618011,
+              "n": 64
+            },
+            "roughness_m": {
+              "median": 0.8835612069208783,
+              "p90": 1.4633589608000992,
+              "n": 64
+            }
+          },
+          "64.0": {
+            "effective_scale_m": 64.0,
+            "slope_deg": {
+              "median": 8.650610619553738,
+              "p90": 16.39635310007594,
+              "iqr": 5.501174497582894,
+              "n": 16
+            },
+            "roughness_m": {
+              "median": 2.00756507652028,
+              "p90": 2.9560344074357165,
+              "n": 16
+            }
+          }
+        }
+      }
+    },
+    "earth_negctrl": {
+      "info": {
+        "file": "data/raw/earth/avawatz_negctrl_3dep1m.tif",
+        "center_lat": 35.5069188,
+        "center_lon": -116.2847431,
+        "native_res_m": 1.0,
+        "grid_m": 2.0,
+        "size_m": 256.0,
+        "shape": [
+          128,
+          128
+        ],
+        "valid_fraction": 1.0,
+        "why": "Rugged bedrock mountain range centre (TopoZone/GNIS 35.5069188, -116.2847431; Wikipedia 35 30 25 N, 116 17 05 W). Chosen for maximal contrast with sand: steep rocky slopes, no dune field."
+      },
+      "fingerprint": {
+        "pixel_m": 2.0,
+        "valid_fraction": 1.0,
+        "scales": {
+          "2.0": {
+            "effective_scale_m": 2.0,
+            "slope_deg": {
+              "median": 33.26825479120206,
+              "p90": 43.131404547239946,
+              "iqr": 10.97893289669879,
+              "n": 16384
+            },
+            "roughness_m": {
+              "median": null,
+              "p90": null,
+              "n": 0
+            }
+          },
+          "4.0": {
+            "effective_scale_m": 4.0,
+            "slope_deg": {
+              "median": 32.86874890281199,
+              "p90": 42.57371461952292,
+              "iqr": 11.136005811887085,
+              "n": 4096
+            },
+            "roughness_m": {
+              "median": 0.0221405029296875,
+              "p90": 0.094757080078125,
+              "n": 4096
+            }
+          },
+          "8.0": {
+            "effective_scale_m": 8.0,
+            "slope_deg": {
+              "median": 32.16811571163153,
+              "p90": 41.77644424465581,
+              "iqr": 11.232508050502528,
+              "n": 1024
+            },
+            "roughness_m": {
+              "median": 0.14106179390981144,
+              "p90": 0.45226364464189944,
+              "n": 1024
+            }
+          },
+          "16.0": {
+            "effective_scale_m": 16.0,
+            "slope_deg": {
+              "median": 30.62898383099993,
+              "p90": 40.596154191528115,
+              "iqr": 12.294977921603724,
+              "n": 256
+            },
+            "roughness_m": {
+              "median": 0.4132455485866689,
+              "p90": 1.0951811425071922,
+              "n": 256
+            }
+          },
+          "32.0": {
+            "effective_scale_m": 32.0,
+            "slope_deg": {
+              "median": 28.9486363868457,
+              "p90": 39.27773143616553,
+              "iqr": 12.957905731051625,
+              "n": 64
+            },
+            "roughness_m": {
+              "median": 1.2039343526853044,
+              "p90": 2.1948396873173737,
+              "n": 64
+            }
+          },
+          "64.0": {
+            "effective_scale_m": 64.0,
+            "slope_deg": {
+              "median": 27.275003524566696,
+              "p90": 34.980910100472876,
+              "iqr": 12.624805691535695,
+              "n": 16
+            },
+            "roughness_m": {
+              "median": 2.719055056455349,
+              "p90": 4.18381048107077,
+              "n": 16
+            }
+          }
+        }
+      }
+    }
+  },
+  "distance_metric": "mean over features of |a-b|/(|a|+|b|); 0 = identical, 1 = maximally different",
+  "distances": {
+    "mars_sand__mars_nominal": 0.14756843451043936,
+    "mars_sand__earth_dumont": 0.5744166343750932,
+    "mars_sand__earth_negctrl": 0.7193551399903954,
+    "mars_nominal__earth_dumont": 0.5084381095770939,
+    "mars_nominal__earth_negctrl": 0.6348270080541184,
+    "earth_dumont__earth_negctrl": 0.26260944582101414
+  }
+}

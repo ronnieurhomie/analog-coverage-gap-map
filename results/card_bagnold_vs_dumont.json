@@ -1,0 +1,225 @@
+{
+  "rule": "relative_difference = |a-b| / max(|a|,|b|); 'similar' if <= 0.25, else 'different'",
+  "bagnold_patch": {
+    "lat": -4.682895,
+    "lon": 137.366378,
+    "masked_valid_fraction_2m": 0.571,
+    "masking": "2 m cells with < 75% usable (sand AND NOT facet) excluded"
+  },
+  "dumont_patch": {
+    "lat": 35.67863,
+    "lon": -116.23156,
+    "valid_fraction_2m": 1.0
+  },
+  "n_features": 23,
+  "n_similar": 2,
+  "features": [
+    {
+      "feature": "slope_median_2m",
+      "unit": "deg",
+      "bagnold_masked": 7.4383,
+      "dumont": 19.7573,
+      "difference_bagnold_minus_dumont": -12.319,
+      "relative_difference": 0.624,
+      "label": "different"
+    },
+    {
+      "feature": "slope_p90_2m",
+      "unit": "deg",
+      "bagnold_masked": 12.6793,
+      "dumont": 28.5771,
+      "difference_bagnold_minus_dumont": -15.8978,
+      "relative_difference": 0.556,
+      "label": "different"
+    },
+    {
+      "feature": "slope_iqr_2m",
+      "unit": "deg",
+      "bagnold_masked": 4.8422,
+      "dumont": 9.8348,
+      "difference_bagnold_minus_dumont": -4.9926,
+      "relative_difference": 0.508,
+      "label": "different"
+    },
+    {
+      "feature": "slope_median_4m",
+      "unit": "deg",
+      "bagnold_masked": 7.1013,
+      "dumont": 19.3706,
+      "difference_bagnold_minus_dumont": -12.2693,
+      "relative_difference": 0.633,
+      "label": "different"
+    },
+    {
+      "feature": "slope_p90_4m",
+      "unit": "deg",
+      "bagnold_masked": 11.7192,
+      "dumont": 27.9441,
+      "difference_bagnold_minus_dumont": -16.2248,
+      "relative_difference": 0.581,
+      "label": "different"
+    },
+    {
+      "feature": "slope_iqr_4m",
+      "unit": "deg",
+      "bagnold_masked": 4.2229,
+      "dumont": 9.5975,
+      "difference_bagnold_minus_dumont": -5.3746,
+      "relative_difference": 0.56,
+      "label": "different"
+    },
+    {
+      "feature": "roughness_median_4m",
+      "unit": "m",
+      "bagnold_masked": 0.0083,
+      "dumont": 0.007,
+      "difference_bagnold_minus_dumont": 0.0013,
+      "relative_difference": 0.162,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_median_8m",
+      "unit": "deg",
+      "bagnold_masked": 6.8734,
+      "dumont": 18.383,
+      "difference_bagnold_minus_dumont": -11.5095,
+      "relative_difference": 0.626,
+      "label": "different"
+    },
+    {
+      "feature": "slope_p90_8m",
+      "unit": "deg",
+      "bagnold_masked": 11.1952,
+      "dumont": 26.4409,
+      "difference_bagnold_minus_dumont": -15.2457,
+      "relative_difference": 0.577,
+      "label": "different"
+    },
+    {
+      "feature": "slope_iqr_8m",
+      "unit": "deg",
+      "bagnold_masked": 3.5704,
+      "dumont": 9.281,
+      "difference_bagnold_minus_dumont": -5.7106,
+      "relative_difference": 0.615,
+      "label": "different"
+    },
+    {
+      "feature": "roughness_median_8m",
+      "unit": "m",
+      "bagnold_masked": 0.0481,
+      "dumont": 0.0587,
+      "difference_bagnold_minus_dumont": -0.0106,
+      "relative_difference": 0.181,
+      "label": "similar"
+    },
+    {
+      "feature": "slope_median_16m",
+      "unit": "deg",
+      "bagnold_masked": 6.0019,
+      "dumont": 16.7371,
+      "difference_bagnold_minus_dumont": -10.7352,
+      "relative_difference": 0.641,
+      "label": "different"
+    },
+    {
+      "feature": "slope_p90_16m",
+      "unit": "deg",
+      "bagnold_masked": 8.754,
+      "dumont": 23.0656,
+      "difference_bagnold_minus_dumont": -14.3116,
+      "relative_difference": 0.62,
+      "label": "different"
+    },
+    {
+      "feature": "slope_iqr_16m",
+      "unit": "deg",
+      "bagnold_masked": 3.3702,
+      "dumont": 9.5497,
+      "difference_bagnold_minus_dumont": -6.1795,
+      "relative_difference": 0.647,
+      "label": "different"
+    },
+    {
+      "feature": "roughness_median_16m",
+      "unit": "m",
+      "bagnold_masked": 0.1264,
+      "dumont": 0.2523,
+      "difference_bagnold_minus_dumont": -0.1259,
+      "relative_difference": 0.499,
+      "label": "different"
+    },
+    {
+      "feature": "slope_median_32m",
+      "unit": "deg",
+      "bagnold_masked": 4.2816,
+      "dumont": 13.8802,
+      "difference_bagnold_minus_dumont": -9.5986,
+      "relative_difference": 0.692,
+      "label": "different"
+    },
+    {
+      "feature": "slope_p90_32m",
+      "unit": "deg",
+      "bagnold_masked": 6.4321,
+      "dumont": 19.8496,
+      "difference_bagnold_minus_dumont": -13.4175,
+      "relative_difference": 0.676,
+      "label": "different"
+    },
+    {
+      "feature": "slope_iqr_32m",
+      "unit": "deg",
+      "bagnold_masked": 2.3956,
+      "dumont": 7.503,
+      "difference_bagnold_minus_dumont": -5.1074,
+      "relative_difference": 0.681,
+      "label": "different"
+    },
+    {
+      "feature": "roughness_median_32m",
+      "unit": "m",
+      "bagnold_masked": 0.2824,
+      "dumont": 0.8836,
+      "difference_bagnold_minus_dumont": -0.6011,
+      "relative_difference": 0.68,
+      "label": "different"
+    },
+    {
+      "feature": "slope_median_64m",
+      "unit": "deg",
+      "bagnold_masked": 4.196,
+      "dumont": 8.6506,
+      "difference_bagnold_minus_dumont": -4.4546,
+      "relative_difference": 0.515,
+      "label": "different"
+    },
+    {
+      "feature": "slope_p90_64m",
+      "unit": "deg",
+      "bagnold_masked": 5.2205,
+      "dumont": 16.3964,
+      "difference_bagnold_minus_dumont": -11.1759,
+      "relative_difference": 0.682,
+      "label": "different"
+    },
+    {
+      "feature": "slope_iqr_64m",
+      "unit": "deg",
+      "bagnold_masked": 0.7002,
+      "dumont": 5.5012,
+      "difference_bagnold_minus_dumont": -4.8009,
+      "relative_difference": 0.873,
+      "label": "different"
+    },
+    {
+      "feature": "roughness_median_64m",
+      "unit": "m",
+      "bagnold_masked": 0.7418,
+      "dumont": 2.0076,
+      "difference_bagnold_minus_dumont": -1.2657,
+      "relative_difference": 0.63,
+      "label": "different"
+    }
+  ]
+}

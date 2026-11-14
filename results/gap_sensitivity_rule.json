@@ -1,0 +1,7 @@
+{
+  "label": "POST-HOC SENSITIVITY CHECK (not pre-registered; not the headline)",
+  "requested_by": "author, 2026-11-14, after the primary selection was registered and before any Moon-to-Earth distance was computed",
+  "written_at": "2026-11-14T21:54:34",
+  "rule": "Recompute X% using only known sites NOT flagged 'flat/water-like' (>50% of 30 m cells with slope < 0.1 deg in the COP30 patch). Same threshold T, same pooled z-score normalisation as the primary result; only the set of sites a Moon patch may match changes.",
+  "not_applied": "'Buried' status: the Earth Impact Database (passc.net), the source of the USGS layer's crater records, currently redirects to a parked-domain page, so no authoritative per-crater exposed/buried attribute was available tonight. No buried exclusions were made by guesswork."
+}

@@ -1,0 +1,13 @@
+numpy
+scipy
+pandas
+rasterio
+pyproj
+shapely
+matplotlib
+requests
+earthaccess
+pytest
+torch
+transformers
+pyshp

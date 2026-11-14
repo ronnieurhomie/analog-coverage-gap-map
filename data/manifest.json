@@ -1,0 +1,864 @@
+{
+  "datasets": [
+    {
+      "id": "mars_gale_hirise_dtm",
+      "file": "data/raw/mars/DTEEC_040770_1755_039280_1755_U01.IMG",
+      "source": "NASA PDS Imaging Node / HiRISE (University of Arizona), data set MRO-M-HIRISE-5-DTM-V1.0",
+      "product_id": "DTEEC_040770_1755_039280_1755_U01",
+      "stereo_pair": [
+        "ESP_040770_1755",
+        "ESP_039280_1755"
+      ],
+      "pds_rationale": "Gale Crater dunes and Curiosity rover",
+      "url": "https://hirise-pds.lpl.arizona.edu/PDS/DTM/ESP/ORB_040700_040799/ESP_040770_1755_ESP_039280_1755/DTEEC_040770_1755_039280_1755_U01.IMG",
+      "instrument": "MRO HiRISE stereo (DTM produced by USGS, version U01)",
+      "units": "metres, elevation relative to the Mars areoid (PDS label VALID_MINIMUM/MAXIMUM)",
+      "access_date": "2026-11-14",
+      "license": "NASA PDS data, public. Cite: McEwen et al. (2007) JGR 112, E05S02; HiRISE DTM via PDS (MRO-M-HIRISE-5-DTM-V1.0).",
+      "crs": "PROJCS[\"EQUIRECTANGULAR MARS\",GEOGCS[\"GCS_MARS\",DATUM[\"D_MARS\",SPHEROID[\"MARS_localRadius\",3396190,0]],PRIMEM[\"Reference_Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Equirectangular\"],PARAMETER[\"standard_parallel_1\",0],PARAMETER[\"central_meridian\",137.39],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "resolution_m": 1.011763,
+      "shape_rows_cols": [
+        12238,
+        6300
+      ],
+      "nodata": -3.4028226550889045e+38,
+      "dtype": "float32",
+      "bytes": 308422800,
+      "sha256": "407daf9f10229b892c811af49dfe3ef673f69981c43a2679bcb2a73677ef50cb"
+    },
+    {
+      "id": "mars_gale_hirise_ortho",
+      "file": "data/raw/mars/ESP_040770_1755_RED_C_01_ORTHO.JP2",
+      "source": "NASA PDS / HiRISE, orthoimage distributed with DTM DTEEC_040770_1755_039280_1755_U01",
+      "product_id": "ESP_040770_1755_RED_C_01_ORTHO",
+      "url": "https://hirise-pds.lpl.arizona.edu/PDS/DTM/ESP/ORB_040700_040799/ESP_040770_1755_ESP_039280_1755/ESP_040770_1755_RED_C_01_ORTHO.JP2",
+      "instrument": "MRO HiRISE RED",
+      "units": "8-bit DN (visual check only, not used in fingerprints)",
+      "used_for": "Visual check of the Mars patch locations",
+      "access_date": "2026-11-14",
+      "license": "NASA PDS data, public. Cite: McEwen et al. (2007) JGR 112, E05S02; HiRISE DTM via PDS (MRO-M-HIRISE-5-DTM-V1.0).",
+      "crs": "PROJCS[\"Equirectangular MARS\",GEOGCS[\"GCS_MARS\",DATUM[\"unnamed\",SPHEROID[\"unnamed\",3396190,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Equirectangular\"],PARAMETER[\"standard_parallel_1\",0],PARAMETER[\"central_meridian\",137.39],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "resolution_m": 1.011763,
+      "shape_rows_cols": [
+        12238,
+        6300
+      ],
+      "nodata": null,
+      "dtype": "uint8",
+      "bytes": 24772092,
+      "sha256": "f25a1a8caab875cd84250a6e79fb2ea082eb3f01f6db2ab9791be25f05649a2a"
+    },
+    {
+      "file": "data/raw/earth/avawatz_negctrl_3dep1m.tif",
+      "source": "USGS 3D Elevation Program (3DEP) 1 m DEM, read from the USGS public S3 staged products",
+      "product_ids": [
+        "USGS 1 Meter 11 x56y393 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x56y394 CA_FEMAR9Southeast_D24"
+      ],
+      "urls": [
+        "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1m/Projects/CA_FEMAR9Southeast_D24/TIFF/USGS_1M_11_x56y393_CA_FEMAR9Southeast_D24.tif",
+        "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1m/Projects/CA_FEMAR9Southeast_D24/TIFF/USGS_1M_11_x56y394_CA_FEMAR9Southeast_D24.tif"
+      ],
+      "publication_dates": [
+        "2026-06-08"
+      ],
+      "instrument": "Airborne lidar (3DEP)",
+      "resolution_m": 1.0,
+      "crs": "EPSG:26911",
+      "units": "metres (elevation, NAVD88 per USGS 3DEP 1 m product spec)",
+      "nodata": -999999.0,
+      "aoi": {
+        "center_lat": 35.5069188,
+        "center_lon": -116.2847431,
+        "width_m": 1000.0,
+        "height_m": 1000.0,
+        "utm_bounds": [
+          564364,
+          3928996,
+          565364,
+          3929996
+        ],
+        "lonlat_bounds": [
+          -116.290294,
+          35.502379,
+          -116.279188,
+          35.51146
+        ]
+      },
+      "valid_fraction": 1.0,
+      "access_date": "2026-11-14",
+      "license": "Public domain (U.S. Government work). Cite: U.S. Geological Survey, 3D Elevation Program 1-Meter Resolution Digital Elevation Model.",
+      "note": "OpenTopography USGS1m API refused this key (academic-only), so tiles were read directly from USGS S3.",
+      "shape_rows_cols": [
+        1000,
+        1000
+      ],
+      "dtype": "float32",
+      "bytes": 3040627,
+      "sha256": "7a283373d2be801aa69ab2a35b84d3a40f31a4b94a31d8cdc6f6a8d143da4ce6",
+      "id": "earth_avawatz_negctrl"
+    },
+    {
+      "file": "data/raw/earth/mojave_dumont_box_3dep1m.tif",
+      "source": "USGS 3D Elevation Program (3DEP) 1 m DEM, read from the USGS public S3 staged products",
+      "product_ids": [
+        "USGS 1 Meter 11 x56y395 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x56y396 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x57y395 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x57y396 CA_FEMAR9Southeast_D24"
+      ],
+      "urls": [
+        "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1m/Projects/CA_FEMAR9Southeast_D24/TIFF/USGS_1M_11_x56y395_CA_FEMAR9Southeast_D24.tif",
+        "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1m/Projects/CA_FEMAR9Southeast_D24/TIFF/USGS_1M_11_x56y396_CA_FEMAR9Southeast_D24.tif",
+        "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1m/Projects/CA_FEMAR9Southeast_D24/TIFF/USGS_1M_11_x57y395_CA_FEMAR9Southeast_D24.tif",
+        "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1m/Projects/CA_FEMAR9Southeast_D24/TIFF/USGS_1M_11_x57y396_CA_FEMAR9Southeast_D24.tif"
+      ],
+      "publication_dates": [
+        "2026-06-08"
+      ],
+      "instrument": "Airborne lidar (3DEP)",
+      "resolution_m": 1.0,
+      "crs": "EPSG:26911",
+      "units": "metres (elevation, NAVD88 per USGS 3DEP 1 m product spec)",
+      "nodata": -999999.0,
+      "aoi": {
+        "center_lat": 35.67863,
+        "center_lon": -116.23156,
+        "width_m": 8000.0,
+        "height_m": 7500.0,
+        "utm_bounds": [
+          565538,
+          3944827,
+          573538,
+          3952327
+        ],
+        "lonlat_bounds": [
+          -116.276067,
+          35.644534,
+          -116.187021,
+          35.712715
+        ]
+      },
+      "valid_fraction": 1.0,
+      "access_date": "2026-11-14",
+      "license": "Public domain (U.S. Government work). Cite: U.S. Geological Survey, 3D Elevation Program 1-Meter Resolution Digital Elevation Model.",
+      "note": "OpenTopography USGS1m API refused this key (academic-only), so tiles were read directly from USGS S3.",
+      "shape_rows_cols": [
+        7500,
+        8000
+      ],
+      "dtype": "float32",
+      "bytes": 168321971,
+      "sha256": "8eac4b162fb684559c16e0d703ad6b8d3f179930a1fab4568f2fd353bc42e06e",
+      "id": "earth_mojave_dumont_box"
+    },
+    {
+      "id": "earth_cop30_gate2_area",
+      "file": "data/raw/earth_cop30/cop30_gate2_area.tif",
+      "source": "Copernicus DEM GLO-30 via OpenTopography globaldem API (demtype=COP30)",
+      "url": "https://portal.opentopography.org/API/globaldem?demtype=COP30&south=35.20&north=36.00&west=-116.75&east=-115.75&outputFormat=GTiff",
+      "instrument": "TanDEM-X InSAR (Copernicus DEM, surface model)",
+      "units": "metres (EGM2008 heights per Copernicus DEM spec)",
+      "access_date": "2026-11-14",
+      "license": "Copernicus DEM GLO-30: (c) DLR e.V. 2010-2014 and (c) Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA; free licence. Cite OpenTopography doi:10.5069/G9028PQB.",
+      "note": "resolution_m below is in degrees (1 arc-second), CRS EPSG:4326",
+      "crs": "EPSG:4326",
+      "resolution_m": 0.000278,
+      "shape_rows_cols": [
+        2880,
+        3600
+      ],
+      "nodata": null,
+      "dtype": "float32",
+      "bytes": 42950459,
+      "sha256": "756a9185d4577b5648c56dd86bf8ea5f82cbf53a61725e997c8568abdda43e57"
+    },
+    {
+      "id": "earth_gate2_candidates_3dep1m",
+      "files": "data/processed/candidates/*.npy (256 m patches on 2 m grid, float32, NaN nodata)",
+      "source": "USGS 3DEP 1 m DEM, windowed reads from USGS public S3 (same as earth_mojave_dumont_box)",
+      "product_ids": [
+        "USGS 1 Meter 11 x53y391 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x53y392 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x53y393 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x53y394 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x53y395 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x53y396 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x53y397 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x53y398 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x54y391 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x54y392 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x54y393 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x54y394 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x54y395 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x54y396 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x54y397 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x54y398 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x55y391 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x55y392 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x55y393 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x55y394 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x55y395 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x55y396 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x55y397 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x55y398 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x56y391 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x56y392 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x56y393 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x56y394 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x56y395 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x56y396 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x56y397 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x56y398 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x57y392 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x57y393 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x57y394 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x57y395 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x57y396 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x57y397 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x57y398 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x58y392 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x58y393 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x58y394 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x58y395 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x58y396 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x58y397 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x58y398 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x59y391 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x59y392 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x59y393 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x59y394 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x59y395 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x59y396 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x59y397 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x59y398 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x60y391 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x60y392 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x60y393 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x60y394 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x60y395 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x60y396 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x60y397 CA_FEMAR9Southeast_D24",
+        "USGS 1 Meter 11 x60y398 CA_FEMAR9Southeast_D24"
+      ],
+      "n_patches": 64,
+      "instrument": "Airborne lidar (3DEP)",
+      "resolution_m": 1.0,
+      "resampled_to_m": 2.0,
+      "crs": "EPSG:26911",
+      "nodata": "NaN after resampling (source -999999)",
+      "units": "metres",
+      "access_date": "2026-11-14",
+      "license": "Public domain (U.S. Government work). Cite: U.S. Geological Survey, 3D Elevation Program 1-Meter Resolution DEM."
+    },
+    {
+      "id": "earth_nasadem_n35w117",
+      "file": "data/raw/nasadem/NASADEM_HGT_n35w117.zip",
+      "bytes": 12123726,
+      "sha256": "457cbf6cdb768adfbeba8d4c1dde727f2b232bd646a6634afce1396f078c0024",
+      "source": "NASA LP DAAC via earthaccess (Earthdata Login)",
+      "product_id": "NASADEM_HGT_n35w117",
+      "collection": "NASADEM_HGT v001",
+      "instrument": "SRTM C-band InSAR (reprocessed)",
+      "resolution_m": "1 arc-second (~30 m)",
+      "crs": "EPSG:4326 (WGS84 lat/lon)",
+      "units": "metres (EGM96 heights per NASADEM user guide)",
+      "nodata": "see NASADEM user guide (.hgt is 16-bit signed)",
+      "access_date": "2026-11-14",
+      "license": "NASA data, no restrictions. Cite: NASA JPL (2020). NASADEM Merged DEM Global 1 arc second V001. doi:10.5067/MEaSUREs/NASADEM/NASADEM_HGT.001",
+      "status": "Gate 3 prep: download check only, not used yet"
+    },
+    {
+      "id": "earth_v1_positives_3dep1m",
+      "files": "data/processed/v1_positives/*.npy (256 m, 2 m grid)",
+      "source": "USGS 3DEP 1 m DEM, windowed reads from USGS public S3",
+      "positives": {
+        "dumont_2": {
+          "lat": 35.680852,
+          "lon": -116.226566,
+          "source": "Offset (+0.45 km E, +0.25 km N) from GNIS Dumont Dunes centre; on dune per 3DEP hillshade and USGS imagery (results/v1_dumont_extra_check.png)"
+        },
+        "dumont_3": {
+          "lat": 35.676675,
+          "lon": -116.235999,
+          "source": "Offset (-0.40 km E, -0.22 km N) from GNIS Dumont Dunes centre; moved from (-0.10,-0.45) before any computation because that box hung off the dune margin; on dune per hillshade"
+        },
+        "kelso": {
+          "lat": 34.9035,
+          "lon": -115.71805,
+          "source": "Kelso Dunes, TopoQuest GNIS-derived summit record (NAD83) https://topoquest.com/place-detail.php?id=1660830 ; Wikipedia 34 54 13 N 115 43 05 W agrees"
+        },
+        "mesquite": {
+          "lat": 36.612,
+          "lon": -117.11517,
+          "source": "Mesquite Flat Sand Dunes, TopoZone https://www.topozone.com/california/inyo-ca/flat/mesquite-flat-4/ ; Hikespeak trailhead 36.6062,-117.115 within 1 km"
+        },
+        "eureka": {
+          "lat": 37.09579,
+          "lon": -117.67534,
+          "source": "Eureka Dunes, TopoQuest summit record (NAD83) https://topoquest.com/place-detail.php?id=1667196"
+        }
+      },
+      "resolution_m": 1.0,
+      "resampled_to_m": 2.0,
+      "crs": "EPSG:26911",
+      "access_date": "2026-11-14",
+      "license": "Public domain (U.S. Government work)."
+    },
+    {
+      "id": "ref_usgs_imagery_basemap",
+      "kind": "reference (visual check only)",
+      "files": "data/raw/reference/naip/*.png",
+      "source": "USGS The National Map, USGSImageryOnly MapServer export",
+      "url": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer",
+      "access_date": "2026-11-14",
+      "license": "Public domain (USGS)"
+    },
+    {
+      "id": "moon_lola_ldem_80s_20m",
+      "file": "data/raw/moon/ldem_80s_20m.img",
+      "label": "data/raw/moon/ldem_80s_20m.lbl",
+      "bytes": 1848320000,
+      "sha256": "db44c3b2444acff1af528301c8a6988934b490249aceff0ac55668bdf3eab365",
+      "source": "NASA PDS Geosciences Node, LRO LOLA gridded data record (DATA_SET_ID LRO-L-LOLA-4-GDR-V1.0)",
+      "product_id": "LDEM_80S_20M",
+      "product_version": "V2.0 (label), created 2017-06-15",
+      "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/img/ldem_80s_20m.img",
+      "instrument": "LRO Lunar Orbiter Laser Altimeter",
+      "resolution_m": 20.0,
+      "crs": "Polar stereographic, lat of origin -90, central meridian 0, sphere R=1737.4 km",
+      "units": "int16 DN; height (m) = DN * 0.5 relative to 1737.4 km sphere (label SCALING_FACTOR 0.5, OFFSET 1737400)",
+      "nodata": -32768,
+      "shape_rows_cols": [
+        30400,
+        30400
+      ],
+      "coverage": "80-90 S",
+      "quantisation": "0.5 m vertical step = 1.43 deg slope over one 20 m posting; ~0.48 deg over a 60 m central difference",
+      "access_date": "2026-11-14",
+      "license": "NASA PDS, public. Cite: Smith, D.E. et al. (2010) GRL 37, L18204 (LOLA); LRO LOLA GDR via PDS Geosciences Node."
+    },
+    {
+      "id": "earth_cop30_known_sites",
+      "files": "data/raw/earth_cop30/sites/ks??_cop30.tif",
+      "source": "Copernicus DEM GLO-30 via OpenTopography globaldem API (demtype=COP30), one request per site",
+      "per_site": {
+        "ks00": {
+          "file": "data/raw/earth_cop30/sites/ks00_cop30.tif",
+          "status": "exists"
+        },
+        "ks01": {
+          "file": "data/raw/earth_cop30/sites/ks01_cop30.tif",
+          "status": "exists"
+        },
+        "ks02": {
+          "file": "data/raw/earth_cop30/sites/ks02_cop30.tif",
+          "status": "exists"
+        },
+        "ks03": {
+          "file": "data/raw/earth_cop30/sites/ks03_cop30.tif",
+          "status": "exists"
+        },
+        "ks04": {
+          "file": "data/raw/earth_cop30/sites/ks04_cop30.tif",
+          "status": "exists"
+        },
+        "ks05": {
+          "file": "data/raw/earth_cop30/sites/ks05_cop30.tif",
+          "status": "exists"
+        },
+        "ks06": {
+          "file": "data/raw/earth_cop30/sites/ks06_cop30.tif",
+          "status": "exists"
+        },
+        "ks07": {
+          "file": "data/raw/earth_cop30/sites/ks07_cop30.tif",
+          "status": "exists"
+        },
+        "ks08": {
+          "file": "data/raw/earth_cop30/sites/ks08_cop30.tif",
+          "status": "exists"
+        },
+        "ks09": {
+          "file": "data/raw/earth_cop30/sites/ks09_cop30.tif",
+          "status": "ok",
+          "bytes": 201367,
+          "bbox": [
+            135.0021518432998,
+            -13.496699999999999,
+            135.06384815670017,
+            -13.4367
+          ]
+        },
+        "ks10": {
+          "file": "data/raw/earth_cop30/sites/ks10_cop30.tif",
+          "status": "ok",
+          "bytes": 257508,
+          "bbox": [
+            -76.67533696012592,
+            44.4367,
+            -76.5912630398741,
+            44.496700000000004
+          ]
+        },
+        "ks11": {
+          "file": "data/raw/earth_cop30/sites/ks11_cop30.tif",
+          "status": "ok",
+          "bytes": 336290,
+          "bbox": [
+            27.360140199601787,
+            57.9367,
+            27.47325980039821,
+            57.996700000000004
+          ]
+        },
+        "ks12": {
+          "file": "data/raw/earth_cop30/sites/ks12_cop30.tif",
+          "status": "ok",
+          "bytes": 57106,
+          "bbox": [
+            -66.67243296543076,
+            57.4033,
+            -66.56096703456923,
+            57.463300000000004
+          ]
+        },
+        "ks13": {
+          "file": "data/raw/earth_cop30/sites/ks13_cop30.tif",
+          "status": "ok",
+          "bytes": 213629,
+          "bbox": [
+            134.01928345293965,
+            -12.43,
+            134.08071654706038,
+            -12.370000000000001
+          ]
+        },
+        "ks14": {
+          "file": "data/raw/earth_cop30/sites/ks14_cop30.tif",
+          "status": "ok",
+          "bytes": 210022,
+          "bbox": [
+            14.484107268008147,
+            62.8867,
+            14.615892731991854,
+            62.9467
+          ]
+        },
+        "ks15": {
+          "status": "HTTP 204",
+          "body": ""
+        },
+        "ks16": {
+          "file": "data/raw/earth_cop30/sites/ks16_cop30.tif",
+          "status": "ok",
+          "bytes": 203215,
+          "bbox": [
+            128.38553835558716,
+            -17.5633,
+            128.44846164441284,
+            -17.5033
+          ]
+        },
+        "ks17": {
+          "file": "data/raw/earth_cop30/sites/ks17_cop30.tif",
+          "status": "ok",
+          "bytes": 467589,
+          "bbox": [
+            111.08770771410575,
+            71.62,
+            111.27829228589427,
+            71.68
+          ]
+        },
+        "ks18": {
+          "file": "data/raw/earth_cop30/sites/ks18_cop30.tif",
+          "status": "ok",
+          "bytes": 234829,
+          "bbox": [
+            -74.84639887094527,
+            49.6867,
+            -74.75360112905473,
+            49.746700000000004
+          ]
+        },
+        "ks19": {
+          "file": "data/raw/earth_cop30/sites/ks19_cop30.tif",
+          "status": "ok",
+          "bytes": 281457,
+          "bbox": [
+            0.8902758456214135,
+            45.8033,
+            0.9763901543785865,
+            45.8633
+          ]
+        },
+        "ks20": {
+          "file": "data/raw/earth_cop30/sites/ks20_cop30.tif",
+          "status": "ok",
+          "bytes": 294315,
+          "bbox": [
+            137.82357727057598,
+            46.269999999999996,
+            137.910422729424,
+            46.33
+          ]
+        },
+        "ks21": {
+          "file": "data/raw/earth_cop30/sites/ks21_cop30.tif",
+          "status": "ok",
+          "bytes": 304298,
+          "bbox": [
+            -117.69210883233534,
+            59.47,
+            -117.57389116766466,
+            59.53
+          ]
+        },
+        "ks22": {
+          "file": "data/raw/earth_cop30/sites/ks22_cop30.tif",
+          "status": "ok",
+          "bytes": 255691,
+          "bbox": [
+            -81.22696256048648,
+            46.57,
+            -81.13963743951352,
+            46.63
+          ]
+        },
+        "ks23": {
+          "file": "data/raw/earth_cop30/sites/ks23_cop30.tif",
+          "status": "ok",
+          "bytes": 56170,
+          "bbox": [
+            28.151510921273918,
+            62.57,
+            28.28188907872608,
+            62.63
+          ]
+        },
+        "ks24": {
+          "file": "data/raw/earth_cop30/sites/ks24_cop30.tif",
+          "status": "ok",
+          "bytes": 254364,
+          "bbox": [
+            109.60821281384007,
+            44.0867,
+            109.69178718615994,
+            44.1467
+          ]
+        },
+        "ks25": {
+          "file": "data/raw/earth_cop30/sites/ks25_cop30.tif",
+          "status": "ok",
+          "bytes": 207179,
+          "bbox": [
+            3.997429686648666,
+            33.286699999999996,
+            4.069230313351335,
+            33.3467
+          ]
+        },
+        "ks26": {
+          "file": "data/raw/earth_cop30/sites/ks26_cop30.tif",
+          "status": "ok",
+          "bytes": 209101,
+          "bbox": [
+            142.79929516406804,
+            -27.146700000000003,
+            142.86670483593196,
+            -27.0867
+          ]
+        },
+        "ks27": {
+          "file": "data/raw/earth_cop30/sites/ks27_cop30.tif",
+          "status": "ok",
+          "bytes": 185782,
+          "bbox": [
+            27.466330212870968,
+            -27.03,
+            27.533669787129032,
+            -26.97
+          ]
+        },
+        "ks28": {
+          "file": "data/raw/earth_cop30/sites/ks28_cop30.tif",
+          "status": "ok",
+          "bytes": 195283,
+          "bbox": [
+            50.43445641278457,
+            21.47,
+            50.498943587215436,
+            21.53
+          ]
+        },
+        "ks29": {
+          "file": "data/raw/earth_cop30/sites/ks29_cop30.tif",
+          "status": "ok",
+          "bytes": 190461,
+          "bbox": [
+            127.76823942716337,
+            -19.1967,
+            127.83176057283663,
+            -19.136699999999998
+          ]
+        }
+      },
+      "resolution_m": "1 arc-second",
+      "crs": "EPSG:4326",
+      "units": "metres",
+      "access_date": "2026-11-14",
+      "license": "Copernicus DEM GLO-30: (c) DLR e.V. 2010-2014 and (c) Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the EU and ESA."
+    },
+    {
+      "id": "earth_nasadem_known_sites",
+      "files": "data/raw/nasadem/NASADEM_HGT_*.zip",
+      "source": "NASA LP DAAC NASADEM_HGT v001 via earthaccess",
+      "per_site": {
+        "ks00": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n35w112",
+          "file": "data/raw/nasadem/NASADEM_HGT_n35w112.zip",
+          "bytes": 10464865
+        },
+        "ks01": {
+          "status": "outside NASADEM coverage (60N-56S)"
+        },
+        "ks02": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n31w006",
+          "file": "data/raw/nasadem/NASADEM_HGT_n31w006.zip",
+          "bytes": 14228146
+        },
+        "ks03": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_s21e134",
+          "file": "data/raw/nasadem/NASADEM_HGT_s21e134.zip",
+          "bytes": 7766672
+        },
+        "ks04": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_s23e135",
+          "file": "data/raw/nasadem/NASADEM_HGT_s23e135.zip",
+          "bytes": 7294988
+        },
+        "ks05": {
+          "status": "outside NASADEM coverage (60N-56S)"
+        },
+        "ks06": {
+          "status": "outside NASADEM coverage (60N-56S)"
+        },
+        "ks07": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n50w107",
+          "file": "data/raw/nasadem/NASADEM_HGT_n50w107.zip",
+          "bytes": 5211620
+        },
+        "ks08": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n43w090",
+          "file": "data/raw/nasadem/NASADEM_HGT_n43w090.zip",
+          "bytes": 7186198
+        },
+        "ks09": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_s14e135",
+          "file": "data/raw/nasadem/NASADEM_HGT_s14e135.zip",
+          "bytes": 7682661
+        },
+        "ks10": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n44w077",
+          "file": "data/raw/nasadem/NASADEM_HGT_n44w077.zip",
+          "bytes": 6084305
+        },
+        "ks11": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n57e027",
+          "file": "data/raw/nasadem/NASADEM_HGT_n57e027.zip",
+          "bytes": 5081236
+        },
+        "ks12": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n57w067",
+          "file": "data/raw/nasadem/NASADEM_HGT_n57w067.zip",
+          "bytes": 5618351
+        },
+        "ks13": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_s13e134",
+          "file": "data/raw/nasadem/NASADEM_HGT_s13e134.zip",
+          "bytes": 7374671
+        },
+        "ks14": {
+          "status": "outside NASADEM coverage (60N-56S)"
+        },
+        "ks15": {
+          "status": "outside NASADEM coverage (60N-56S)"
+        },
+        "ks16": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_s18e128",
+          "file": "data/raw/nasadem/NASADEM_HGT_s18e128.zip",
+          "bytes": 9766836
+        },
+        "ks17": {
+          "status": "outside NASADEM coverage (60N-56S)"
+        },
+        "ks18": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n49w075",
+          "file": "data/raw/nasadem/NASADEM_HGT_n49w075.zip",
+          "bytes": 5891632
+        },
+        "ks19": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n45e000",
+          "file": "data/raw/nasadem/NASADEM_HGT_n45e000.zip",
+          "bytes": 7980392
+        },
+        "ks20": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n46e137",
+          "file": "data/raw/nasadem/NASADEM_HGT_n46e137.zip",
+          "bytes": 13021893
+        },
+        "ks21": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n59w118",
+          "file": "data/raw/nasadem/NASADEM_HGT_n59w118.zip",
+          "bytes": 4389628
+        },
+        "ks22": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n46w082",
+          "file": "data/raw/nasadem/NASADEM_HGT_n46w082.zip",
+          "bytes": 7579428
+        },
+        "ks23": {
+          "status": "outside NASADEM coverage (60N-56S)"
+        },
+        "ks24": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n44e109",
+          "file": "data/raw/nasadem/NASADEM_HGT_n44e109.zip",
+          "bytes": 6570176
+        },
+        "ks25": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n33e004",
+          "file": "data/raw/nasadem/NASADEM_HGT_n33e004.zip",
+          "bytes": 7851562
+        },
+        "ks26": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_s28e142",
+          "file": "data/raw/nasadem/NASADEM_HGT_s28e142.zip",
+          "bytes": 6576667
+        },
+        "ks27": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_s28e027",
+          "file": "data/raw/nasadem/NASADEM_HGT_s28e027.zip",
+          "bytes": 7592573
+        },
+        "ks28": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_n21e050",
+          "file": "data/raw/nasadem/NASADEM_HGT_n21e050.zip",
+          "bytes": 11554460
+        },
+        "ks29": {
+          "status": "ok",
+          "granule": "NASADEM_HGT_s20e127",
+          "file": "data/raw/nasadem/NASADEM_HGT_s20e127.zip",
+          "bytes": 6200945
+        }
+      },
+      "resolution_m": "1 arc-second",
+      "crs": "EPSG:4326",
+      "units": "metres",
+      "access_date": "2026-11-14",
+      "license": "NASA data, no restrictions. doi:10.5067/MEaSUREs/NASADEM/NASADEM_HGT.001"
+    },
+    {
+      "id": "ref_lola_polar_candidates",
+      "kind": "listing only (nothing downloaded)",
+      "source": "PDS Geosciences Node, LRO-L-LOLA-4-GDR-V1.0, polar stereographic LDEMs",
+      "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/",
+      "products": {
+        "LDEM_875S_5M": "5 m, 87.5-90S, 30336x30336, float 3,681,091,584 B / int16 1,840,545,792 B",
+        "LDEM_875S_10M": "10 m, 87.5-90S, float 920,272,896 B / int16 460,136,448 B",
+        "LDEM_875S_20M": "20 m, 87.5-90S, float 230,068,224 B / int16 115,034,112 B",
+        "LDEM_85S_10M": "10 m, 85-90S, float 3,681,091,584 B / int16 1,840,545,792 B",
+        "LDEM_85S_20M": "20 m, 85-90S, float 920,272,896 B / int16 460,136,448 B",
+        "LDEM_80S_20M": "20 m, 80-90S, 30400x30400, float 3,696,640,000 B / int16 1,848,320,000 B"
+      },
+      "access_date": "2026-11-14"
+    },
+    {
+      "id": "earth_usgs_known_terrestrial_analog_sites",
+      "file": "data/raw/analog_sites/TerrestrialAnalogs.zip",
+      "unzipped": "data/raw/analog_sites/TerrestrialAnalogs/ (ESRI shapefile, POINT)",
+      "derived": "data/processed/analog_sites.json (records as JSON)",
+      "bytes": 11591,
+      "sha256": "a66b002abbe09c78ccad192b687f9d933f292bb9b86ee54ca37a5a4da24924c3",
+      "source": "Hunter, M.A. (2020) Known Terrestrial Analog Sites for Planetary Science, USGS Astrogeology data release, doi:10.5066/P9J72921 (ScienceBase item 5f88940b82cebb8c13d912ee)",
+      "obtained": "Downloaded manually by the author in a browser on 2026-11-14 (ScienceBase blocks scripted downloads); copied into the project unchanged",
+      "verification": "Matches official USGS metadata (data.usgs.gov USGS.5f88940b82cebb8c13d912ee.xml, saved in data/raw/analog_sites/official_metadata/): title, originator Marc A Hunter, pubdate 20201218, DOI, attribute fields Name/AnalogType/Lat/Lon/AnalogBody, point count 192. Embedded ArcGIS metadata CreaDate 20201015.",
+      "crs": "EPSG:3857 (WGS 84 / Web Mercator Auxiliary Sphere) geometry; Lat/Lon attribute columns in degrees",
+      "resolution_m": null,
+      "units": "point sites",
+      "n_records": 192,
+      "content": {
+        "Impact Crater": 190,
+        "Dunes": 1,
+        "Volcanic Eruption": 1
+      },
+      "known_issues": [
+        "Record named 'Ritland' with AnalogType 'Volcanic Eruption' lies in Iceland (64.93 N, 16.52 W); geometry differs from its Lat/Lon attributes by 0.026 deg",
+        "'Amboy' (34.5448, -115.791) is labelled Impact Crater; Amboy Crater, California is a volcanic cinder cone",
+        "6 names occur twice at different coordinates: Boltysh, Clearwater East, Flaxman, Kamensk, Lockne, Ritland",
+        "Zip entry timestamps are 2026-11-14 07:42 (archive repacked at download time)"
+      ],
+      "access_date": "2026-11-14",
+      "license": "Public domain (USGS). Cite: Hunter, M.A., 2020, Known Terrestrial Analog Sites for Planetary Science: U.S. Geological Survey data release, https://doi.org/10.5066/P9J72921."
+    },
+    {
+      "id": "ref_msl_waypoints",
+      "kind": "reference (not a DEM)",
+      "source": "NASA/JPL MSL MMGIS waypoint layer (Curiosity localized end-of-drive positions)",
+      "url": "https://mars.nasa.gov/mmgis-maps/MSL/Layers/json/MSL_waypoints.json",
+      "used_for": "Hidden Valley position (sols 705-713) and nominal-drive patch (sol 665)",
+      "access_date": "2026-11-14",
+      "license": "NASA/JPL public release"
+    },
+    {
+      "id": "ref_hirise_dtm_index",
+      "kind": "reference (not a DEM)",
+      "source": "HiRISE PDS cumulative DTM index",
+      "url": "https://hirise-pds.lpl.arizona.edu/PDS/INDEX/DTMCUMINDEX.TAB",
+      "used_for": "Listing Gale crater DTM candidates (21 DTMs found in lat -6..-4, lon 137..138 E)",
+      "access_date": "2026-11-14",
+      "license": "NASA PDS, public"
+    },
+    {
+      "id": "ref_place_coordinates",
+      "kind": "reference (not a DEM)",
+      "items": {
+        "Dumont Dunes": {
+          "lat": 35.67863,
+          "lon": -116.23156,
+          "datum": "NAD83",
+          "source": "TopoQuest place record (GNIS-derived), https://topoquest.com/place-detail.php?id=1667894"
+        },
+        "Avawatz Mountains": {
+          "lat": 35.5069188,
+          "lon": -116.2847431,
+          "source": "TopoZone (GNIS-derived) https://www.topozone.com/california/san-bernardino-ca/range/avawatz-mountains/ ; cross-checked with Wikipedia 35 30 25 N 116 17 05 W"
+        }
+      },
+      "access_date": "2026-11-14"
+    }
+  ]
+}
