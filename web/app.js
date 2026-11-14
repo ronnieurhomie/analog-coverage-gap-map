@@ -221,7 +221,7 @@ function method() {
     <h3>AI assistance</h3>
     <p>Ron chose the challenge framing and direction. AI assistance: Claude (planning discussion and critique, drafting), Claude Code (research lookups and code),
       OpenAI Codex (plan review). Source files carry headers; Ron reviewed the work.</p>
-    <p>Licence: MIT. Repository link: <span class="placeholder-link">[to be added]</span>.</p>`;
+    <p>Licence: MIT. Repository link: <a href="https://github.com/ronnieurhomie/analog-coverage-gap-map">https://github.com/ronnieurhomie/analog-coverage-gap-map</a>.</p>`;
 }
 
 function bind() {

@@ -79,6 +79,6 @@ MIT (see `LICENSE`).
   candidates, showcase, screen video).
 - **Verified:** number checks against the result JSON; headless Chromium at 1280 px and 390 px with 0 console errors;
   banned-word grep clean; manifest checksums.
-- **Not done:** public hosting and the repository link (waiting for Ron's go); screen-reader testing; browsers other
-  than Chromium.
-- **Not published:** nothing pushed, deployed or submitted.
+- **Repository:** https://github.com/ronnieurhomie/analog-coverage-gap-map · **Live page:** https://ronnieurhomie.github.io/analog-coverage-gap-map/
+- **Not done:** screen-reader testing; browsers other than Chromium; Space Apps submission.
+- **Published:** the repository and the static page (GitHub Pages). Nothing submitted to Space Apps.
