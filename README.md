@@ -81,5 +81,6 @@ MIT (see `LICENSE`).
 - **Verified:** number checks against the result JSON; headless Chromium at 1280 px and 390 px with 0 console errors;
   banned-word grep clean; manifest checksums.
 - **Repository:** https://github.com/ronnieurhomie/analog-coverage-gap-map · **Live page:** https://ronnieurhomie.github.io/analog-coverage-gap-map/
+- **G5b:** judge-first redesign of the page and a 29.9 s captioned demo (`web/demo/`); Pages actions on Node 24.
 - **Not done:** screen-reader testing; browsers other than Chromium; Space Apps submission.
 - **Published:** the repository and the static page (GitHub Pages). Nothing submitted to Space Apps.
