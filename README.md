@@ -1,17 +1,24 @@
 # Earth candidates for Moon terrain
 
-**Analog Coverage Gap Map** helps Moon field-test planners compare a lunar target with Earth candidates and inspect what still differs.
+**Analog Coverage Gap Map** is an exploratory tool for a practical question: **Which lunar terrain types are not represented by the Earth analog sites in our reference list, and where else might researchers look?**
 
-[Explore Moon terrain](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/)
+[Explore the interactive map](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [Watch the 30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/) · [Read the submission report](docs/SUBMISSION.md)
 
-The website opens with 145 selectable Moon squares and a linked Earth comparison. Start with the Morocco example: Morocco passes our shape cut-off, while the closest listed site does not.
-Steep-end slopes are close, but larger-scale bumpiness differs. Villages, roads and vegetation remain; this is a candidate to investigate, not a ready test site.
+NASA LRO LOLA elevation data defines **145 sampled terrain squares** near the Moon's south pole. ESA Copernicus elevation data provides Earth comparisons, NASA MODIS vegetation data screens a wider land sample, and NASA HiRISE Mars terrain supports a method test. The delivered search is **Moon-to-Earth**; Mars is used for testing, not presented as a second completed search.
 
-The broader sample contains 145 Moon squares. The known list matches 85; a 300-location sample provides candidates for 6 of the remaining 60.
-Two tests failed and one could not decide. The method has not established reliable site selection.
+For each 1.92 × 1.92 km window, the project compares **19 slope and roughness measurements** at several scales. Select a Moon square to inspect an Earth candidate, the closest alternative in the known-site list, same-scale terrain views, and the differences that remain. A score below the fixed threshold indicates similarity under this method—not permission or readiness to conduct a field test.
 
-NASA Space Apps 2026 · Ron, team Analog Intelligence · Kuala Lumpur.
-Challenge: Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars.
+### What the current sample shows
+
+- **85 of 145** sampled Moon squares have a match in a reference list of 190 usable USGS analog-site records and three documented NASA test-site windows; **60 do not**.
+- A screened sample of **300 additional Earth locations** provides potential matches for **six of those 60** unmatched squares. These are counts of sampled squares, **not percentages of lunar area**.
+- The southern Morocco example passes the terrain-shape threshold for one Moon square, although its larger-scale roughness differs. The region already has analog research; this is not a newly discovered or field-validated test site.
+- **Two pre-registered tests failed and one was inconclusive.** Reliable site selection has not been established.
+
+The value of the prototype is to make the comparison and its uncertainty inspectable before anyone invests in field investigation. Terrain alone cannot confirm soil conditions, small rocks, access, permissions, or lunar environmental equivalence.
+
+NASA Space Apps Challenge 2026 · **Ron (solo participant)** · Team **Analog Intelligence** · Kuala Lumpur Local Event  
+Challenge: *Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars.*
 
 ## Evidence and limits
 
