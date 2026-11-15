@@ -38,7 +38,7 @@ No historical result, dataset, method or cut-off was changed.
 | Image sizes and map | 1.92 km window; 30 m grid; 500 m bar; azimuth 315°, altitude 30°; full map 364 km | `scripts/build_web_data.py: render; src/gate3_common.py: PIX, PATCH_M; web/data/lola_84S_hillshade.json` |
 | Other fixed context | 2026 event; 2012 Dumont field test; 2018, 2020, 2013 cited work; 1 g / 0.17 g; 0.5 m LOLA quantisation | `results/candidate_case.json: novelty, untested_conditions; results/nasa_test_sites_preregistration.json; docs/G3_STATUS.md; cited source metadata (gravity is a stated limitation, not a result)` |
 | Data-source amendment | 50 requests/day; max 0.0011 m = 1.1 mm at Dumont; four months Jan/Apr/Jul/Oct 2023 | `results/global_search_preregistration.json: ndvi, amendment_before_computation` |
-| Demo | ≤30 seconds; intended 29.9; 1280×720 | `scripts/make_demo.py: SHOTS, W, H; actual duration checked with ffprobe` |
+| Selected demo | 7 English slides including title; earlier video unchanged at 29.9 s, 1280×720 | `web/slides/Analog-Coverage-Gap-Map.pdf` page count; earlier `scripts/make_demo.py` and ffprobe check |
 
 | Similar measurement count | Count of the 19 absolute scaled differences ≤ 1 | `web/data/display.json: features[Moon], features[Earth], feature_sd; abs((Moon-Earth)/feature_sd) <= 1` |
 

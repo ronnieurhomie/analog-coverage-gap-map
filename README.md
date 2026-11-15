@@ -2,7 +2,7 @@
 
 **Analog Coverage Gap Map** helps Moon field-test planners compare a lunar target with Earth candidates and inspect what still differs.
 
-[Explore Moon terrain](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [30-second walkthrough](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/)
+[Explore Moon terrain](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [7-slide demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map.pdf)
 
 The website opens with 145 selectable Moon squares and a linked Earth comparison. Start with the Morocco example: Morocco passes our shape cut-off, while the closest listed site does not.
 Steep-end slopes are close, but larger-scale bumpiness differs. Villages, roads and vegetation remain; this is a candidate to investigate, not a ready test site.
@@ -18,7 +18,7 @@ Challenge: Identify Earth Locations that Analog the Permanent Moon Base Location
 The Morocco location is not a discovery: the wider region already has Mars-analog research.
 Soil, small rocks, access and lunar conditions remain unconfirmed. Each location is a sampled window, not a whole test field.
 
-[Full report and method](docs/SUBMISSION.md) · [Facts and source fields](docs/FACTS.md) · [Tests and project status](docs/G3_STATUS.md)
+[Current project plan](docs/PROJECT_PLAN.md) · [Full report and method](docs/SUBMISSION.md) · [Facts and source fields](docs/FACTS.md) · [Tests and project status](docs/G3_STATUS.md)
 
 ## Run the website
 
