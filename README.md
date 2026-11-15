@@ -43,6 +43,7 @@ Rebuild display data from the existing local dataset cache (not included in git)
 
 The last step restores the full-list default data and current worked example. It uses existing data and the unchanged method.
 Site and numeric checks: `.venv/bin/python scripts/check_clarity.py`.
+Final narration, timing and media provenance: [DEMO.md](docs/DEMO.md). The old `make_demo.py` is historical and must not regenerate the current voiced demo.
 Analysis code is in `src/`; analysis tests: `.venv/bin/python -m pytest -q tests`.
 
 ## Data and references

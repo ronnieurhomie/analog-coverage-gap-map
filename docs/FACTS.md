@@ -39,8 +39,7 @@ No historical result, dataset, method or cut-off was changed.
 | Other fixed context | 2026 event; 2012 Dumont field test; 2018, 2020, 2013 cited work; 1 g / 0.17 g; 0.5 m LOLA quantisation | `results/candidate_case.json: novelty, untested_conditions; results/nasa_test_sites_preregistration.json; docs/G3_STATUS.md; cited source metadata (gravity is a stated limitation, not a result)` |
 | Data-source amendment | 50 requests/day; max 0.0011 m = 1.1 mm at Dumont; four months Jan/Apr/Jul/Oct 2023 | `results/global_search_preregistration.json: ndvi, amendment_before_computation` |
 | Selected demo | 29.9 s, 1920×1080; seven slides, real website interaction, Ron’s recorded voice, English captions | `web/demo/demo.mp4`, `web/demo/captions.vtt`, `docs/final_demo_check.json` |
-
-| Similar measurement count | Count of the 19 absolute scaled differences ≤ 1 | `web/data/display.json: features[Moon], features[Earth], feature_sd; abs((Moon-Earth)/feature_sd) <= 1` |
+| Similar measurement count, m014 vs Morocco | 18 of 19 absolute scaled differences ≤ 1 | `web/data/display.json: features[Moon], features[Earth], feature_sd; abs((Moon-Earth)/feature_sd) <= 1` |
 
 ## Citation identifiers and source metadata
 

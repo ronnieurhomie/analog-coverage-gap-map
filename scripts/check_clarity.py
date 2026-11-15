@@ -8,6 +8,7 @@ import math
 import re
 import sys
 import threading
+from urllib.parse import urlsplit
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -58,12 +59,18 @@ def main():
         for key in ['A', 'B', 'random_median', 'random_p95']:
             allowed.add(round(group[key] * 100, 1))
 
+    submission = (ROOT / 'docs/SUBMISSION.md').read_text()
+    summary = submission.split('## High-Level Project Summary\n', 1)[1].split('\n## ', 1)[0]
+    assert 50 <= len(summary.split()) <= 200
+    assert r'\n' not in submission, 'Literal escaped newlines in copy-ready submission'
+
     bad_words = []
     files = [ROOT / 'README.md', ROOT / 'docs/SUBMISSION.md'] + [
         p for p in (ROOT / 'web').rglob('*') if p.suffix in {'.html', '.js', '.css', '.json', '.vtt', '.txt'}]
     banned = re.compile(r"\b(?:validated|discovery|best site|proves|harder|dangerous)\b|can['’]t we test", re.I)
     for p in files:
-        body = re.sub(r'not a discovery', '', p.read_text(), flags=re.I)
+        # Explicit negative statements preserve the scientific limitation; positive claims still fail.
+        body = re.sub(r'not (?:a discovery|a validated site-selection system|a newly discovered or field-validated test site)', '', p.read_text(), flags=re.I)
         if banned.search(body):
             bad_words.append(str(p.relative_to(ROOT)))
     assert not bad_words, bad_words
@@ -84,7 +91,7 @@ def main():
     report = {'url': url, 'banned_word_mismatches': bad_words, 'widths': {}, 'numeric_mismatches': []}
     errors, failed, media_cancellations = [], [], []
     def request_failed(q):
-        if q.url.endswith('/demo/demo.mp4') and q.failure == 'net::ERR_ABORTED':
+        if urlsplit(q.url).path.endswith('/demo/demo.mp4') and q.failure == 'net::ERR_ABORTED':
             # Chromium may cancel its metadata preload, then issue a playback request.
             # Independently require HTTP 200, exact file hash, decoded metadata and playback below.
             media_cancellations.append({'url': q.url, 'reason': q.failure})
