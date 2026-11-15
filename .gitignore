@@ -4,3 +4,9 @@ data/processed/
 __pycache__/
 .pytest_cache/
 docs/video/demo_build/
+
+# Private work notes and generated QA artifacts stay out of the public repository.
+.private/
+docs/*
+!docs/FACTS.md
+!docs/METHOD.md

@@ -59,13 +59,8 @@ def main():
         for key in ['A', 'B', 'random_median', 'random_p95']:
             allowed.add(round(group[key] * 100, 1))
 
-    submission = (ROOT / 'docs/SUBMISSION.md').read_text()
-    summary = submission.split('## High-Level Project Summary\n', 1)[1].split('\n## ', 1)[0]
-    assert 50 <= len(summary.split()) <= 200
-    assert r'\n' not in submission, 'Literal escaped newlines in copy-ready submission'
-
     bad_words = []
-    files = [ROOT / 'README.md', ROOT / 'docs/SUBMISSION.md'] + [
+    files = [ROOT / 'README.md', ROOT / 'docs/METHOD.md'] + [
         p for p in (ROOT / 'web').rglob('*') if p.suffix in {'.html', '.js', '.css', '.json', '.vtt', '.txt'}]
     banned = re.compile(r"\b(?:validated|discovery|best site|proves|harder|dangerous)\b|can['’]t we test", re.I)
     for p in files:
@@ -86,7 +81,7 @@ def main():
         threading.Thread(target=httpd.serve_forever, daemon=True).start()
         url = 'http://127.0.0.1:8771/'
     local = httpd is not None
-    shots = ROOT / 'docs/screenshots'
+    shots = ROOT / '.private/screenshots'
     shots.mkdir(parents=True, exist_ok=True)
     report = {'url': url, 'banned_word_mismatches': bad_words, 'widths': {}, 'numeric_mismatches': []}
     errors, failed, media_cancellations = [], [], []
@@ -233,7 +228,7 @@ def main():
     report['media_metadata_request_cancellations'] = media_cancellations
     print(json.dumps(report, indent=2))
     suffix = 'local' if local else 'public'
-    (ROOT / f'docs/clarity_check_{suffix}.json').write_text(json.dumps(report, indent=2))
+    (ROOT / f'.private/clarity_check_{suffix}.json').write_text(json.dumps(report, indent=2))
     assert not errors and not failed and not report['numeric_mismatches'], report
 
 

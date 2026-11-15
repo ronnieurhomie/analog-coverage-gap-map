@@ -25,7 +25,7 @@ Challenge: *Identify Earth Locations that Analog the Permanent Moon Base Locatio
 The Morocco location is not a discovery: the wider region already has Mars-analog research.
 Soil, small rocks, access and lunar conditions remain unconfirmed. Each location is a sampled window, not a whole test field.
 
-[Current project plan](docs/PROJECT_PLAN.md) · [Full report and method](docs/SUBMISSION.md) · [Facts and source fields](docs/FACTS.md) · [Tests and project status](docs/G3_STATUS.md)
+[Method, findings and limitations](docs/METHOD.md) · [Facts and source fields](docs/FACTS.md)
 
 ## Run the website
 
@@ -44,7 +44,6 @@ Rebuild display data from the existing local dataset cache (not included in git)
 The last step restores the full-list default data and current worked example. It uses existing data and the unchanged method.
 After regenerating the overview PNG, run `.venv/bin/python scripts/optimize_map.py` to refresh its lightweight display previews. The original PNG is retained; map bounds and scientific inputs stay unchanged. Inter is served locally under its included SIL Open Font Licence.
 Site and numeric checks: `.venv/bin/python scripts/check_clarity.py`.
-Final narration, timing and media provenance: [DEMO.md](docs/DEMO.md). The old `make_demo.py` is historical and must not regenerate the current voiced demo.
 Analysis code is in `src/`; analysis tests: `.venv/bin/python -m pytest -q tests`.
 
 ## Data and references
@@ -58,17 +57,16 @@ Analysis code is in `src/`; analysis tests: `.venv/bin/python -m pytest -q tests
 - NASADEM: only an earlier Earth-elevation cross-check; no website result depends on it.
 
 Products, sources and licences: `data/manifest.json`. Links and prior work are in the website's Method section
-and [submission text](docs/SUBMISSION.md). NASA NTRS 20000105009 is cited but not summarised because the record could not be opened.
+and [method and findings](docs/METHOD.md). NASA NTRS 20000105009 is cited but not summarised because the record could not be opened.
 
 ## AI assistance
 
 Ron chose the challenge framing and direction. Claude helped with planning, critique and drafts.
 Claude Code helped with research lookups and code. OpenAI Codex reviewed the plan, revised the layout and narrative, produced the demo and checked consistency.
 New and edited code identifies AI assistance. Figures come from elevation data; the demo combines Ron’s seven slides, actual website interaction, his recorded narration and English captions.
-No AI-generated images, video or audio are used. Ron reviews the final work before submission.
+No AI-generated images, video or audio are used. The narration is Ron’s own recording.
 
-## Licence and status
+## Licence
 
-MIT; see `LICENSE`. Repository and website are public. Nothing has been submitted to Space Apps by the coding agents.
-See [G3_STATUS.md](docs/G3_STATUS.md) for executed, checked and published work, including the Codex clarity pass.
+Code: MIT; see `LICENSE`. Dataset licences are recorded separately in `data/manifest.json`; Inter is covered by `web/fonts/Inter-OFL.txt`.
 Screen-reader testing and browsers other than Chromium have not been checked.

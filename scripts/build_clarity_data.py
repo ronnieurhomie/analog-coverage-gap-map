@@ -114,7 +114,7 @@ def main():
              "random_new_matches": len(additions), "random_new_ids": sorted(additions),
              "Mojave_new_matches": len(mojave), "Mojave_new_ids": sorted(mojave),
              "Morocco_new_matches": inc["g00094"]["N"], "showcase": d["showcase"], "checks": checks}
-    lines = ["# Verified facts — Analog Coverage Gap Map", "", "Single ledger for website, README, captions and submission text.",
+    lines = ["# Verified facts — Analog Coverage Gap Map", "", "Numerical facts and source fields for the project.",
              "All matches concern ground shape under the unchanged cut-off. They do not establish engineering suitability.",
              "No historical result, dataset, method or cut-off was changed.", "", "## Main facts", "",
              "| Fact | Value | Existing JSON source / derivation |", "|---|---|---|"]
@@ -148,7 +148,7 @@ def main():
         ("Every displayed slope/roughness/coordinate/distance", "source value; slopes 1 decimal, roughness 2, distances 2 or 3; coordinates up to 3", "web/data/display.json: feature_names, feature_sd, features[entity_id][feature_index], patches[].lat/lon, neighbours, candidates, known_K; increment.candidates[]"),
         ("Similar measurement count", "count of the 19 absolute scaled differences <= 1", "web/data/display.json: features[Moon], features[Earth], feature_sd; abs((Moon-Earth)/feature_sd) <= 1"),
         ("Image sizes and map", "1.92 km window; 30 m grid; 500 m bar; azimuth 315°, altitude 30°; full map 364 km", "scripts/build_web_data.py: render; src/gate3_common.py: PIX, PATCH_M; web/data/lola_84S_hillshade.json"),
-        ("Other fixed context", "2026 event; 2012 Dumont field test; 2018, 2020, 2013 cited work; 1 g / 0.17 g; 0.5 m LOLA quantisation", "results/candidate_case.json: novelty, untested_conditions; results/nasa_test_sites_preregistration.json; docs/G3_STATUS.md; cited source metadata (gravity is a stated limitation, not a result)"),
+        ("Other fixed context", "2026 event; 2012 Dumont field test; 2018, 2020, 2013 cited work; 1 g / 0.17 g; 0.5 m LOLA quantisation", "results/candidate_case.json: novelty, untested_conditions; results/nasa_test_sites_preregistration.json; cited source metadata (gravity is a stated limitation, not a result)"),
         ("Data-source amendment", "50 requests/day; max 0.0011 m = 1.1 mm at Dumont; four months Jan/Apr/Jul/Oct 2023", "results/global_search_preregistration.json: ndvi, amendment_before_computation"),
         ("Demo", "≤30 seconds; intended 29.9; 1280×720", "scripts/make_demo.py: SHOTS, W, H; actual duration checked with ffprobe"),
     ]

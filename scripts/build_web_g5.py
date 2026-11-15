@@ -5,7 +5,7 @@
   frozen method from their existing COP30 windows, and every listed (candidate, Moon patch) pair is asserted to have d < T,
   matching results/global_search.json; hillshades rendered like all other windows;
 * neighbour-pool labels (Mojave grid entries are not in any comparison set);
-* showcase lookup for docs/showcase.md: nearest site in K (all usable USGS + 3 NASA) for one Moon patch.
+* showcase lookup for the worked example: nearest site in K (all usable USGS + 3 NASA) for one Moon patch.
 """
 import json, sys
 from pathlib import Path
@@ -87,10 +87,11 @@ def main():
     render(ash, ROOT / "web/img/earth" / f"{kid}.png")
     disp["showcase"] = {"patch": show, "candidate": "g00094", "candidate_d": dd[show], "known_id": kid,
                         "known_name": disp["earth_names"][kid]["name"], "known_lat": recs[sh]["Lat"], "known_lon": recs[sh]["Lon"],
-                        "known_d": round(best[0], 4), "T": T, "source": "docs/showcase_numbers.json"}
+                        "known_d": round(best[0], 4), "T": T, "source": ".private/showcase_numbers.json"}
     (ROOT / "web/data/display.json").write_text(json.dumps(disp, separators=(",", ":")))
     out = {"showcase_patch": show, "d_to_g00094": dd[show], "d_to_g00094_all_N": dd, "nearest_in_K": best[1], "d_nearest_in_K": round(best[0], 4), "T": T}
-    (ROOT / "docs/showcase_numbers.json").write_text(json.dumps(out, indent=2))
+    (ROOT / ".private").mkdir(exist_ok=True)
+    (ROOT / ".private/showcase_numbers.json").write_text(json.dumps(out, indent=2))
     print(out)
 
 
