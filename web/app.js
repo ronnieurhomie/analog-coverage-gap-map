@@ -75,12 +75,14 @@ function selectPatch(id, earth = null, focus = false, reveal = false) {
 }
 function drawMarkers() {
   const map = $("#map"); map.querySelectorAll(".pt").forEach((b) => b.remove());
-  const k = activeKey();
+  const k = activeKey(), n = { cov: 0, gap: 0, cand: 0 };
   D.patches.forEach((p) => {
     const cov = p.status[k], cand = (p.candidates || []).length > 0;
     const b = document.createElement("button");
     b.type = "button"; b.dataset.patch = p.id;
-    b.className = "pt " + (cov ? "covered" : "gap") + (cand ? " cand" : "");
+    // One marker per square: a diamond only where no known site matches but a sampled candidate does.
+    b.className = "pt " + (cov ? "covered" : cand ? "gap cand" : "gap");
+    n[cov ? "cov" : cand ? "cand" : "gap"]++;
     Object.assign(b.style, pos(p));
     b.setAttribute("aria-label", `Patch ${p.id}, ${Math.abs(p.lat).toFixed(2)}° south, ${cov ? "matched by a known site" : "no match among known sites"}${cand ? ", has a sampled candidate" : ""}`);
     b.setAttribute("aria-pressed", state.patch === p.id ? "true" : "false");
@@ -103,6 +105,7 @@ function drawMarkers() {
     const xy=pos(selected); map.style.setProperty('--selected-x',xy.left);map.style.setProperty('--selected-y',xy.top);
     $("#selection-status").textContent = `${selected.id} · ${Math.abs(selected.lat).toFixed(3)}°S, ${Math.abs(selected.lon).toFixed(3)}°${selected.lon<0?'W':'E'}`;
   }
+  $("#n-cov").textContent = n.cov; $("#n-gap").textContent = n.gap; $("#n-cand").textContent = n.cand;
   $("#legend").innerHTML = legendText();
 }
 function items(p) {
@@ -137,19 +140,27 @@ function drawPanel() {
   const metric=(label,key)=>`<tr><th>${label}</th><td>${fval(key,f(p.id,key))}</td><td>${fval(key,f(it.id,key))}</td></tr>`;
   const sampled=/^g\d+$/.test(it.id);
   const provenance=sampled ? "sampled candidate" : it.id.startsWith("mojave_") && it.id!=="mojave_dumont" ? "Mojave test window · not a known site" : it.chips.join(" · ");
+  // Ruler: 0 to at least twice the cut-off, so the cut-off sits mid-way unless the distance is far beyond it.
+  const hi=Math.max(2*D.T,it.d*1.1), at=(x)=>(x/hi*100).toFixed(2)+'%';
+  const within=zcmp(p.id,it.id).filter(x=>Math.abs(x.dz)<=1).length;
   $("#panel").innerHTML=`
-    <div class="panel-top"><button type="button" id="back-to-map" class="back-to-map">← Moon map</button><span class="eyebrow">EARTH COMPARISON</span><span class="target-id">${p.id}</span></div>
-    <label class="select-label" for="earth-choice">Compare with</label>
+    <div class="panel-top"><h2>Square ${p.id}</h2><span class="state">${p.status[activeKey()]?'matched by a known site':'no known-site match'}</span><button type="button" id="back-to-map" class="back-to-map">← Moon map</button></div>
+    <div class="choose"><label for="earth-choice">Compare with</label>
     <select id="earth-choice"><optgroup label="Nearest listed site (full known list)">${option(its.known)}</optgroup>
     ${its.gc.length?`<optgroup label="Sampled candidates passing the cut-off">${its.gc.map(option).join('')}</optgroup>`:''}
-    <optgroup label="Other comparison windows (inspect provenance)">${its.nb.map(option).join('')}</optgroup></select>
-    <p class="verdictline ${it.below?'':'out'}" id="compare-status" role="status" aria-live="polite"><strong>${it.below?'Within the shape cut-off':'Outside the shape cut-off'}</strong><span>Distance ${it.d.toFixed(3)} ${it.below?'&lt;':'≥'} ${D.T.toFixed(3)}</span></p>
-    <div class="pair">
-      <figure><img src="img/moon/${p.id}.png" alt="Selected Moon square ${p.id}, 1.92 km on each side" width="192" height="192"><div class="scale"><i></i><span>500 m</span></div><figcaption>Moon target <span>NASA LOLA</span></figcaption></figure>
-      <figure><img src="img/earth/${esc(it.id)}.png" alt="${esc(it.name)}, same physical extent as the Moon square" width="192" height="192"><div class="scale"><i></i><span>500 m</span></div><figcaption>${esc(it.name)}<span>ESA Copernicus · ${esc(provenance)}</span></figcaption></figure>
+    <optgroup label="Other comparison windows (inspect provenance)">${its.nb.map(option).join('')}</optgroup></select></div>
+    <div class="verdictbox">
+      <p class="verdictline ${it.below?'':'out'}" id="compare-status" role="status" aria-live="polite"><strong>${it.below?'Within the shape cut-off':'Outside the shape cut-off'}</strong><span>distance ${it.d.toFixed(3)} · cut-off ${D.T.toFixed(3)}</span></p>
+      <div class="ruler ${it.below?'':'out'}" aria-hidden="true"><i class="track"></i><i class="zone" style="width:${at(D.T)}"></i><i class="cut" style="left:${at(D.T)}"></i><i class="dot" style="left:${at(it.d)}"></i></div>
+      <div class="rlab" aria-hidden="true"><span>more alike</span><span>less alike</span></div>
     </div>
     <div class="metric-table"><table><thead><tr><th>Ground shape</th><th>Moon</th><th>Earth</th></tr></thead><tbody>
     ${metric('Steep-end slope · 30 m','slope_p90_30m')}${metric('Bumpiness · 480 m','roughness_median_480m')}</tbody></table></div>
+    <div class="pair">
+      <figure><img src="img/moon/${p.id}.png" alt="Selected Moon square ${p.id}, 1.92 km on each side" width="192" height="192"><div class="scale"><i></i><span>500 m</span></div><figcaption>Moon <span>NASA LOLA</span></figcaption></figure>
+      <figure><img src="img/earth/${esc(it.id)}.png" alt="${esc(it.name)}, same physical extent as the Moon square" width="192" height="192"><div class="scale"><i></i><span>500 m</span></div><figcaption>${esc(it.name)}<span>ESA Copernicus · ${esc(provenance)}</span></figcaption></figure>
+    </div>
+    <p class="note">${within} of ${D.feature_names.length} measures within one standard deviation. Shape only: ground cover, soil and access are not checked.</p>
     <p class="scope-line">Moon square: ${p.status[activeKey()]?'match':'no match'} in ${esc(set.label)}. ${sampled?'The selected candidate is outside that known-site list.':''}</p>
     <details class="panel-details"><summary>Measurements, provenance and limits</summary><div class="inner">${analogCard(p.id,it)}<p class="small">Same 1.92 km square and simulated shading. ${esc(D.neighbour_pool)} Dumont Dunes is also a documented NASA test site.</p></div></details>`;
   $("#back-to-map").addEventListener('click',()=>$("#map").scrollIntoView({block:"center",behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));
@@ -164,10 +175,17 @@ function results() {
       <span class="small"><strong>${s.covered}</strong> matched · <strong>${s.gap}</strong> no match · of ${s.denominator}</span></div>
       <div class="bar ${small ? "small" : ""}" role="img" aria-label="${s.covered} of ${s.denominator} matched, ${s.gap} no match">
       <span class="cov" style="width:${s.covered / s.denominator * 100}%"></span><span class="gap" style="width:${s.gap / s.denominator * 100}%"></span></div></div>`; };
-  $("#bars").innerHTML = bar("K", false, true) +
-    `<p>Of ${D.sets.K.denominator} sampled Moon squares, ${D.sets.K.covered} match a listed site and ${D.sets.K.gap} do not.</p>
-    <p><strong>Sampling ${R.global.processed} land locations adds candidates for ${D.clarity.random_additional_count} of the ${D.sets.K.gap} unmatched squares.</strong></p>
-    <p class="small">Ground shape only, under the same fixed cut-off. These are square counts, not lunar area shares.</p>`;
+  const K = D.sets.K, add = D.clarity.random_additional_count, rest = K.gap - add;
+  $("#bars").innerHTML = `<div class="barrow"><div class="bl"><span><strong>${esc(K.label)}</strong> · ${esc(K.nature)}</span>
+      <span>${K.covered} matched · ${K.gap} no match · of ${K.denominator}</span></div>
+      <div class="bar" role="img" aria-label="${K.covered} matched, ${rest} no match, ${add} with a new sampled candidate, of ${K.denominator}">
+      <span class="cov" style="flex:${K.covered}"></span><span class="gap" style="flex:${rest}"></span><span class="cand" style="flex:${add}"></span></div></div>
+    <div class="rows">
+      <div><b>${K.covered}</b><span>match one of ${esc(K.label)}</span></div>
+      <div><b style="color:var(--nomatch)">${rest}</b><span>no match in the known list or the sample</span></div>
+      <div><b style="color:var(--cand)">${add}</b><span>no known match, but a candidate in the ${R.global.processed}-place sample</span></div>
+    </div>
+    <p>Sampling ${R.global.processed} land locations adds candidates for ${add} of the ${K.gap} unmatched squares. Ground shape only, under the same fixed cut-off. These are square counts, not lunar area shares.</p>`;
   $("#other-bars").innerHTML = bar("union", true) + bar("historical", true) +
     `<p>${D.clarity.mojave_additional_count} of the ${D.sets.K.gap} also match a Mojave test-grid window outside the known-site list. This overlaps the sample result; do not add the counts.</p>`;
   const c = R.candidate, rows = D.increment.candidates;
@@ -207,8 +225,10 @@ function results() {
 /* ---------- how we tested ---------- */
 function tested() {
   const g2 = R.gate2, v1 = R.v1, g = R.g3v, ms = R.masked_slopes, st = g.step2_transparency_only, s = R.sensitivity.points, pct = (x) => f1(x * 100);
-  $("#test-summary").innerHTML = `<p><strong>Failed:</strong> find a known rover test site from Mars dunes.</p>
-    <p><strong>Failed:</strong> reliably retrieve other dune fields.</p><p><strong>Could not decide:</strong> beat a simple slope method.</p>`;
+  $("#test-summary").innerHTML = `<table class="tt"><tbody>
+    <tr><td><span class="st failed">Failed</span></td><td>Find a known rover test site (Dumont Dunes) from Mars dunes<span class="r">Ranked ${g2.dumont_rank_A} of ${g2.n_candidates}; top 10% needed.</span></td></tr>
+    <tr><td><span class="st failed">Failed</span></td><td>Dune fields find each other<span class="r">Median rank ${v1.median_A}; rank ${v1.threshold} needed.</span></td></tr>
+    <tr><td><span class="st inconclusive">Inconclusive</span></td><td>Beat a simple slope method<span class="r">Random picks had a median coverage of 100% in all ${g.groups.length} groups, so the test could not separate them.</span></td></tr></tbody></table>`;
   $("#score").innerHTML = `
     <div class="cardx"><p><span class="pill failed">Failed</span></p><h3>Could Mars dunes find a known test site?</h3>
       <p>Starting from Mars sand dunes, the fingerprint did not rank Dumont Dunes (a NASA rover test site) in the top 10%: it came ${g2.dumont_rank_A} of ${g2.n_candidates}.</p>

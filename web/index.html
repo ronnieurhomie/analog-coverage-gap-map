@@ -1,90 +1,97 @@
 <!doctype html>
-<!-- AI-assisted UI: OpenAI Codex. Existing terrain data and scientific method unchanged. -->
+<!-- AI-assisted UI: OpenAI Codex (earlier layout) and Claude Code (v4 visual redesign). Existing terrain data and scientific method unchanged. -->
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Analog Coverage Gap Map — Explore Moon terrain</title>
 <meta name="description" content="Choose a sampled lunar square and immediately compare Earth terrain candidates, measurements and limits.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="style.css"></head><body>
 <a class="skip" href="#map">Skip to the interactive Moon map</a>
-<header class="nav"><div class="wrap"><a class="brand" href="#top">Analog Coverage Gap Map</a><a class="evidence-link" href="#tested">Evidence &amp; limits</a></div></header>
+<header class="nav"><div class="wrap"><a class="brand" href="#top">Analog Coverage Gap Map</a>
+  <nav aria-label="Sections"><a href="#explore">Compare</a><a href="#results">Results</a><a class="evidence-link" href="#tested">Evidence &amp; limits</a></nav></div></header>
 <main id="top">
 <section class="hero" aria-labelledby="h1"><div class="wrap">
-  <p class="eyebrow">NASA Space Apps 2026 · For Moon field-test planners</p>
+  <p class="eyebrow">NASA Space Apps 2026 · for Moon field-test planners</p>
   <h1 id="h1">Choose Moon terrain. Compare Earth candidates.</h1>
-  <p class="lede">Find Earth terrain worth investigating for Moon field tests. Select a sampled square to compare its shape and limits.</p>
+  <p class="lede">Pick one of 145 terrain squares at the lunar south pole and see which Earth places share its ground shape, and where they differ.</p>
 </div></section>
+
+<section class="brief-sec" aria-label="Summary"><div class="wrap"><div class="brief">
+  <div><p class="label">What it does</p><p>Compares Moon and Earth terrain with <b>19 slope and roughness measures</b> at the same 1.92 km scale.</p></div>
+  <div><p class="label">Result</p><p>Known analog sites match <b>85 of 145</b> squares. A 300-place Earth sample adds candidates for <b>6 of the other 60</b>.</p></div>
+  <div><p class="label">What it means</p><p>Parts of the south pole have no listed Earth analog. A match is a lead: <b>2 of 3 pre-registered tests failed</b>.</p></div>
+  <div><p class="label">Value for planners</p><p>Earth terrain to check first, with the measurements and limits beside each one.</p></div>
+</div></div></section>
+
 <section id="explore" class="workspace" aria-label="Interactive Moon to Earth terrain comparison"><div class="wrap">
-  <div class="workspace-top"><span>145 sampled squares · 84–90°S · NASA LOLA</span><button id="reset-example" type="button">Show Morocco example</button></div>
   <div class="explore">
     <div class="mapbox">
-      <div class="map-heading"><span>MOON / SOUTH POLE</span><span class="map-hint">Choose a square</span></div>
+      <div class="ph"><h2 class="ph-title">Moon south pole, 84–90°S</h2><button id="reset-example" type="button">Show Morocco example</button></div>
       <div id="map" class="map" role="group" tabindex="-1" aria-label="145 selectable Moon terrain squares" aria-describedby="map-keys">
         <img src="data/lola_84S_hillshade.png" alt="Actual NASA LOLA shaded elevation of the lunar south polar region, 84–90°S" width="1820" height="1820">
-        <div class="reticle" aria-hidden="true"><i class="reticle-x"></i><i class="reticle-y"></i></div>
-        <span class="pole" aria-hidden="true">South pole</span>
       </div>
-      <div class="legend3" aria-label="Map legend"><span><i class="sym c"></i>Listed-site match</span><span><i class="sym g"></i>No listed-site match</span><span><i class="sym d"></i>Sampled candidate</span></div>
+      <div class="legend3" aria-label="Map legend"><span><i class="sym c"></i><b id="n-cov"></b> known-site match</span><span><i class="sym g"></i><b id="n-gap"></b> no match</span><span><i class="sym d"></i><b id="n-cand"></b> new sampled candidate</span></div>
       <p id="selection-status" class="selection-status" role="status" aria-live="polite">Loading terrain data…</p>
       <p id="map-keys" class="sr-only">Use the arrow keys to move between sampled squares. Tab moves to the Earth comparison.</p>
+      <details class="settings">
+        <summary>Which known sites count as a match</summary>
+        <fieldset class="opts">
+          <legend class="sr-only">Which known sites count as a match</legend>
+          <label><input type="radio" name="set" value="K" checked> 190 USGS analog sites + 3 NASA test sites (default)</label>
+          <label><input type="radio" name="set" value="union"> 29 USGS analog sites + 3 NASA test sites (smaller list)</label>
+          <label><input type="radio" name="set" value="nasa"> 3 NASA test sites only</label>
+          <label><input type="radio" name="set" value="allusgs"> 190 USGS analog sites only (added after the main test)</label>
+          <label><input type="checkbox" id="historical"> original result (29 USGS analog sites only)</label>
+        </fieldset>
+        <p id="legend" class="setline"></p>
+      </details>
     </div>
     <aside id="panel" class="panel" tabindex="-1" aria-label="Selected terrain comparison"><p class="muted">Loading comparison…</p></aside>
   </div>
-  <div class="workspace-foot"><p>Terrain comparison, not test-site approval. Two tests failed; one could not decide. <a href="#tested">See the evidence.</a></p>
-<details class="settings">
-      <summary>Comparison settings</summary>
-      <fieldset class="opts" style="border:0;margin:0;padding:0 0 12px">
-        <legend class="small">Which known sites count as a match</legend>
-        <label><input type="radio" name="set" value="K" checked> 190 USGS analog sites + 3 NASA test sites (default)</label>
-        <label><input type="radio" name="set" value="union"> 29 USGS analog sites + 3 NASA test sites (smaller list)</label>
-        <label><input type="radio" name="set" value="nasa"> 3 NASA test sites only</label>
-        <label><input type="radio" name="set" value="allusgs"> 190 USGS analog sites only (added after the main test)</label>
-        <label><input type="checkbox" id="historical"> original result (29 USGS analog sites only)</label>
-      </fieldset>
-    <p id="legend" class="setline"></p></details>
-  </div>
-</div></section>
-<section id="next" aria-labelledby="next-h"><div class="wrap">
-  <h2 id="next-h">This gives a place to investigate, not a ready test site.</h2>
-  <p>The comparison narrows the terrain question. It leaves three practical questions open:</p>
-  <ul class="next-steps">
-    <li><strong>Ground cover:</strong> the Morocco example contains villages, roads and trees. Check the actual cover and elevation-data effects at any candidate you choose.</li>
-    <li><strong>Test conditions:</strong> soil and small rocks are unmeasured; Earth cannot reproduce lunar gravity or vacuum.</li>
-    <li><strong>Field access:</strong> permissions and land use need checking with local communities.</li>
-  </ul>
 </div></section>
 
-<section id="results" class="alt" aria-labelledby="res-h"><div class="wrap">
+<section id="results" aria-labelledby="res-h"><div class="wrap">
   <h2 id="res-h">The search adds candidates for 6 unmatched Moon squares.</h2>
-  <div class="bars" id="bars"></div>
-  <details class="disc"><summary>Inspect the full results and alternative site lists</summary><div class="inner">
-    <div id="other-bars"></div><div class="cards3" id="cands"></div>
-    <details><summary>All sampled candidates with matches</summary><div id="cand-table"></div></details>
-    <h3>Sampled NASA test-site windows</h3><div class="cards3" id="nasa"></div>
-    <details><summary>Sites left out and why</summary><div id="nasa-ex"></div></details>
-    <p class="footnote" id="res-foot"></p>
-  </div></details>
+  <div id="bars"></div>
 </div></section>
 
 <section id="tested" aria-labelledby="t-h"><div class="wrap">
   <h2 id="t-h">Two tests failed. One could not decide.</h2>
-  <p>We fixed the pass/fail rules before testing. The results have not established reliable site selection.</p>
-  <div id="test-summary" class="test-summary"></div>
-  <details class="disc"><summary>Inspect all test results and cut-off sensitivity</summary><div class="inner">
-    <div class="cards3" id="score"></div><div id="sens"></div>
-  </div></details>
-</div></section>
+  <p class="lead">Pass and fail rules were fixed before each test ran. A match is a place to investigate, not a ready test site.</p>
+  <div class="grid2">
+    <div class="box"><h3>Pre-registered tests</h3><div id="test-summary"></div></div>
+    <div class="box"><h3>Check before any field visit</h3>
+      <div class="checks">
+        <p><b>Ground cover</b>The Morocco example contains villages, roads and trees. Check the actual cover and elevation-data effects at any candidate you choose.</p>
+        <p><b>Test conditions</b>Soil and small rocks are unmeasured; Earth cannot reproduce lunar gravity or vacuum.</p>
+        <p><b>Field access</b>Permissions and land use need checking with local communities.</p>
+      </div>
+    </div>
+  </div>
 
-<section id="tools" class="alt"><div class="wrap"><details id="worked-example" class="disc"><summary>How to read a comparison: the Morocco example</summary><div id="example" class="inner">
-  <h2 id="ex-h">Morocco is a closer shape match for this Moon square.</h2>
-  <p id="ex-lede"></p>
-  <div class="trio" id="trio"></div>
-  <p class="small shared-scale">NASA LOLA (Moon) and ESA Copernicus (Earth), shown at the same 1.92 km scale with simulated shading.</p>
-  <div id="verdict" class="verdict"></div>
-  <details class="disc"><summary>Inspect the measurements and comparison rule</summary><div class="inner"><p id="ex-foot"></p><div class="tablewrap" id="example-data"></div></div></details>
-</div></details>
-
-  <details id="method" class="disc"><summary>Method, sources and limitations</summary><div class="inner">
-    <div id="method-body"></div><h3>Limitations</h3><ul class="lim" id="limits"></ul>
-  </div></details>
+  <div class="more" id="details">
+    <details class="disc"><summary>All results and alternative site lists</summary><div class="inner">
+      <div id="other-bars"></div><div class="cards3" id="cands"></div>
+      <details><summary>All sampled candidates with matches</summary><div id="cand-table"></div></details>
+      <h3>Sampled NASA test-site windows</h3><div class="cards3" id="nasa"></div>
+      <details><summary>Sites left out and why</summary><div id="nasa-ex"></div></details>
+      <p class="footnote" id="res-foot"></p>
+    </div></details>
+    <details class="disc"><summary>Test details and cut-off sensitivity</summary><div class="inner">
+      <div class="cards3" id="score"></div><div id="sens"></div>
+    </div></details>
+    <details id="worked-example" class="disc"><summary>How to read a comparison: the Morocco example</summary><div id="example" class="inner">
+      <h3 id="ex-h">Morocco is a closer shape match for this Moon square.</h3>
+      <p id="ex-lede"></p>
+      <div class="trio" id="trio"></div>
+      <p class="small shared-scale">NASA LOLA (Moon) and ESA Copernicus (Earth), shown at the same 1.92 km scale with simulated shading.</p>
+      <div id="verdict" class="verdict"></div>
+      <details class="disc"><summary>Inspect the measurements and comparison rule</summary><div class="inner"><p id="ex-foot"></p><div class="tablewrap" id="example-data"></div></div></details>
+    </div></details>
+    <details id="method" class="disc"><summary>Method, sources and limitations</summary><div class="inner">
+      <div id="method-body"></div><h3>Limitations</h3><ul class="lim" id="limits"></ul>
+    </div></details>
+  </div>
 </div></section>
-</main><footer><div class="wrap"><p>Ron · Analog Intelligence · MIT licence · <a href="slides/Analog-Coverage-Gap-Map.pdf">7-slide demo</a> · <a href="https://github.com/ronnieurhomie/analog-coverage-gap-map">Code and data records</a></p></div></footer>
+</main><footer><div class="wrap"><p>Ron · Analog Intelligence · MIT licence · <a href="slides/Analog-Coverage-Gap-Map.pdf">7-slide demo</a> · <a href="https://github.com/ronnieurhomie/analog-coverage-gap-map">Code and data records</a></p><p>Moon: NASA LOLA · Earth: ESA Copernicus · Sites: USGS</p></div></footer>
 <script src="app.js"></script></body></html>
