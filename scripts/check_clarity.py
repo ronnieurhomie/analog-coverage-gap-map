@@ -100,30 +100,29 @@ def main():
             page.on('requestfailed', request_failed)
             page.on('response', lambda q: failed.append(f'{q.status} {q.url}') if q.status >= 400 else None)
             page.goto(url, wait_until='networkidle')
-            page.wait_for_selector('#trio img')
+            page.wait_for_selector('#earth-choice')
             primary_text = page.locator('main').inner_text()
             primary_words = len(primary_text.split())
-            assert primary_words <= 500, primary_words
-            assert page.locator('main img:visible').count() == 3
-            assert page.locator('.hero a.btn').count() == 1
-            assert page.locator('.hero img').count() == 0
-            action = page.locator('.hero a.btn').bounding_box()
-            assert action['y'] + action['height'] <= height
-            assert not page.locator('#explorer-details').evaluate('(e)=>e.open')
-            assert 'Moon field tests' in page.locator('.hero').inner_text()
-            assert 'Ground-shape screening only' in page.locator('.hero').inner_text()
-            page.locator('#explorer-details').evaluate('(e)=>e.open=true')
+            assert page.locator('#map').is_visible()
+            assert page.locator('#explorer-details').count() == 0
+            map_box = page.locator('#map').bounding_box()
+            assert map_box['y'] + map_box['height'] < height, (name, map_box)
+            assert 'Choose Moon terrain' in page.locator('.hero').inner_text()
+            assert page.locator('#earth-choice').input_value() == 'g00094'
+            for figure in page.locator('#panel .pair figure').all():
+                ratio=figure.locator('.scale i').bounding_box()['width']/figure.locator('img').bounding_box()['width']
+                assert abs(ratio-500/1920) < 0.01, ratio
             assert page.locator('.pt').count() == facts['moon_count']
             assert page.locator('input[name="set"]:checked').input_value() == 'K'
             assert page.locator('.pt[aria-pressed="true"]').get_attribute('aria-label').startswith('Patch m014,')
-            legend = page.locator('#legend').inner_text()
+            legend = page.locator('#legend').text_content()
             assert d['sets']['K']['label'] in legend and '85 matched, 60 no match' in legend
             assert d['sets']['K']['label'] in page.locator('#bars').inner_text()
             first_bar = page.locator('#bars .barrow').first.inner_text()
             assert '85 matched' in first_bar and '60 no match' in first_bar
-            assert f"{d['showcase']['candidate_d']:.3f}" in page.locator('#trio').inner_text()
-            assert f"{d['showcase']['known_d']:.3f}" in page.locator('#trio').inner_text()
-            assert d['showcase']['known_name'] in page.locator('#panel').inner_text()
+            assert f"{d['showcase']['candidate_d']:.3f}" in page.locator('#trio').text_content()
+            assert f"{d['showcase']['known_d']:.3f}" in page.locator('#trio').text_content()
+            assert d['showcase']['known_name'] in page.locator('#earth-choice').text_content()
             assert '6 of the 60' in page.locator('#bars').inner_text()
             assert '5 of the 60' in page.locator('#other-bars').text_content()
             assert page.locator('#score .pill.failed').count() == 2
@@ -133,10 +132,12 @@ def main():
             hero_bottom = page.locator('.hero').bounding_box()['y'] + page.locator('.hero').bounding_box()['height']
             if name == 'desktop':
                 assert hero_bottom <= 720, hero_bottom
+                metric_box=page.locator('.metric-table').bounding_box()
+                assert metric_box['y']+metric_box['height'] <= height, metric_box
             if local:
                 page.screenshot(path=str(shots / f'clarity_{name}_hero.png'))
                 if name == 'desktop':
-                    for sec in ['example', 'next', 'explore', 'results', 'tested']:
+                    for sec in ['explore']:
                         page.locator('#' + sec).screenshot(path=str(shots / f'clarity_{sec}.png'))
             # Comparison settings change both legend and markers; K remains the default.
             page.locator('.settings > summary').click()
@@ -146,18 +147,37 @@ def main():
             page.locator('#historical').check()
             assert page.locator('.pt.covered').count() == d['sets']['historical']['covered']
             page.locator('#historical').uncheck()
-            # Known-site selection and candidate selection both update the same comparison.
-            page.locator('#panel .nb button').first.click()
-            assert 'does not pass' in page.locator('#panel .verdictline').inner_text()
-            page.locator('#panel button[data-id="g00094"]').click()
-            assert 'passes our' in page.locator('#panel .verdictline').inner_text()
+            page.locator('.settings > summary').click()
+            # Direct manipulation updates imagery, source measurements and verdict together.
+            page.locator('#earth-choice').select_option(d['showcase']['known_id'])
+            assert 'Outside the shape cut-off' in page.locator('#compare-status').inner_text()
+            assert d['showcase']['known_id'] in page.locator('#panel .pair img').nth(1).get_attribute('src')
+            assert page.locator('#earth-choice').evaluate('(e)=>e===document.activeElement')
+            page.locator('#earth-choice').select_option('g00094')
+            assert 'Within the shape cut-off' in page.locator('#compare-status').inner_text()
             assert 'g00094' in page.locator('#panel .pair img').nth(1).get_attribute('src')
-            # Check the covered edge case too: its nearest known site must pass.
+            assert '14.3°' in page.locator('.metric-table').inner_text()
             first_covered = next(p for p in d['patches'] if p['status']['K'])
-            page.locator(f'.pt[aria-label^="Patch {first_covered["id"]},"]').click()
-            assert 'passes our' in page.locator('#panel .verdictline').inner_text()
-            page.locator('.pt[aria-label^="Patch m014,"]').click()
-            page.locator('#panel button[data-id="g00094"]').click()
+            page.locator(f'.pt[data-patch="{first_covered["id"]}"]').click()
+            assert first_covered['id'] in page.locator('#panel .pair img').first.get_attribute('src')
+            assert first_covered['id'] in page.locator('#selection-status').inner_text()
+            assert 'Within the shape cut-off' in page.locator('#compare-status').inner_text()
+            if name == 'mobile':
+                page.wait_for_timeout(500)
+                assert 0 <= page.locator('#panel').bounding_box()['y'] < 100
+                if local: page.screenshot(path=str(shots / 'clarity_mobile_comparison.png'))
+                page.locator('#back-to-map').click()
+            page.locator('#reset-example').click()
+            assert page.locator('#earth-choice').input_value() == 'g00094'
+            selected=page.locator('.pt[aria-pressed="true"]')
+            selected.focus()
+            selected.press('ArrowRight')
+            assert not page.locator('.pt[aria-pressed="true"]').get_attribute('aria-label').startswith('Patch m014,')
+            assert page.locator('.pt[aria-pressed="true"]').evaluate('(e)=>e===document.activeElement')
+            page.locator('#reset-example').click()
+            page.emulate_media(reduced_motion='reduce')
+            assert page.locator('#panel .pair').evaluate('(e)=>getComputedStyle(e).animationName') == 'none'
+            page.emulate_media(reduced_motion='no-preference')
             disclosures = page.locator('details').count()
             for detail in page.locator('details').all():
                 if not detail.evaluate('(e) => e.open'):
@@ -172,13 +192,13 @@ def main():
                                      'showcase': 'm014', 'overflow_px': overflow, 'hero_bottom_px': hero_bottom,
                                      'disclosures_opened': disclosures, 'comparison_switching': True,
                                      'set_totals_match': True, 'numeric_mismatches': mismatches,
-                                     'primary_words': primary_words, 'primary_images': 3, 'hero_actions': 1,
-                                     'hero_action_in_first_screen': True}
+                                     'primary_words': primary_words, 'map_visible_on_first_screen': True,
+                                     'keyboard_selection': True, 'mobile_result_reveal': name == 'mobile',
+                                     'reduced_motion': True}
             page.locator('img').evaluate_all("(imgs) => Promise.all(imgs.map(i => { i.loading = 'eager'; return i.decode(); }))")
             page.wait_for_load_state('networkidle')
             page.goto(url.rstrip('/') + '/?patch=m000#explore', wait_until='networkidle')
             page.wait_for_selector('#panel .pair')
-            assert page.locator('#explorer-details').evaluate('(e)=>e.open')
             assert page.locator('.pt[aria-pressed="true"]').get_attribute('aria-label').startswith('Patch m000,')
             report['widths'][name]['existing_target_link_opens_map'] = True
             page.locator('img').evaluate_all("(imgs) => Promise.all(imgs.map(i => { i.loading = 'eager'; return i.decode(); }))")

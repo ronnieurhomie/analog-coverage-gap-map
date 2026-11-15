@@ -67,19 +67,42 @@ function legendText() {
   const k = activeKey(), s = D.sets[k];
   return `Showing: ${esc(s.label)} — ${s.covered} matched, ${s.gap} no match, of ${s.denominator} patches · ground shape, fixed cut-off d < ${D.T.toFixed(3)} · ${esc(s.nature)}.`;
 }
+function selectPatch(id, earth = null, focus = false, reveal = false) {
+  state.patch = id; state.sel = earth;
+  drawMarkers(); drawPanel();
+  if (focus) document.querySelector(`.pt[data-patch="${id}"]`).focus({preventScroll:true});
+  if (reveal && window.innerWidth <= 700) $("#panel").scrollIntoView({block:"start",behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+}
 function drawMarkers() {
   const map = $("#map"); map.querySelectorAll(".pt").forEach((b) => b.remove());
   const k = activeKey();
   D.patches.forEach((p) => {
     const cov = p.status[k], cand = (p.candidates || []).length > 0;
     const b = document.createElement("button");
-    b.type = "button"; b.className = "pt " + (cov ? "covered" : "gap") + (cand ? " cand" : "");
+    b.type = "button"; b.dataset.patch = p.id;
+    b.className = "pt " + (cov ? "covered" : "gap") + (cand ? " cand" : "");
     Object.assign(b.style, pos(p));
     b.setAttribute("aria-label", `Patch ${p.id}, ${Math.abs(p.lat).toFixed(2)}° south, ${cov ? "matched by a known site" : "no match among known sites"}${cand ? ", has a sampled candidate" : ""}`);
     b.setAttribute("aria-pressed", state.patch === p.id ? "true" : "false");
-    b.addEventListener("click", () => { state.patch = p.id; state.sel = null; drawMarkers(); drawPanel(true); });
+    b.tabIndex = state.patch === p.id ? 0 : -1;
+    b.addEventListener("click", e => selectPatch(p.id, null, true, e.detail !== 0));
+    b.addEventListener("keydown", (e) => {
+      const direction = {ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,1],ArrowDown:[0,-1]}[e.key];
+      if (!direction) return;
+      e.preventDefault();
+      const [dx,dy] = direction;
+      const options = D.patches.filter(q => (q.x-p.x)*dx+(q.y-p.y)*dy > 0).map(q => ({q,
+        along:(q.x-p.x)*dx+(q.y-p.y)*dy, across:Math.abs((q.y-p.y)*dx-(q.x-p.x)*dy)}));
+      options.sort((a,b)=>(a.along+3*a.across)-(b.along+3*b.across));
+      if (options.length) selectPatch(options[0].q.id,null,true);
+    });
     map.appendChild(b);
   });
+  const selected = D.patches.find(p=>p.id===state.patch);
+  if (selected) {
+    const xy=pos(selected); map.style.setProperty('--selected-x',xy.left);map.style.setProperty('--selected-y',xy.top);
+    $("#selection-status").textContent = `${selected.id} · ${Math.abs(selected.lat).toFixed(3)}°S, ${Math.abs(selected.lon).toFixed(3)}°${selected.lon<0?'W':'E'}`;
+  }
   $("#legend").innerHTML = legendText();
 }
 function items(p) {
@@ -104,31 +127,34 @@ function analogCard(moonId, it) {
     <h4>What elevation data cannot show</h4><ul>${CANT_SEE.map((c) => `<li>${c}</li>`).join("")}</ul>
     <h4>What to check before field use</h4><ul><li>The 90th-percentile slope at 30 m is ${fval("slope", z[i90].b)} on Earth and ${fval("slope", z[i90].a)} on the Moon.</li><li>Check real ground cover, soil, rock size, access and permission. No vehicle testing has been done here by this project.</li></ul></div>`;
 }
-function drawPanel(focus) {
-  const p = D.patches.find((x) => x.id === state.patch); if (!p) return;
-  const k = activeKey(), s = D.sets[k], cov = p.status[k];
-  const its = items(p);
-  const it = its.all.find((x) => x.id === state.sel) || its.all[0]; state.sel = it.id;
-  const btn = (x) => `<li><button type="button" data-id="${esc(x.id)}" aria-pressed="${x.id === it.id}"><span>${esc(x.name)}</span>
-      ${chips(x)}${x.beyondK ? ' <span class="chip">adds a match beyond the known-site list</span>' : ""}<span class="dv">d = ${x.d.toFixed(2)}</span></button></li>`;
-  $("#panel").innerHTML = `
-    <h3>Selected Moon square <span class="id">(${p.id})</span></h3><span class="id">${Math.abs(p.lat).toFixed(3)}°S, ${p.lon.toFixed(2)}°</span>
-    <p class="small" style="margin:0"><span class="pill ${cov ? "matched" : "nomatch"}">${cov ? "matched" : "no match"}</span> among ${esc(s.label)}</p>
-    <p class="verdictline ${it.below ? "" : "out"}"><strong>${esc(it.name)}: d = ${it.d.toFixed(3)}</strong> —
-      ${it.below ? "passes our ground-shape cut-off (look-alike)" : "does not pass our cut-off (comparison only)"}</p>
-    <h4 style="margin:16px 0 0">Nearest known site in the full list</h4><ul class="nb">${btn(its.known)}</ul>
-    ${its.gc.length ? `<h4 style="margin:8px 0 0">Sampled look-alikes <span class="small">(early results)</span></h4><ul class="nb">${its.gc.map(btn).join("")}</ul>` : ""}
+function drawPanel() {
+  const p = D.patches.find(x=>x.id===state.patch); if (!p) return;
+  const set=D.sets[activeKey()], its=items(p);
+  const suggested=[its.known,...its.gc].sort((a,b)=>a.d-b.d)[0];
+  const it=its.all.find(x=>x.id===state.sel)||suggested;state.sel=it.id;
+  const option=(x)=>`<option value="${esc(x.id)}" ${x.id===it.id?'selected':''}>${esc(x.name)} · d ${x.d.toFixed(3)}</option>`;
+  const f=(id,key)=>D.features[id][D.feature_names.indexOf(key)];
+  const metric=(label,key)=>`<tr><th>${label}</th><td>${fval(key,f(p.id,key))}</td><td>${fval(key,f(it.id,key))}</td></tr>`;
+  const sampled=/^g\d+$/.test(it.id);
+  const provenance=sampled ? "sampled candidate" : it.id.startsWith("mojave_") && it.id!=="mojave_dumont" ? "Mojave test window · not a known site" : it.chips.join(" · ");
+  $("#panel").innerHTML=`
+    <div class="panel-top"><button type="button" id="back-to-map" class="back-to-map">← Moon map</button><span class="eyebrow">EARTH COMPARISON</span><span class="target-id">${p.id}</span></div>
+    <label class="select-label" for="earth-choice">Compare with</label>
+    <select id="earth-choice"><optgroup label="Nearest listed site (full known list)">${option(its.known)}</optgroup>
+    ${its.gc.length?`<optgroup label="Sampled candidates passing the cut-off">${its.gc.map(option).join('')}</optgroup>`:''}
+    <optgroup label="Other comparison windows (inspect provenance)">${its.nb.map(option).join('')}</optgroup></select>
+    <p class="verdictline ${it.below?'':'out'}" id="compare-status" role="status" aria-live="polite"><strong>${it.below?'Within the shape cut-off':'Outside the shape cut-off'}</strong><span>Distance ${it.d.toFixed(3)} ${it.below?'&lt;':'≥'} ${D.T.toFixed(3)}</span></p>
     <div class="pair">
-      <figure style="margin:0"><img src="img/moon/${p.id}.png" alt="Shaded relief of Moon patch ${p.id}, 1.92 km square" width="192" height="192">
-        <div class="scale"><i></i><span>500 m</span></div><div class="cap">Moon ${p.id}</div></figure>
-      <figure style="margin:0"><img src="img/earth/${esc(it.id)}.png" alt="Shaded relief of the Earth window ${esc(it.name)}, 1.92 km square" width="192" height="192">
-        <div class="scale"><i></i><span>500 m</span></div><div class="cap">Earth: ${esc(it.name)}</div></figure>
+      <figure><img src="img/moon/${p.id}.png" alt="Selected Moon square ${p.id}, 1.92 km on each side" width="192" height="192"><div class="scale"><i></i><span>500 m</span></div><figcaption>Moon target <span>NASA LOLA</span></figcaption></figure>
+      <figure><img src="img/earth/${esc(it.id)}.png" alt="${esc(it.name)}, same physical extent as the Moon square" width="192" height="192"><div class="scale"><i></i><span>500 m</span></div><figcaption>${esc(it.name)}<span>ESA Copernicus · ${esc(provenance)}</span></figcaption></figure>
     </div>
-    <p class="small">Same 1.92 km square, 30 m grid and shading. Shading is simulated; actual illumination is not compared.</p>
-    <details class="disc"><summary>Measurements, other windows and limits</summary><div class="inner">
-    ${analogCard(p.id, it)}<p class="small">${esc(D.neighbour_pool)}</p><ul class="nb">${its.nb.map(btn).join("")}</ul></div></details>`;
-  $("#panel").querySelectorAll(".nb button").forEach((b) => b.addEventListener("click", () => { state.sel = b.dataset.id; drawPanel(false); }));
-  if (focus) $("#panel").focus({ preventScroll: true });
+    <div class="metric-table"><table><thead><tr><th>Ground shape</th><th>Moon</th><th>Earth</th></tr></thead><tbody>
+    ${metric('Steep-end slope · 30 m','slope_p90_30m')}${metric('Bumpiness · 480 m','roughness_median_480m')}</tbody></table></div>
+    <p class="scope-line">Moon square: ${p.status[activeKey()]?'match':'no match'} in ${esc(set.label)}. ${sampled?'The selected candidate is outside that known-site list.':''}</p>
+    <details class="panel-details"><summary>Measurements, provenance and limits</summary><div class="inner">${analogCard(p.id,it)}<p class="small">Same 1.92 km square and simulated shading. ${esc(D.neighbour_pool)} Dumont Dunes is also a documented NASA test site.</p></div></details>`;
+  $("#back-to-map").addEventListener('click',()=>$("#map").scrollIntoView({block:"center",behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));
+  $("#earth-choice").addEventListener('change', e=>{state.sel=e.target.value;drawPanel();$('#earth-choice').focus({preventScroll:true});});
+  $("#panel").classList.remove('updated');void $("#panel").offsetWidth;$("#panel").classList.add('updated');
 }
 
 /* ---------- results ---------- */
@@ -251,11 +277,12 @@ function method() {
 }
 
 function bind() {
-  document.querySelectorAll('input[name="set"]').forEach((r) => r.addEventListener("change", () => { state.set = r.value; drawMarkers(); drawPanel(false); }));
+  $("#reset-example").addEventListener('click',()=>selectPatch(D.showcase.patch,D.showcase.candidate));
+  document.querySelectorAll('input[name="set"]').forEach((r) => r.addEventListener("change", () => { state.set = r.value; drawMarkers(); drawPanel(); }));
   $("#historical").addEventListener("change", (e) => {
     state.historical = e.target.checked;
     document.querySelectorAll('input[name="set"]').forEach((r) => (r.disabled = state.historical));
-    drawMarkers(); drawPanel(false);
+    drawMarkers(); drawPanel();
   });
 }
 
@@ -265,9 +292,8 @@ Promise.all([fetch("data/display.json").then((r) => r.json()), fetch("data/resul
     const q = new URLSearchParams(location.search);
     state.patch = q.get("patch") || D.showcase.patch;
     state.sel = q.get("earth") || (state.patch === D.showcase.patch ? D.showcase.candidate : null);
-    example(); bind(); drawMarkers(); drawPanel(false); results(); tested(); method();
+    example(); bind(); drawMarkers(); drawPanel(); results(); tested(); method();
     if (q.has("patch") || location.hash === "#explore") {
-      $("#explorer-details").open = true;
       $("#explore").scrollIntoView({block: "start", behavior: "instant"});
     }
   })
@@ -276,5 +302,7 @@ Promise.all([fetch("data/display.json").then((r) => r.json()), fetch("data/resul
     $("#ex-lede").textContent = message;
     $("#ex-lede").setAttribute("role", "alert");
     $("#panel").textContent = message;
+    $("#panel").setAttribute("role", "alert");
+    $("#selection-status").textContent = message;
     console.error(e);
   });

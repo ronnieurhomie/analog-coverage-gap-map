@@ -2,9 +2,9 @@
 
 **Analog Coverage Gap Map** helps Moon field-test planners compare a lunar target with Earth candidates and inspect what still differs.
 
-[Follow the comparison](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [30-second walkthrough](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/)
+[Explore Moon terrain](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [30-second walkthrough](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/)
 
-The main story follows one Moon square: Morocco passes our shape cut-off, while the closest listed site does not.
+The website opens with 145 selectable Moon squares and a linked Earth comparison. Start with the Morocco example: Morocco passes our shape cut-off, while the closest listed site does not.
 Steep-end slopes are close, but larger-scale bumpiness differs. Villages, roads and vegetation remain; this is a candidate to investigate, not a ready test site.
 
 The broader sample contains 145 Moon squares. The known list matches 85; a 300-location sample provides candidates for 6 of the remaining 60.
