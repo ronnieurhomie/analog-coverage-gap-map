@@ -2,7 +2,7 @@
 
 **Analog Coverage Gap Map** is an exploratory tool for a practical question: **Which lunar terrain types are not represented by the Earth analog sites in our reference list, and where else might researchers look?**
 
-[Explore the interactive map](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [Watch the 30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/) · [View the 7-slide deck](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map.pdf)
+[Explore the interactive map](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [Watch the 30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/) · [Detailed deck · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map-Detailed.pdf) · [Video companion · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map.pdf)
 
 NASA LRO LOLA elevation data defines **145 sampled terrain squares** near the Moon's south pole. ESA Copernicus elevation data provides Earth comparisons, NASA MODIS vegetation data screens a wider land sample, and NASA HiRISE Mars terrain supports a method test. The delivered search is **Moon-to-Earth**; Mars is used for testing, not presented as a second completed search.
 
@@ -42,6 +42,7 @@ Rebuild display data from the existing local dataset cache (not included in git)
 ```
 
 The last step restores the full-list default data and current worked example. It uses existing data and the unchanged method.
+After regenerating the overview PNG, run `.venv/bin/python scripts/optimize_map.py` to refresh its lightweight display previews. The original PNG is retained; map bounds and scientific inputs stay unchanged. Inter is served locally under its included SIL Open Font Licence.
 Site and numeric checks: `.venv/bin/python scripts/check_clarity.py`.
 Final narration, timing and media provenance: [DEMO.md](docs/DEMO.md). The old `make_demo.py` is historical and must not regenerate the current voiced demo.
 Analysis code is in `src/`; analysis tests: `.venv/bin/python -m pytest -q tests`.

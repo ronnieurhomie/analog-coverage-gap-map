@@ -3,9 +3,10 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Analog Coverage Gap Map — Explore Moon terrain</title>
 <meta name="description" content="Choose a sampled lunar square and immediately compare Earth terrain candidates, measurements and limits.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="style.css"></head><body>
+<link rel="preload" as="font" href="fonts/inter-latin.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="fetch" href="data/display.json" crossorigin>
+<link rel="preload" as="image" type="image/webp" href="data/lola_84S_hillshade-512.webp" imagesrcset="data/lola_84S_hillshade-512.webp 512w, data/lola_84S_hillshade-1024.webp 1024w, data/lola_84S_hillshade-1820.webp 1820w" imagesizes="(max-width: 700px) calc(100vw - 66px), 460px" fetchpriority="high">
+<link rel="stylesheet" href="style.css?v=fast-map-1"></head><body>
 <a class="skip" href="#map">Skip to the interactive Moon map</a>
 <header class="nav"><div class="wrap"><a class="brand" href="#top">Analog Coverage Gap Map</a>
   <nav aria-label="Sections"><a href="#explore">Compare</a><a href="#results">Results</a><a class="evidence-link" href="#tested">Evidence &amp; limits</a></nav></div></header>
@@ -28,7 +29,7 @@
     <div class="mapbox">
       <div class="ph"><h2 class="ph-title">Moon south pole, 84–90°S</h2><button id="reset-example" type="button">Show Morocco example</button></div>
       <div id="map" class="map" role="group" tabindex="-1" aria-label="145 selectable Moon terrain squares" aria-describedby="map-keys">
-        <img src="data/lola_84S_hillshade.png" alt="Actual NASA LOLA shaded elevation of the lunar south polar region, 84–90°S" width="1820" height="1820">
+        <picture><source type="image/webp" srcset="data/lola_84S_hillshade-512.webp 512w, data/lola_84S_hillshade-1024.webp 1024w, data/lola_84S_hillshade-1820.webp 1820w" sizes="(max-width: 700px) calc(100vw - 66px), 460px"><img src="data/lola_84S_hillshade.png" alt="Actual NASA LOLA shaded elevation of the lunar south polar region, 84–90°S" width="1820" height="1820" fetchpriority="high" decoding="async"></picture>
       </div>
       <div class="legend3" aria-label="Map legend"><span><i class="sym c"></i><b id="n-cov"></b> known-site match</span><span><i class="sym g"></i><b id="n-gap"></b> no match</span><span><i class="sym d"></i><b id="n-cand"></b> new sampled candidate</span></div>
       <p id="selection-status" class="selection-status" role="status" aria-live="polite">Loading terrain data…</p>
@@ -93,5 +94,5 @@
     </div></details>
   </div>
 </div></section>
-</main><footer><div class="wrap"><p>Ron · Analog Intelligence · MIT licence · <a href="demo/">30-second demo</a> · <a href="https://github.com/ronnieurhomie/analog-coverage-gap-map">Code and data records</a></p><p>Moon: NASA LOLA · Earth: ESA Copernicus · Sites: USGS</p></div></footer>
+</main><footer><div class="wrap"><p>Ron · Analog Intelligence · MIT licence · <a href="demo/">30-second demo</a> · <a href="slides/">Slide decks</a> · <a href="https://github.com/ronnieurhomie/analog-coverage-gap-map">Code and data records</a></p><p>Moon: NASA LOLA · Earth: ESA Copernicus · Sites: USGS</p></div></footer>
 <script src="app.js"></script></body></html>

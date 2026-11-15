@@ -1,5 +1,12 @@
 /* AI assistance: Claude Code (original implementation and v4 visual redesign) and OpenAI Codex (earlier presentation revision). */
 /* v4: neutral interface; colour appears only where it carries data (match, no match, new candidate, pass, fail). */
+@font-face {
+  font-family:Inter;
+  font-style:normal;
+  font-weight:100 900;
+  font-display:swap;
+  src:url("fonts/inter-latin.woff2") format("woff2");
+}
 :root {
   --bg:#0B0D10; --surface:#14171C; --surface-2:#0F1216; --raise:#1B1F26; --line:#252A31; --line-2:#323843;
   --text:#EDEFF2; --text-2:#B4BBC5; --dim:#8A939E;
