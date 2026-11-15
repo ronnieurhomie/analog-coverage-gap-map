@@ -4,22 +4,22 @@ WEBVTT
 Ron · team Analog Intelligence · NASA Space Apps 2026
 
 00:00:02.500 --> 00:00:05.000
-Challenge: Earth analogs for Moon base sites. Which Earth site matches which Moon terrain?
+NASA rehearses Moon missions with rovers and spacesuits on Earth.
 
 00:00:05.000 --> 00:00:10.000
-Analog Coverage Gap Map: from Moon terrain to Earth sites worth checking
+Analog Coverage Gap Map: which Moon terrain has an Earth look-alike, and which doesn't?
 
 00:00:10.000 --> 00:00:14.000
-Pick a terrain patch near the lunar south pole (NASA LOLA data)
+Pick a square near the lunar south pole (NASA LOLA elevation data).
 
 00:00:14.000 --> 00:00:18.000
-We compare its slope and roughness with known Earth analog sites (ESA Copernicus elevation)
+We compare slope and bumpiness with listed Earth sites (ESA Copernicus data).
 
 00:00:18.000 --> 00:00:22.500
-Beyond all the known sites we listed, a site in Morocco matches 2 more Moon targets, and shows what still differs
+60 of 145 Moon squares have no listed-site match. Sampling finds candidates, including Morocco.
 
 00:00:22.500 --> 00:00:26.000
-Every pre-registered test is published: 2 failed, 1 inconclusive
+Early result: 2 tests failed; 1 could not decide. Rules set before testing.
 
 00:00:26.000 --> 00:00:29.900
-Next: more Earth sites and surface data, so planners can check before they travel · ronnieurhomie.github.io/analog-coverage-gap-map
+Next: more sites and ground data to help teams plan what to check before fieldwork.

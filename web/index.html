@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Analog Coverage Gap Map</title>
-<meta name="description" content="Pick a terrain patch near the lunar south pole, compare it with Earth sites at the same scale, and see what matches, what differs and what is still unknown. Exploratory prototype.">
+<meta name="description" content="For Moon field-test planners: compare lunar ground shape with Earth sites. See the evidence, differences and limits. An early screening tool.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,15 +25,14 @@
   <div class="wrap">
     <div>
       <p class="eyebrow">NASA Space Apps 2026 · Analog Intelligence · Kuala Lumpur</p>
-      <h1 id="h1">Which place on Earth is worth checking against this Moon terrain?</h1>
-      <p class="lede">Pick a terrain patch near the lunar south pole, compare it with Earth sites at the same scale, and see what
-        matches, what differs and what is still unknown.</p>
+      <h1 id="h1">Which Moon terrain has an Earth look-alike?</h1>
+      <p class="lede">For teams planning Moon field tests. Pick a Moon square and compare Earth sites by slope and bumpiness.</p>
       <div class="stats" id="stats" aria-live="polite"></div>
       <div class="btns">
         <a class="btn primary" href="#example">See the example</a>
         <a class="btn secondary" href="#explore">Explore the map</a>
       </div>
-      <span class="badge-note" id="badge-note">Exploratory prototype · every pre-registered test published, including 2 failures and 1 inconclusive</span>
+      <span class="badge-note" id="badge-note">Early screening tool · 2 tests failed; 1 could not decide. All results published.</span>
     </div>
     <figure class="thumb" id="thumb">
       <img src="data/lola_84S_hillshade.png" alt="Shaded relief of the lunar south polar region, 84°S to the pole, from NASA LOLA elevation data; the example patch is outlined in yellow." width="1820" height="1820">
@@ -45,7 +44,7 @@
 
 <section id="example" class="alt" aria-labelledby="ex-h">
   <div class="wrap">
-    <h2 id="ex-h">One Moon terrain, three ways to look at it</h2>
+    <h2 id="ex-h">A Moon square finds a candidate in Morocco</h2>
     <p class="lede" id="ex-lede"></p>
     <div class="trio" id="trio"></div>
     <div class="verdict" id="verdict"></div>
@@ -55,25 +54,26 @@
 
 <section id="explore" aria-labelledby="explore-h">
   <div class="wrap">
-    <h2 id="explore-h">Explore</h2>
-    <p>Each marker is a 1.92 km Moon patch. Pick one to see its nearest Earth windows at the same scale.</p>
+    <h2 id="explore-h">Pick a Moon square to compare Earth sites</h2>
+    <p>Each marker represents a sampled 1.92 km × 1.92 km Moon square. Pick one to compare ground shape at the same scale.</p>
     <div class="legend3" aria-label="Map legend">
-      <span><span class="sym c" aria-hidden="true"></span>matched by a known site</span>
-      <span><span class="sym g" aria-hidden="true"></span>no match among known sites</span>
+      <span><span class="sym c" aria-hidden="true"></span>has a listed-site look-alike</span>
+      <span><span class="sym g" aria-hidden="true"></span>no listed-site look-alike</span>
       <span><span class="sym d" aria-hidden="true"></span>has a sampled candidate</span>
     </div>
     <details class="settings">
       <summary>Comparison settings</summary>
       <fieldset class="opts" style="border:0;margin:0;padding:0 0 12px">
         <legend class="small">Which known sites count as a match</legend>
-        <label><input type="radio" name="set" value="union" checked> USGS-29 ∪ 3 NASA test sites (default)</label>
+        <label><input type="radio" name="set" value="K" checked> 190 USGS analog sites + 3 NASA test sites (default)</label>
+        <label><input type="radio" name="set" value="union"> 29 USGS analog sites + 3 NASA test sites (smaller list)</label>
         <label><input type="radio" name="set" value="nasa"> 3 NASA test sites only</label>
-        <label><input type="radio" name="set" value="allusgs"> all usable USGS analog sites (post-hoc)</label>
-        <label><input type="checkbox" id="historical"> historical (USGS-29, Gate 3a)</label>
+        <label><input type="radio" name="set" value="allusgs"> 190 USGS analog sites only (added after the main test)</label>
+        <label><input type="checkbox" id="historical"> original result (29 USGS analog sites only)</label>
       </fieldset>
     </details>
     <p class="setline" id="legend" aria-live="polite"></p>
-    <p class="setline">Gap means no match among the listed known sites, not that no Earth match exists.</p>
+    <p class="setline">A look-alike means similar ground shape under our fixed cut-off. No match means none in the selected list; it does not mean none exists on Earth.</p>
     <div class="explore">
       <div class="mapbox">
         <div id="map" class="map" role="group" aria-label="Map of 145 Moon patches near the lunar south pole; each marker is a button">
@@ -89,12 +89,12 @@
 
 <section id="results" class="alt" aria-labelledby="res-h">
   <div class="wrap">
-    <h2 id="res-h">Results at a glance</h2>
+    <h2 id="res-h">60 Moon squares have no look-alike in our known-site list</h2>
     <div class="bars" id="bars"></div>
-    <h3>Candidates that add matches beyond the known sites</h3>
+    <h3>Sampled candidates add ground-shape matches</h3>
     <div class="cards3" id="cands"></div>
-    <details class="disc"><summary>All 10 sampled candidates with at least one match</summary><div class="inner" id="cand-table"></div></details>
-    <h3 style="margin-top:48px">NASA test-site report card</h3>
+    <details class="disc"><summary>All 10 candidates matching targets missed by the smaller list</summary><div class="inner" id="cand-table"></div></details>
+    <h3 style="margin-top:48px">How many Moon squares each NASA test window matches</h3>
     <div class="cards3" id="nasa"></div>
     <details class="disc"><summary>Sites left out and why</summary><div class="inner" id="nasa-ex"></div></details>
     <p class="footnote" id="res-foot"></p>
@@ -103,17 +103,17 @@
 
 <section id="tested" aria-labelledby="t-h">
   <div class="wrap">
-    <h2 id="t-h">How we tested</h2>
-    <p>Each test was written down before we ran it. Here is how each one came out.</p>
+    <h2 id="t-h">Our tests: 2 failed, 1 could not decide</h2>
+    <p>We wrote each pass/fail rule before running its test. The results do not establish that the method can select test sites.</p>
     <div class="cards3" id="score"></div>
     <p><strong>Why we publish failures:</strong> a terrain match is only useful if you also know where the method breaks.</p>
-    <details class="disc"><summary>Threshold sensitivity and data-source change</summary><div class="inner" id="sens"></div></details>
+    <details class="disc"><summary>Changing the cut-off changes the result</summary><div class="inner" id="sens"></div></details>
   </div>
 </section>
 
 <section id="method" class="alt" aria-labelledby="m-h">
   <div class="wrap">
-    <h2 id="m-h">Method, data &amp; credits</h2>
+    <h2 id="m-h">We compare ground shape, not field-test readiness</h2>
     <div id="method-body"></div>
     <h3 style="margin-top:32px">Limitations</h3>
     <ul class="lim" id="limits"></ul>
@@ -125,7 +125,7 @@
   <div class="wrap">
     <p>Built for NASA Space Apps 2026 · MIT licence · <a href="https://github.com/ronnieurhomie/analog-coverage-gap-map">github.com/ronnieurhomie/analog-coverage-gap-map</a></p>
     <p id="foot-ai">Ron chose the challenge framing and direction. AI assistance: Claude (planning discussion and critique, drafting), Claude Code
-      (research lookups and code), OpenAI Codex (plan review). Source files carry headers; Ron reviewed the work.</p>
+      (research lookups and code), OpenAI Codex (plan review, clarity edits and consistency checks). New and edited code identifies AI assistance. Ron reviews final text before submission.</p>
   </div>
 </footer>
 <script src="app.js"></script>
