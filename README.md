@@ -2,7 +2,7 @@
 
 **Analog Coverage Gap Map** is an exploratory tool for a practical question: **Which lunar terrain types are not represented by the Earth analog sites in our reference list, and where else might researchers look?**
 
-[Explore the interactive map](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [Watch the 30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/) · [Detailed deck · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map-Detailed.pdf) · [Video companion · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map.pdf)
+[Explore the interactive map](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [Watch the 30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/) · [Detailed deck · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map-Detailed.pdf?v=7219fe4595) · [Video companion · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map.pdf)
 
 NASA LRO LOLA elevation data defines **145 sampled terrain squares** near the Moon's south pole. ESA Copernicus elevation data provides Earth comparisons, NASA MODIS vegetation data screens a wider land sample, and NASA HiRISE Mars terrain supports a method test. The delivered search is **Moon-to-Earth**; Mars is used for testing, not presented as a second completed search.
 
