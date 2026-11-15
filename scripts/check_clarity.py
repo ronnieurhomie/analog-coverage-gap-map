@@ -208,7 +208,7 @@ def main():
             video = page.locator('video')
             metadata = video.evaluate('(v) => ({duration:v.duration,width:v.videoWidth,height:v.videoHeight,tracks:v.textTracks.length})')
             assert 0 < metadata['duration'] <= 30
-            assert metadata['width'] == 1280 and metadata['height'] == 720 and metadata['tracks'] == 1
+            assert metadata['width'] == 1920 and metadata['height'] == 1080 and metadata['tracks'] == 1
             video.evaluate('(v) => {v.muted=true; return v.play()}')
             page.wait_for_function("document.querySelector('video').currentTime > 0.2")
             response = ctx.request.get(url.rstrip('/') + '/demo/demo.mp4')

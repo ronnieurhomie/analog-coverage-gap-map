@@ -2,7 +2,7 @@
 
 **Analog Coverage Gap Map** helps Moon field-test planners compare a lunar target with Earth candidates and inspect what still differs.
 
-[Explore Moon terrain](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [7-slide demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map.pdf)
+[Explore Moon terrain](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/)
 
 The website opens with 145 selectable Moon squares and a linked Earth comparison. Start with the Morocco example: Morocco passes our shape cut-off, while the closest listed site does not.
 Steep-end slopes are close, but larger-scale bumpiness differs. Villages, roads and vegetation remain; this is a candidate to investigate, not a ready test site.
@@ -55,7 +55,7 @@ and [submission text](docs/SUBMISSION.md). NASA NTRS 20000105009 is cited but no
 
 Ron chose the challenge framing and direction. Claude helped with planning, critique and drafts.
 Claude Code helped with research lookups and code. OpenAI Codex reviewed the plan, revised the layout and narrative, produced the demo and checked consistency.
-New and edited code identifies AI assistance. Figures come from elevation data; the demo is a captioned screen recording.
+New and edited code identifies AI assistance. Figures come from elevation data; the demo combines Ron’s seven slides, actual website interaction, his recorded narration and English captions.
 No AI-generated images, video or audio are used. Ron reviews the final work before submission.
 
 ## Licence and status
