@@ -2,7 +2,13 @@
 
 **Analog Coverage Gap Map** is an exploratory tool for a practical question: **Which lunar terrain types are not represented by the Earth analog sites in our reference list, and where else might researchers look?**
 
-[Explore the interactive map](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [Watch the 30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/) · [Detailed deck · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map-Detailed.pdf?v=7219fe4595) · [Video companion · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map.pdf)
+### Why this matters
+
+Before testing equipment for a lunar mission on Earth, researchers need to know whether the test ground resembles the terrain the equipment may encounter on the Moon. Familiar analog sites are useful, but **a known site is not necessarily a good terrain match for every lunar location**.
+
+This project checks that assumption. It identifies sampled Moon terrain without a match in a *defined reference list*, searches a small additional Earth sample for alternatives, and shows the measurements behind each comparison. **The result is a shortlist of leads for further investigation—not a map of approved test sites.**
+
+[Explore the interactive map](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [Watch the 30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/) · [Detailed deck · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map-Detailed.pdf?v=20261115-clarity) · [Video companion · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map.pdf)
 
 NASA LRO LOLA elevation data defines **145 sampled terrain squares** near the Moon's south pole. ESA Copernicus elevation data provides Earth comparisons, NASA MODIS vegetation data screens a wider land sample, and NASA HiRISE Mars terrain supports a method test. The delivered search is **Moon-to-Earth**; Mars is used for testing, not presented as a second completed search.
 
@@ -16,6 +22,8 @@ For each 1.92 × 1.92 km window, the project compares **19 slope and roughness m
 - **Two pre-registered tests failed and one was inconclusive.** Reliable site selection has not been established.
 
 The value of the prototype is to make the comparison and its uncertainty inspectable before anyone invests in field investigation. Terrain alone cannot confirm soil conditions, small rocks, access, permissions, or lunar environmental equivalence.
+
+**In one sentence:** Existing reference sites leave 60 of our 145 sampled lunar terrain windows without a shape match; a wider, limited Earth search finds six possible leads, but the matching method has not passed validation.
 
 NASA Space Apps Challenge 2026 · **Ron (solo participant)** · Team **Analog Intelligence** · Kuala Lumpur Local Event  
 Challenge: *Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars.*
