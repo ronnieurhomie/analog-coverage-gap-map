@@ -271,4 +271,10 @@ Promise.all([fetch("data/display.json").then((r) => r.json()), fetch("data/resul
       $("#explore").scrollIntoView({block: "start", behavior: "instant"});
     }
   })
-  .catch((e) => { $("#panel").innerHTML = `<p>Could not load data: ${esc(e.message)}</p>`; console.error(e); });
+  .catch((e) => {
+    const message = "The comparison data could not load. Please reload the page.";
+    $("#ex-lede").textContent = message;
+    $("#ex-lede").setAttribute("role", "alert");
+    $("#panel").textContent = message;
+    console.error(e);
+  });

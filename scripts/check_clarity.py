@@ -174,11 +174,13 @@ def main():
                                      'set_totals_match': True, 'numeric_mismatches': mismatches,
                                      'primary_words': primary_words, 'primary_images': 3, 'hero_actions': 1,
                                      'hero_action_in_first_screen': True}
+            page.wait_for_load_state('networkidle')
             page.goto(url.rstrip('/') + '/?patch=m000#explore', wait_until='networkidle')
             page.wait_for_selector('#panel .pair')
             assert page.locator('#explorer-details').evaluate('(e)=>e.open')
             assert page.locator('.pt[aria-pressed="true"]').get_attribute('aria-label').startswith('Patch m000,')
             report['widths'][name]['existing_target_link_opens_map'] = True
+            page.wait_for_load_state('networkidle')
             page.goto(url.rstrip('/') + '/demo/', wait_until='networkidle')
             page.wait_for_function("document.querySelector('video').readyState >= 1")
             video = page.locator('video')
