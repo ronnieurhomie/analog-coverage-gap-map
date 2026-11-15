@@ -1,60 +1,68 @@
 <!doctype html>
+<!-- AI-assisted implementation: OpenAI Codex; scientific data and method unchanged. -->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Analog Coverage Gap Map</title>
-<meta name="description" content="For Moon field-test planners: compare lunar ground shape with Earth sites. See the evidence, differences and limits. An early screening tool.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analog Coverage Gap Map — Earth candidates for Moon terrain</title>
+<meta name="description" content="For Moon field-test planners: compare one lunar target with Earth candidates, inspect the differences, and see what still needs checking.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="skip" href="#explore">Skip to the map</a>
-
-<nav class="nav" aria-label="Main">
-  <div class="wrap">
-    <a class="brand" href="#top">Analog Coverage Gap Map</a>
-    <ul>
-      <li><a href="#example">Example</a></li><li><a href="#explore">Explore</a></li><li><a href="#results">Results</a></li>
-      <li><a href="#tested">How we tested</a></li><li><a href="#method">Method</a></li>
-    </ul>
-  </div>
-</nav>
-
+<a class="skip" href="#example">Skip to the comparison</a>
+<header class="nav"><div class="wrap"><a class="brand" href="#top">Analog Coverage Gap Map</a><span class="small">NASA Space Apps 2026</span></div></header>
 <main id="top">
-<section class="hero" aria-labelledby="h1">
-  <div class="wrap">
-    <div>
-      <p class="eyebrow">NASA Space Apps 2026 · Analog Intelligence · Kuala Lumpur</p>
-      <h1 id="h1">Which Moon terrain has an Earth look-alike?</h1>
-      <p class="lede">For teams planning Moon field tests. Pick a Moon square and compare Earth sites by slope and bumpiness.</p>
-      <div class="stats" id="stats" aria-live="polite"></div>
-      <div class="btns">
-        <a class="btn primary" href="#example">See the example</a>
-        <a class="btn secondary" href="#explore">Explore the map</a>
-      </div>
-      <span class="badge-note" id="badge-note">Early screening tool · 2 tests failed; 1 could not decide. All results published.</span>
-    </div>
-    <figure class="thumb" id="thumb">
-      <img src="data/lola_84S_hillshade.png" alt="Shaded relief of the lunar south polar region, 84°S to the pole, from NASA LOLA elevation data; the example patch is outlined in yellow." width="1820" height="1820">
-      <span class="hl" id="thumb-hl" aria-hidden="true"></span>
-      <figcaption id="thumb-cap">Lunar south pole, 84–90°S (NASA LOLA). Yellow: the example patch.</figcaption>
-    </figure>
-  </div>
-</section>
+<section class="hero" aria-labelledby="h1"><div class="wrap">
+  <p class="eyebrow">For teams planning Moon field tests</p>
+  <h1 id="h1">Where on Earth could we study this Moon terrain?</h1>
+  <p class="lede">Compare a lunar target with Earth sites. See the similarities, the differences, and what needs checking before fieldwork.</p>
+  <a class="btn primary" href="#example">See one comparison</a>
+  <p class="boundary">Ground-shape screening only. Not a field-test recommendation.</p>
+</div></section>
 
-<section id="example" class="alt" aria-labelledby="ex-h">
-  <div class="wrap">
-    <h2 id="ex-h">A Moon square finds a candidate in Morocco</h2>
-    <p class="lede" id="ex-lede"></p>
-    <div class="trio" id="trio"></div>
-    <div class="verdict" id="verdict"></div>
-    <p class="footnote" id="ex-foot"></p>
-  </div>
-</section>
+<section id="example" class="alt" aria-labelledby="ex-h"><div class="wrap">
+  <h2 id="ex-h">Morocco is a closer shape match for this Moon square.</h2>
+  <p id="ex-lede"></p>
+  <div class="trio" id="trio"></div>
+  <p class="small shared-scale">NASA LOLA (Moon) and ESA Copernicus (Earth), shown at the same 1.92 km scale with simulated shading.</p>
+  <div id="verdict" class="verdict"></div>
+  <details class="disc"><summary>Inspect the measurements and comparison rule</summary><div class="inner"><p id="ex-foot"></p><div class="tablewrap" id="example-data"></div></div></details>
+</div></section>
 
-<section id="explore" aria-labelledby="explore-h">
-  <div class="wrap">
-    <h2 id="explore-h">Pick a Moon square to compare Earth sites</h2>
+<section id="next" aria-labelledby="next-h"><div class="wrap">
+  <h2 id="next-h">This gives a place to investigate, not a ready test site.</h2>
+  <p>The comparison narrows the terrain question. It leaves three practical questions open:</p>
+  <ul class="next-steps">
+    <li><strong>Ground cover:</strong> imagery shows villages, roads and trees. Check whether they affect the elevation data.</li>
+    <li><strong>Test conditions:</strong> soil and small rocks are unmeasured; Earth cannot reproduce lunar gravity or vacuum.</li>
+    <li><strong>Field access:</strong> permissions and land use need checking with local communities.</li>
+  </ul>
+</div></section>
+
+<section id="results" class="alt" aria-labelledby="res-h"><div class="wrap">
+  <h2 id="res-h">The search adds candidates for 6 unmatched Moon squares.</h2>
+  <div class="bars" id="bars"></div>
+  <details class="disc"><summary>Inspect the full results and alternative site lists</summary><div class="inner">
+    <div id="other-bars"></div><div class="cards3" id="cands"></div>
+    <details><summary>All sampled candidates with matches</summary><div id="cand-table"></div></details>
+    <h3>Sampled NASA test-site windows</h3><div class="cards3" id="nasa"></div>
+    <details><summary>Sites left out and why</summary><div id="nasa-ex"></div></details>
+    <p class="footnote" id="res-foot"></p>
+  </div></details>
+</div></section>
+
+<section id="tested" aria-labelledby="t-h"><div class="wrap">
+  <h2 id="t-h">Two tests failed. One could not decide.</h2>
+  <p>We fixed the pass/fail rules before testing. The results have not established reliable site selection.</p>
+  <div id="test-summary" class="test-summary"></div>
+  <details class="disc"><summary>Inspect all test results and cut-off sensitivity</summary><div class="inner">
+    <div class="cards3" id="score"></div><div id="sens"></div>
+  </div></details>
+</div></section>
+
+<section id="tools" class="alt"><div class="wrap">
+<details id="explorer-details" class="disc explorer-disclosure">
+<summary>Try another Moon square</summary>
+<div id="explore" class="inner">
     <p>Each marker represents a sampled 1.92 km × 1.92 km Moon square. Pick one to compare ground shape at the same scale.</p>
     <div class="legend3" aria-label="Map legend">
       <span><span class="sym c" aria-hidden="true"></span>has a listed-site look-alike</span>
@@ -84,50 +92,15 @@
     </div>
     <p class="footnote">Map: NASA LRO LOLA LDEM_80S_20M, polar stereographic, 364 km across, pole at centre; sun from azimuth 315°, altitude 30°.
       Patch counts are not area fractions of the lunar south pole.</p>
-  </div>
-</section>
+</div>
+</details>
 
-<section id="results" class="alt" aria-labelledby="res-h">
-  <div class="wrap">
-    <h2 id="res-h">60 Moon squares have no look-alike in our known-site list</h2>
-    <div class="bars" id="bars"></div>
-    <h3>Sampled candidates add ground-shape matches</h3>
-    <div class="cards3" id="cands"></div>
-    <details class="disc"><summary>All 10 candidates matching targets missed by the smaller list</summary><div class="inner" id="cand-table"></div></details>
-    <h3 style="margin-top:48px">How many Moon squares each NASA test window matches</h3>
-    <div class="cards3" id="nasa"></div>
-    <details class="disc"><summary>Sites left out and why</summary><div class="inner" id="nasa-ex"></div></details>
-    <p class="footnote" id="res-foot"></p>
-  </div>
-</section>
 
-<section id="tested" aria-labelledby="t-h">
-  <div class="wrap">
-    <h2 id="t-h">Our tests: 2 failed, 1 could not decide</h2>
-    <p>We wrote each pass/fail rule before running its test. The results do not establish that the method can select test sites.</p>
-    <div class="cards3" id="score"></div>
-    <p><strong>Why we publish failures:</strong> a terrain match is only useful if you also know where the method breaks.</p>
-    <details class="disc"><summary>Changing the cut-off changes the result</summary><div class="inner" id="sens"></div></details>
-  </div>
-</section>
-
-<section id="method" class="alt" aria-labelledby="m-h">
-  <div class="wrap">
-    <h2 id="m-h">We compare ground shape, not field-test readiness</h2>
-    <div id="method-body"></div>
-    <h3 style="margin-top:32px">Limitations</h3>
-    <ul class="lim" id="limits"></ul>
-  </div>
-</section>
+  <details id="method" class="disc"><summary>Method, sources and limitations</summary><div class="inner">
+    <div id="method-body"></div><h3>Limitations</h3><ul class="lim" id="limits"></ul>
+  </div></details>
+</div></section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <p>Built for NASA Space Apps 2026 · MIT licence · <a href="https://github.com/ronnieurhomie/analog-coverage-gap-map">github.com/ronnieurhomie/analog-coverage-gap-map</a></p>
-    <p id="foot-ai">Ron chose the challenge framing and direction. AI assistance: Claude (planning discussion and critique, drafting), Claude Code
-      (research lookups and code), OpenAI Codex (plan review, clarity edits and consistency checks). New and edited code identifies AI assistance. Ron reviews final text before submission.</p>
-  </div>
-</footer>
+<footer><div class="wrap"><p>Ron · Analog Intelligence · MIT licence · <a href="https://github.com/ronnieurhomie/analog-coverage-gap-map">Code and data records</a></p></div></footer>
 <script src="app.js"></script>
-</body>
-</html>
+</body></html>

@@ -100,13 +100,24 @@ def main():
             page.on('requestfailed', request_failed)
             page.on('response', lambda q: failed.append(f'{q.status} {q.url}') if q.status >= 400 else None)
             page.goto(url, wait_until='networkidle')
-            page.wait_for_selector('#panel .card')
+            page.wait_for_selector('#trio img')
+            primary_text = page.locator('main').inner_text()
+            primary_words = len(primary_text.split())
+            assert primary_words <= 500, primary_words
+            assert page.locator('main img:visible').count() == 3
+            assert page.locator('.hero a.btn').count() == 1
+            assert page.locator('.hero img').count() == 0
+            action = page.locator('.hero a.btn').bounding_box()
+            assert action['y'] + action['height'] <= height
+            assert not page.locator('#explorer-details').evaluate('(e)=>e.open')
+            assert 'Moon field tests' in page.locator('.hero').inner_text()
+            assert 'Ground-shape screening only' in page.locator('.hero').inner_text()
+            page.locator('#explorer-details').evaluate('(e)=>e.open=true')
             assert page.locator('.pt').count() == facts['moon_count']
             assert page.locator('input[name="set"]:checked').input_value() == 'K'
             assert page.locator('.pt[aria-pressed="true"]').get_attribute('aria-label').startswith('Patch m014,')
             legend = page.locator('#legend').inner_text()
             assert d['sets']['K']['label'] in legend and '85 matched, 60 no match' in legend
-            assert d['sets']['K']['label'] in page.locator('#stats').inner_text()
             assert d['sets']['K']['label'] in page.locator('#bars').inner_text()
             first_bar = page.locator('#bars .barrow').first.inner_text()
             assert '85 matched' in first_bar and '60 no match' in first_bar
@@ -114,7 +125,7 @@ def main():
             assert f"{d['showcase']['known_d']:.3f}" in page.locator('#trio').inner_text()
             assert d['showcase']['known_name'] in page.locator('#panel').inner_text()
             assert '6 of the 60' in page.locator('#bars').inner_text()
-            assert '5 of the 60' in page.locator('#bars').inner_text()
+            assert '5 of the 60' in page.locator('#other-bars').text_content()
             assert page.locator('#score .pill.failed').count() == 2
             assert page.locator('#score .pill.inconclusive').count() == 1
             overflow = page.evaluate('document.documentElement.scrollWidth - document.documentElement.clientWidth')
@@ -125,7 +136,7 @@ def main():
             if local:
                 page.screenshot(path=str(shots / f'clarity_{name}_hero.png'))
                 if name == 'desktop':
-                    for sec in ['example', 'explore', 'results', 'tested']:
+                    for sec in ['example', 'next', 'explore', 'results', 'tested']:
                         page.locator('#' + sec).screenshot(path=str(shots / f'clarity_{sec}.png'))
             # Comparison settings change both legend and markers; K remains the default.
             page.locator('.settings > summary').click()
@@ -160,7 +171,14 @@ def main():
             report['widths'][name] = {'viewport': [width, height], 'markers': 145, 'default': 'K',
                                      'showcase': 'm014', 'overflow_px': overflow, 'hero_bottom_px': hero_bottom,
                                      'disclosures_opened': disclosures, 'comparison_switching': True,
-                                     'set_totals_match': True, 'numeric_mismatches': mismatches}
+                                     'set_totals_match': True, 'numeric_mismatches': mismatches,
+                                     'primary_words': primary_words, 'primary_images': 3, 'hero_actions': 1,
+                                     'hero_action_in_first_screen': True}
+            page.goto(url.rstrip('/') + '/?patch=m000#explore', wait_until='networkidle')
+            page.wait_for_selector('#panel .pair')
+            assert page.locator('#explorer-details').evaluate('(e)=>e.open')
+            assert page.locator('.pt[aria-pressed="true"]').get_attribute('aria-label').startswith('Patch m000,')
+            report['widths'][name]['existing_target_link_opens_map'] = True
             page.goto(url.rstrip('/') + '/demo/', wait_until='networkidle')
             page.wait_for_function("document.querySelector('video').readyState >= 1")
             video = page.locator('video')

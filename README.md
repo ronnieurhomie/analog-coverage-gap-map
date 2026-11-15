@@ -1,56 +1,24 @@
-# Which Moon terrain has an Earth look-alike?
+# Earth candidates for Moon terrain
 
-**Analog Coverage Gap Map** helps teams planning Moon field tests compare ground shape before investigating Earth locations.
-Pick a Moon square, view Earth candidates at the same scale, and see similarities, differences and what to check next.
+**Analog Coverage Gap Map** helps Moon field-test planners compare a lunar target with Earth candidates and inspect what still differs.
 
-[Open the map](https://ronnieurhomie.github.io/analog-coverage-gap-map/) ·
-[Watch the 30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/) ·
-[Verified facts and JSON sources](docs/FACTS.md)
+[Follow the comparison](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [30-second walkthrough](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/)
 
-Built by Ron, team Analog Intelligence, for NASA Space Apps 2026, Kuala Lumpur.
+The main story follows one Moon square: Morocco passes our shape cut-off, while the closest listed site does not.
+Steep-end slopes are close, but larger-scale bumpiness differs. Villages, roads and vegetation remain; this is a candidate to investigate, not a ready test site.
+
+The broader sample contains 145 Moon squares. The known list matches 85; a 300-location sample provides candidates for 6 of the remaining 60.
+Two tests failed and one could not decide. The method has not established reliable site selection.
+
+NASA Space Apps 2026 · Ron, team Analog Intelligence · Kuala Lumpur.
 Challenge: Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars.
 
-## What it found
+## Evidence and limits
 
-We sample **145 squares**, each **1.92 km × 1.92 km**, near the lunar south pole using NASA LOLA elevation data.
-The default known-site list is **190 USGS analog sites + 3 NASA test sites**.
+The Morocco location is not a discovery: the wider region already has Mars-analog research.
+Soil, small rocks, access and lunar conditions remain unconfirmed. Each location is a sampled window, not a whole test field.
 
-- **85 of 145** Moon squares have a ground-shape look-alike in that list; **60 do not**.
-- **300** random land locations with little vegetation give candidate look-alikes for **6 of those 60**.
-- Separately, **5 of the 60** match a window in our Mojave test grid. The grid is outside the known-site list. These counts overlap.
-- A candidate in southern Morocco matches **2 of the 60**. The worked example is a Moon square (m014) matched by this candidate alone among the locations compared.
-
-A look-alike passes our fixed ground-shape cut-off (distance d < **2.317**, exact value **2.3166**).
-This is an early result, not evidence that a location is ready for field tests.
-Morocco's wider region already has Mars-analog research. Villages, roads and vegetation occur in the sampled window.
-It is **not a discovery** and **not a ready test site**.
-
-Other lists remain in Comparison settings. Their counts must not be mixed:
-
-| Earth locations compared | Matched Moon squares | No match |
-|---|---:|---:|
-| 190 USGS analog sites + 3 NASA test sites (default) | 85 of 145 | 60 of 145 |
-| 29 USGS analog sites + 3 NASA test sites (smaller list) | 60 of 145 | 85 of 145 |
-| 29 USGS analog sites only (original result) | 58 of 145 | 87 of 145 |
-
-## How much to trust it
-
-We wrote each pass/fail rule before its test:
-
-- **Failed:** starting from Mars dunes, Dumont Dunes ranked **51 of 64** candidates; the top **10%** was required.
-- **Failed:** Earth dune fields did not reliably find each other; median rank **17.5**, with **7** required.
-- **Could not decide:** in the fingerprint-versus-slope test, random choices had median coverage **100% in all 8 groups**.
-
-These results do not establish that the method can select test sites. The tool supports comparisons and further investigation.
-All original registrations and results remain in `results/`. The current status is in [G3_STATUS.md](docs/G3_STATUS.md).
-
-## Limits
-
-- Shape only: no soil mechanics, small rocks, gravity, vacuum, lighting or temperature.
-- Copernicus GLO-30 includes trees and buildings. Moses Lake's coordinates are approximate.
-- The cut-off matters: the original 29-site list leaves **126, 87 or 68 of 145** squares unmatched at the **50th, 90th or 99th** percentile cut-offs.
-- Square counts are not area shares of the lunar south pole. Each site is represented by a sampled window.
-- No vehicle testing, land access or permission is established by this project.
+[Full report and method](docs/SUBMISSION.md) · [Facts and source fields](docs/FACTS.md) · [Tests and project status](docs/G3_STATUS.md)
 
 ## Run the website
 
@@ -86,7 +54,7 @@ and [submission text](docs/SUBMISSION.md). NASA NTRS 20000105009 is cited but no
 ## AI assistance
 
 Ron chose the challenge framing and direction. Claude helped with planning, critique and drafts.
-Claude Code helped with research lookups and code. OpenAI Codex reviewed the plan, edited text and checked consistency.
+Claude Code helped with research lookups and code. OpenAI Codex reviewed the plan, revised the layout and narrative, produced the demo and checked consistency.
 New and edited code identifies AI assistance. Figures come from elevation data; the demo is a captioned screen recording.
 No AI-generated images, video or audio are used. Ron reviews the final work before submission.
 
