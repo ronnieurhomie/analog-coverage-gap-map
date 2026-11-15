@@ -8,7 +8,7 @@ Before testing equipment for a lunar mission on Earth, researchers need to know 
 
 This project checks that assumption. It identifies sampled Moon terrain without a match in a *defined reference list*, searches a small additional Earth sample for alternatives, and shows the measurements behind each comparison. **The result is a shortlist of leads for further investigation—not a map of approved test sites.**
 
-[Explore the interactive map](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [Watch the 30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/) · [Detailed deck · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map-Detailed.pdf?v=20261115-clarity) · [Video companion · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map.pdf)
+[Explore the interactive map](https://ronnieurhomie.github.io/analog-coverage-gap-map/) · [Watch the 30-second demo](https://ronnieurhomie.github.io/analog-coverage-gap-map/demo/) · [Detailed deck · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map-Detailed.pdf?v=20261115-clarity) · [Video companion · 7 slides](https://ronnieurhomie.github.io/analog-coverage-gap-map/slides/Analog-Coverage-Gap-Map.pdf?v=44434e6f7b)
 
 NASA LRO LOLA elevation data defines **145 sampled terrain squares** near the Moon's south pole. ESA Copernicus elevation data provides Earth comparisons, NASA MODIS vegetation data screens a wider land sample, and NASA HiRISE Mars terrain supports a method test. The delivered search is **Moon-to-Earth**; Mars is used for testing, not presented as a second completed search.
 
